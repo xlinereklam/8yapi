@@ -3,471 +3,1606 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>8 Yapı | Çevresine Değer Katar.</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
+<meta name="theme-color" content="#f7f7f5">
+
+<title>8 Yapı | Cengiz Galitekin</title>
+
+
+<!-- MODERN FONTLAR -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Allura&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
     width:100%;
     min-height:100%;
 }
 
 body{
-    background:#f7f7f5;
-    color:#092f45;
-    font-family:'Manrope',sans-serif;
+    font-family:"Manrope",Arial,sans-serif;
+    color:#17191d;
+
+    display:flex;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(20,42,75,.07),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(180,150,80,.07),
+            transparent 30%
+        ),
+
+        #e8e9e7;
+
     overflow-x:hidden;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+
+/* =========================================================
+   PHONE FRAME
+========================================================= */
+
+.phone{
+    width:min(100%,430px);
+    min-height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#f8f8f6;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.16);
 }
 
-button{
-    font-family:inherit;
+
+@media(max-width:600px){
+
+    body{
+        background:#f8f8f6;
+    }
+
+    .phone{
+        width:100%;
+        box-shadow:none;
+    }
+
 }
 
-/* INTRO */
+
+/* =========================================================
+   INTRO / OPENING ANIMATION
+========================================================= */
 
 .intro{
     position:fixed;
+
     inset:0;
+
     z-index:9999;
-    background:#092f45;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    animation:introOut 1s ease 2.8s forwards;
-}
 
-.intro-inner{
-    text-align:center;
-    color:#fff;
-}
-
-.intro-logo{
-    width:170px;
-    max-width:65vw;
-    opacity:0;
-    transform:scale(.85);
-    animation:introLogo 1s ease .2s forwards;
-}
-
-.intro-name{
-    margin-top:18px;
-    font-size:15px;
-    letter-spacing:4px;
-    opacity:0;
-    animation:introText 1s ease 1s forwards;
-}
-
-.intro-line{
-    width:0;
-    height:1px;
-    background:#238b59;
-    margin:16px auto 0;
-    animation:introLine 1s ease 1.6s forwards;
-}
-
-@keyframes introLogo{
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-@keyframes introText{
-    to{
-        opacity:1;
-    }
-}
-
-@keyframes introLine{
-    to{
-        width:120px;
-    }
-}
-
-@keyframes introOut{
-    to{
-        opacity:0;
-        visibility:hidden;
-    }
-}
-
-/* MAIN */
-
-.container{
-    width:min(620px,100%);
-    margin:0 auto;
-    padding:28px 18px 35px;
-}
-
-/* LOGO */
-
-.main-logo{
-    width:145px;
-    display:block;
-    margin:0 auto 18px;
-}
-
-/* NAME */
-
-.profile-name{
-    text-align:center;
-    font-size:24px;
-    font-weight:800;
-    letter-spacing:-.5px;
-}
-
-.profile-title{
-    text-align:center;
-    margin-top:5px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:1.5px;
-}
-
-/* SLIDER */
-
-.slider{
-    position:relative;
-    width:100%;
-    height:255px;
-    margin:22px 0 18px;
-    border-radius:22px;
-    overflow:hidden;
-    background:#e8ebe8;
-}
-
-.slide{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transition:opacity .8s ease;
-}
-
-.slide.active{
-    opacity:1;
-}
-
-.slide img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-/* SLOGAN */
-
-.slogan{
-    text-align:center;
-    font-family:'Allura',cursive;
-    font-size:39px;
-    line-height:1;
-    margin:8px 0 25px;
-    color:#092f45;
-}
-
-/* BUTTONS */
-
-.buttons{
-    display:flex;
-    flex-direction:column;
-    gap:11px;
-}
-
-.btn{
-    width:100%;
-    min-height:58px;
-    border-radius:15px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:10px 16px;
-    font-size:14px;
-    font-weight:800;
-    letter-spacing:.2px;
-    transition:.2s ease;
-    cursor:pointer;
-    border:none;
-}
-
-.btn:active{
-    transform:scale(.98);
-}
-
-.btn-main{
-    background:#092f45;
-    color:#fff;
-}
-
-.btn-green{
-    background:#238b59;
-    color:#fff;
-}
-
-.btn-light{
-    background:#fff;
-    color:#092f45;
-    border:1px solid rgba(9,47,69,.12);
-}
-
-.btn-dark{
-    background:#092f45;
-    color:#fff;
-}
-
-.btn-sub{
-    display:block;
-    margin-top:4px;
-    font-size:9px;
-    font-weight:600;
-    opacity:.7;
-    letter-spacing:1px;
-}
-
-/* VISION */
-
-.vision{
-    margin-top:28px;
-    padding:22px 20px;
-    border-radius:20px;
-    background:#fff;
-    border:1px solid rgba(9,47,69,.08);
-}
-
-.vision-title{
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-    margin-bottom:10px;
-}
-
-.vision-text{
-    font-size:13px;
-    line-height:1.7;
-    color:#4d5b63;
-}
-
-/* FOOTER */
-
-.footer{
-    text-align:center;
-    margin-top:25px;
-    font-size:10px;
-    line-height:1.7;
-    color:#7b858b;
-}
-
-/* CATALOG LOADER */
-
-.catalog-loader{
-    position:fixed;
-    inset:0;
-    z-index:10000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.97),
-            rgba(246,248,246,.98)
+            #ffffff 0%,
+            #f4f5f3 48%,
+            #e9ebea 100%
+        );
+
+    animation:introExit .8s ease 4.7s forwards;
+
+    pointer-events:none;
+}
+
+
+.intro::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:470px;
+    height:470px;
+
+    border:1px solid rgba(18,49,80,.10);
+
+    border-radius:50%;
+
+    box-shadow:
+
+        0 0 0 35px rgba(18,49,80,.025),
+
+        0 0 0 75px rgba(18,49,80,.018),
+
+        0 0 0 120px rgba(18,49,80,.012);
+
+    animation:
+        introCircle 2.5s ease forwards;
+}
+
+
+.intro::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180%;
+
+    height:1px;
+
+    left:-40%;
+
+    top:50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(177,145,65,.55),
+            rgba(20,52,82,.45),
+            transparent
+        );
+
+    transform:rotate(-18deg) scaleX(0);
+
+    animation:introLine 1.8s ease .35s forwards;
+}
+
+
+.intro-logo{
+
+    position:relative;
+
+    z-index:5;
+
+    width:235px;
+
+    max-width:70%;
+
+    opacity:0;
+
+    transform:
+        translateY(15px)
+        scale(.88);
+
+    filter:
+        drop-shadow(
+            0 8px 16px
+            rgba(0,0,0,.10)
+        );
+
+    animation:
+
+        introLogo
+        1.25s
+        cubic-bezier(.2,.8,.2,1)
+        .45s
+        forwards;
+}
+
+
+.intro-light{
+
+    position:absolute;
+
+    z-index:4;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(163,25,34,.20),
+            rgba(163,25,34,.05) 40%,
+            transparent 70%
+        );
+
+    filter:blur(4px);
+
+    opacity:0;
+
+    animation:introLight 1.5s ease .65s forwards;
+}
+
+
+/* =========================================================
+   INTRO CENGİZ GALİTEKİN
+========================================================= */
+
+.intro-caption{
+
+    position:absolute;
+
+    z-index:5;
+
+    bottom:28%;
+
+    width:100%;
+
+    text-align:center;
+
+    font-family:
+        "Allura",
+        "URW Chancery L",
+        "Apple Chancery",
+        cursive;
+
+    font-size:43px;
+
+    font-weight:400;
+
+    letter-spacing:.5px;
+
+    color:#17253a;
+
+    transform:
+        translateY(8px)
+        rotate(-2deg);
+
+    opacity:0;
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.9);
+
+    animation:
+        introCaption
+        .9s
+        ease
+        1.35s
+        forwards;
+}
+
+
+@keyframes introCircle{
+
+    0%{
+        transform:scale(.55);
+        opacity:0;
+    }
+
+    45%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:scale(1.05);
+        opacity:.55;
+    }
+
+}
+
+
+@keyframes introLine{
+
+    0%{
+        transform:rotate(-18deg) scaleX(0);
+        opacity:0;
+    }
+
+    100%{
+        transform:rotate(-18deg) scaleX(1);
+        opacity:1;
+    }
+
+}
+
+
+@keyframes introLogo{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(15px)
+            scale(.88);
+    }
+
+    55%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes introLight{
+
+    0%{
+        opacity:0;
+        transform:translateX(-120px);
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translateX(120px);
+    }
+
+}
+
+
+@keyframes introCaption{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(8px)
+            rotate(-2deg);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+}
+
+
+@keyframes introExit{
+
+    0%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.page{
+
+    position:relative;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    padding:
+        24px
+        19px
+        38px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8f8f6 48%,
+            #f1f2f0 100%
         );
 }
 
-.catalog-loader.active{
-    display:flex;
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    top:-170px;
+    right:-250px;
+
+    border:
+        1px solid
+        rgba(15,43,77,.07);
+
+    border-radius:50%;
+
+    box-shadow:
+
+        0 0 0 35px
+        rgba(15,43,77,.018),
+
+        0 0 0 70px
+        rgba(15,43,77,.012);
+
+    animation:
+        architectureFloat
+        15s
+        ease-in-out
+        infinite;
 }
 
-.catalog-loader-inner{
-    width:min(360px,86vw);
+
+.page::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    bottom:-160px;
+    left:-150px;
+
+    border:
+        1px solid
+        rgba(190,155,70,.10);
+
+    transform:rotate(25deg);
+
+    animation:
+        architectureFloat2
+        18s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes architectureFloat{
+
+    0%,100%{
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity:.65;
+    }
+
+    50%{
+        transform:
+            translate(-25px,25px)
+            scale(1.06);
+
+        opacity:1;
+    }
+
+}
+
+
+@keyframes architectureFloat2{
+
+    0%,100%{
+        transform:
+            rotate(25deg)
+            translate(0,0);
+    }
+
+    50%{
+        transform:
+            rotate(31deg)
+            translate(20px,-15px);
+    }
+
+}
+
+
+/* =========================================================
+   Z-INDEX
+========================================================= */
+
+.logo-area,
+.person,
+.divider,
+.slideshow,
+.slogan,
+.button,
+.section-title,
+.actions,
+.vision,
+.footer{
+
+    position:relative;
+
+    z-index:3;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-area{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    min-height:82px;
+
+    padding:
+        3px
+        0
+        7px;
+}
+
+
+.main-logo{
+
+    display:block;
+
+    width:205px;
+
+    max-width:78%;
+
+    height:auto;
+
+    filter:
+        drop-shadow(
+            0 4px 7px
+            rgba(0,0,0,.07)
+        );
+
+    animation:
+        logoFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes logoFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+
+}
+
+
+/* =========================================================
+   CENGİZ GALİTEKİN
+========================================================= */
+
+.person{
+
+    text-align:center;
+
+    margin-top:3px;
+
+    margin-bottom:18px;
+}
+
+
+.person-name{
+
+    font-family:
+        "Allura",
+        "URW Chancery L",
+        "Apple Chancery",
+        cursive;
+
+    font-size:34px;
+
+    font-weight:400;
+
+    letter-spacing:.4px;
+
+    line-height:1.05;
+
+    color:#17253a;
+
+    transform:rotate(-2deg);
+
+    text-shadow:
+        0 1px 0
+        rgba(255,255,255,.8);
+}
+
+
+.person-role{
+
+    margin-top:10px;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    color:#69717b;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider{
+
+    width:50px;
+
+    height:1px;
+
+    margin:
+        0
+        auto
+        18px;
+
+    background:#173452;
+
+    opacity:.22;
+}
+
+
+/* =========================================================
+   SLIDESHOW
+========================================================= */
+
+.slideshow{
+
+    width:100%;
+
+    height:235px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:8px;
+
+    background:#ddd;
+
+    box-shadow:
+        0 14px 30px
+        rgba(0,0,0,.13);
+}
+
+
+.slide{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transform:scale(1.06);
+
+    transition:
+
+        opacity
+        1.6s
+        ease-in-out,
+
+        transform
+        7s
+        cubic-bezier(.2,.7,.2,1);
+}
+
+
+.slide.active{
+
+    opacity:1;
+
+    transform:scale(1);
+}
+
+
+.slideshow::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(7,25,45,.02),
+            rgba(7,25,45,.12)
+        );
+
+    pointer-events:none;
+}
+
+
+.dots{
+
+    position:absolute;
+
+    z-index:5;
+
+    left:50%;
+
+    bottom:11px;
+
+    transform:
+        translateX(-50%);
+
+    display:flex;
+
+    gap:6px;
+}
+
+
+.dot{
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.55);
+
+    transition:.4s ease;
+}
+
+
+.dot.active{
+
+    width:18px;
+
+    border-radius:5px;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 8px
+        rgba(255,255,255,.8);
+}
+
+
+/* =========================================================
+   SLOGAN
+========================================================= */
+
+.slogan{
+
+    text-align:center;
+
+    padding:
+        19px
+        5px
+        17px;
+}
+
+
+.slogan-main{
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:18px;
+
+    letter-spacing:1px;
+
+    color:#173d69;
+
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+
+.slogan-sub{
+
+    margin-top:6px;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:7px;
+
+    font-weight:600;
+
+    letter-spacing:3px;
+
+    color:#92969a;
+}
+
+
+/* =========================================================
+   BUTTON SYSTEM
+========================================================= */
+
+.button{
+
+    width:100%;
+
+    min-height:60px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    overflow:hidden;
+
+    border-radius:7px;
+
+    text-decoration:none;
+
+    margin-bottom:10px;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    letter-spacing:.1px;
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:
+        transform .2s ease,
+        box-shadow .25s ease;
+}
+
+
+.button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-75%;
+
+    width:45%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255,255,255,.48),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:
+        buttonShine
+        5.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes buttonShine{
+
+    0%{
+        left:-75%;
+    }
+
+    35%{
+        left:125%;
+    }
+
+    100%{
+        left:125%;
+    }
+
+}
+
+
+.button::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:
+        1px solid
+        rgba(255,255,255,.35);
+
+    border-radius:inherit;
+
+    pointer-events:none;
+}
+
+
+.button > *{
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.button:active{
+
+    transform:scale(.965);
+}
+
+
+/* =========================================================
+   SHOWROOM BUTTON
+========================================================= */
+
+.showroom{
+
+    min-height:92px;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    color:#fff;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #236d42,
+            #2f8955,
+            #246d42
+        );
+
+    box-shadow:
+        0 10px 24px
+        rgba(38,119,73,.22);
+}
+
+
+.showroom-small{
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    opacity:.82;
+}
+
+
+.showroom-large{
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    letter-spacing:.2px;
+
     text-align:center;
 }
 
-.catalog-loader-logo{
-    width:120px;
-    max-width:45vw;
-    margin-bottom:20px;
+
+/* =========================================================
+   CATALOG
+========================================================= */
+
+.catalog{
+
+    min-height:65px;
+
+    color:#fff;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #161d27,
+            #273445
+        );
+
+    box-shadow:
+        0 9px 21px
+        rgba(20,31,45,.18);
 }
 
-.catalog-loader-line{
-    width:100%;
-    height:2px;
-    background:rgba(9,47,69,.08);
-    overflow:hidden;
-    border-radius:10px;
+
+.catalog-icon{
+
+    font-size:19px;
 }
 
-.catalog-loader-line::after{
-    content:"";
-    display:block;
-    width:35%;
-    height:100%;
-    background:#238b59;
-    border-radius:10px;
-    animation:catalogProgress 1s ease-in-out infinite;
-}
 
-.catalog-spinner{
-    width:30px;
-    height:30px;
-    border:3px solid rgba(9,47,69,.1);
-    border-top-color:#238b59;
-    border-radius:50%;
-    margin:22px auto 14px;
-    animation:spin .8s linear infinite;
-}
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
-.catalog-loader-title{
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:2px;
-    color:#092f45;
-}
+.section-title{
 
-.catalog-loader-text{
-    margin-top:6px;
-    font-size:10px;
-    color:#7b858b;
-}
+    display:flex;
 
-.catalog-loader-brand{
-    margin-top:22px;
+    align-items:center;
+
+    gap:9px;
+
+    margin:
+        26px
+        0
+        11px;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
     font-size:9px;
+
     font-weight:800;
+
+    letter-spacing:2.5px;
+
+    color:#7d838a;
+}
+
+
+.section-title::before{
+
+    content:"";
+
+    width:22px;
+
+    height:1px;
+
+    background:#9ca1a5;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:9px;
+}
+
+
+.actions .button{
+
+    min-height:59px;
+
+    margin:0;
+
+    color:#1d2630;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.94),
+            rgba(243,245,245,.76)
+        );
+
+    border:
+        1px solid
+        rgba(25,50,75,.09);
+
+    box-shadow:
+        0 6px 16px
+        rgba(20,35,50,.055);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
+
+    font-size:13px;
+}
+
+
+.actions .button.full{
+
+    grid-column:
+        1 / -1;
+}
+
+
+@media(hover:hover){
+
+    .button:hover{
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 10px 24px
+            rgba(20,40,60,.13);
+    }
+
+}
+
+
+.icon{
+
+    min-width:19px;
+
+    text-align:center;
+
+    font-size:17px;
+
+    font-weight:400;
+}
+
+
+/* =========================================================
+   TEKLİF AL
+========================================================= */
+
+.offer-button{
+
+    grid-column:1 / -1;
+
+    min-height:68px !important;
+
+    color:#fff !important;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #8e2028,
+            #b32d37,
+            #861d25
+        ) !important;
+
+    box-shadow:
+        0 10px 24px
+        rgba(145,32,42,.22) !important;
+
+}
+
+
+.offer-button .offer-icon{
+
+    font-size:20px;
+
+}
+
+
+.offer-button .offer-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:2px;
+
+}
+
+
+.offer-button .offer-small{
+
+    font-size:8px;
+
+    letter-spacing:2.5px;
+
+    font-weight:700;
+
+    opacity:.78;
+}
+
+
+.offer-button .offer-large{
+
+    font-size:14px;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   VISION
+========================================================= */
+
+.vision{
+
+    margin-top:29px;
+
+    padding:
+        26px
+        20px
+        28px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:9px;
+
+    color:#fff;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #202c3a,
+            #111820
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(12,23,35,.19);
+}
+
+
+.vision::before{
+
+    content:"8";
+
+    position:absolute;
+
+    right:-8px;
+
+    top:-32px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:165px;
+
+    line-height:1;
+
+    opacity:.035;
+}
+
+
+.vision-label{
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:8px;
+
+    font-weight:700;
+
     letter-spacing:3px;
-    color:#092f45;
+
+    color:#aeb6be;
+
+    margin-bottom:11px;
 }
 
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+
+.vision-title{
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:20px;
+
+    line-height:1.25;
+
+    margin-bottom:16px;
 }
 
-@keyframes catalogProgress{
-    0%{
-        transform:translateX(-120%);
-    }
-    100%{
-        transform:translateX(320%);
-    }
+
+.vision-title span{
+
+    display:block;
+
+    color:#aeb6be;
 }
 
-/* MOBILE */
 
-@media(max-width:480px){
+.vision-text{
 
-    .container{
-        padding:23px 14px 30px;
+    position:relative;
+
+    z-index:2;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:12px;
+
+    line-height:1.75;
+
+    color:#d2d7dc;
+}
+
+
+.vision-sign{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:20px;
+
+    padding-top:14px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.13);
+
+    font-family:
+        "Allura",
+        "URW Chancery L",
+        cursive;
+
+    font-size:25px;
+
+    font-weight:400;
+
+    transform:rotate(-2deg);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+    text-align:center;
+
+    padding:
+        28px
+        0
+        5px;
+
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:8px;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    color:#92969a;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-height:700px){
+
+    .page{
+
+        padding-top:17px;
     }
 
-    .main-logo{
-        width:130px;
+    .logo-area{
+
+        min-height:70px;
     }
 
-    .profile-name{
-        font-size:22px;
-    }
+    .slideshow{
 
-    .slider{
-        height:220px;
-        border-radius:19px;
+        height:205px;
     }
 
     .slogan{
-        font-size:35px;
+
+        padding-top:14px;
+
+        padding-bottom:13px;
     }
 
-    .btn{
-        min-height:57px;
-        font-size:13px;
+    .button{
+
+        min-height:55px;
+    }
+
+    .showroom{
+
+        min-height:82px;
+    }
+
+}
+
+
+@media(max-width:360px){
+
+    .page{
+
+        padding-left:15px;
+
+        padding-right:15px;
+    }
+
+    .main-logo{
+
+        width:180px;
+    }
+
+    .person-name{
+
+        font-size:30px;
+    }
+
+    .slideshow{
+
+        height:195px;
+    }
+
+    .actions .button{
+
+        font-size:12px;
+    }
+
+}
+
+
+/* =========================================================
+   INTRO MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .intro{
+
+        position:fixed;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- INTRO -->
+
+<!-- =======================================================
+     OPENING ANIMATION
+======================================================= -->
 
 <div class="intro">
 
-    <div class="intro-inner">
+    <div class="intro-light"></div>
 
-        <img
-            src="./assets/8yapi_logo.png"
-            class="intro-logo"
-            alt="8 Yapı"
-        >
+    <img
+        src="./assets/8yapi_logo.png"
+        class="intro-logo"
+        alt="8 Yapı"
+    >
 
-        <div class="intro-name">
-            Cengiz Galitekin
-        </div>
-
-        <div class="intro-line"></div>
-
+    <div class="intro-caption">
+        Cengiz Galitekin
     </div>
 
 </div>
 
 
-<!-- CATALOG LOADER -->
 
-<div class="catalog-loader" id="catalogLoader">
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
-    <div class="catalog-loader-inner">
+<div class="phone">
 
-        <img
-            src="./assets/8yapi_logo.png"
-            class="catalog-loader-logo"
-            alt="8 Yapı"
-        >
-
-        <div class="catalog-spinner"></div>
-
-        <div class="catalog-loader-title">
-            KATALOG YÜKLENİYOR
-        </div>
-
-        <div class="catalog-loader-text">
-            Lütfen bekleyiniz…
-        </div>
-
-        <div class="catalog-loader-line"></div>
-
-        <div class="catalog-loader-brand">
-            8 YAPI
-        </div>
-
-    </div>
-
-</div>
+<div class="page">
 
 
-<!-- MAIN -->
+<!-- LOGO -->
 
-<main class="container">
+<div class="logo-area">
 
     <img
         src="./assets/8yapi_logo.png"
@@ -475,365 +1610,682 @@ button{
         alt="8 Yapı"
     >
 
-    <div class="profile-name">
+</div>
+
+
+
+<!-- PERSON -->
+
+<div class="person">
+
+    <div class="person-name">
         Cengiz Galitekin
     </div>
 
-    <div class="profile-title">
+    <div class="person-role">
         (KURUCU / YÖNETİM KURULU BAŞKANI)
     </div>
 
+</div>
 
-    <!-- SLIDER -->
 
-    <div class="slider">
 
-        <div class="slide active">
-            <img
-                src="./assets/cephe01.png"
-                alt="8 Yapı Cephe Uygulaması"
-            >
-        </div>
+<div class="divider"></div>
 
-        <div class="slide">
-            <img
-                src="./assets/cephe02.png"
-                alt="8 Yapı Cephe Uygulaması"
-            >
-        </div>
 
-        <div class="slide">
-            <img
-                src="./assets/cephe03.png"
-                alt="8 Yapı Cephe Uygulaması"
-            >
-        </div>
 
-        <div class="slide">
-            <img
-                src="./assets/cephe04.png"
-                alt="8 Yapı Cephe Uygulaması"
-            >
-        </div>
+<!-- =======================================================
+     PROJECT SLIDESHOW
+======================================================= -->
+
+<div class="slideshow">
+
+    <img
+        src="./assets/cephe01.png"
+        class="slide active"
+        alt="8 Yapı proje görseli"
+    >
+
+    <img
+        src="./assets/cephe02.png"
+        class="slide"
+        alt="8 Yapı proje görseli"
+    >
+
+    <img
+        src="./assets/cephe03.png"
+        class="slide"
+        alt="8 Yapı proje görseli"
+    >
+
+    <img
+        src="./assets/cephe04.png"
+        class="slide"
+        alt="8 Yapı proje görseli"
+    >
+
+    <div class="dots">
+
+        <span class="dot active"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
 
     </div>
 
+</div>
 
-    <!-- SLOGAN -->
 
-    <div class="slogan">
-        Çevresine Değer Katar.
+
+<!-- SLOGAN -->
+
+<div class="slogan">
+
+    <div class="slogan-main">
+        Çevresine Değer Katar
     </div>
 
+    <div class="slogan-sub">
+        YAPI · TASARIM · UYGULAMA
+    </div>
 
-    <!-- BUTTONS -->
-
-    <div class="buttons">
-
-        <a
-            href="tanitim.html"
-            class="btn btn-main"
-        >
-            <span>
-                DİJİTAL SHOWROOM
-                <span class="btn-sub">
-                    HİZMETLERİMİZ ve FİYATLANDIRMALARIMIZ
-                </span>
-            </span>
-        </a>
+</div>
 
 
-        <a
-            href="#"
-            class="btn btn-light"
-            onclick="openCatalog();return false;"
-        >
-            <span>
-                8 Yapı Dijital Kataloğu
-                <span class="btn-sub">
-                    PROJELER · UYGULAMALAR · ÇÖZÜMLER
-                </span>
-            </span>
-        </a>
+
+<!-- =======================================================
+     DIGITAL SHOWROOM
+======================================================= -->
+
+<a
+    href="tanitim.html"
+    class="button showroom"
+>
+
+    <span class="showroom-small">
+        DİJİTAL SHOWROOM
+    </span>
+
+    <span class="showroom-large">
+        HİZMETLERİMİZ ve FİYATLANDIRMALARIMIZ
+    </span>
+
+</a>
 
 
-        <a
-            href="tel:+905054108707"
-            class="btn btn-green"
-        >
+
+<!-- =======================================================
+     CATALOG
+======================================================= -->
+
+<a
+    href="./8-yapi-katalog.pdf"
+    target="_blank"
+    rel="noopener"
+    class="button catalog"
+>
+
+    <span class="catalog-icon">
+        ▤
+    </span>
+
+    <span>
+        8 Yapı Dijital Kataloğu
+    </span>
+
+</a>
+
+
+
+<!-- =======================================================
+     QUICK CONTACT
+======================================================= -->
+
+<div class="section-title">
+    HIZLI İLETİŞİM
+</div>
+
+
+
+<div class="actions">
+
+
+    <!-- ARA -->
+
+    <a
+        href="tel:+905054108707"
+        class="button"
+    >
+
+        <span class="icon">
+            ☎
+        </span>
+
+        <span>
             Hemen Ara
-        </a>
+        </span>
+
+    </a>
 
 
-        <button
-            class="btn btn-light"
-            onclick="saveContact()"
-        >
+
+    <!-- KİŞİ KAYDET -->
+
+    <a
+        href="#"
+        class="button"
+        onclick="saveContact();return false;"
+    >
+
+        <span class="icon">
+            ＋
+        </span>
+
+        <span>
             Telefona Kaydet
-        </button>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://wa.me/905054108707"
-            class="btn btn-green"
-            target="_blank"
-        >
+
+    <!-- WHATSAPP -->
+
+    <a
+        href="https://wa.me/905054108707"
+        target="_blank"
+        rel="noopener"
+        class="button"
+    >
+
+        <span class="icon">
+            ◉
+        </span>
+
+        <span>
             WhatsApp
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://www.google.com/maps/dir/?api=1&destination=36.524374,32.054380"
-            class="btn btn-light"
-            target="_blank"
-        >
+
+    <!-- OFİS YOL TARİFİ -->
+
+    <a
+        href="https://www.google.com/maps/dir/?api=1&destination=36.524374,32.054380"
+        target="_blank"
+        rel="noopener"
+        class="button"
+    >
+
+        <span class="icon">
+            📍
+        </span>
+
+        <span>
             Ofis Yol Tarifi
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://www.instagram.com/8yapii/"
-            class="btn btn-light"
-            target="_blank"
-        >
+
+    <!-- INSTAGRAM -->
+
+    <a
+        href="https://www.instagram.com/8yapii/"
+        target="_blank"
+        rel="noopener"
+        class="button"
+    >
+
+        <span class="icon">
+            ◎
+        </span>
+
+        <span>
             Instagram
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://www.facebook.com/8yapii"
-            class="btn btn-light"
-            target="_blank"
-        >
+
+    <!-- FACEBOOK -->
+
+    <a
+        href="https://www.facebook.com/8yapii"
+        target="_blank"
+        rel="noopener"
+        class="button"
+    >
+
+        <span class="icon">
+            f
+        </span>
+
+        <span>
             Facebook
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://x.com/8yapii"
-            class="btn btn-light"
-            target="_blank"
-        >
-            Twitter / X
-        </a>
+
+    <!-- X -->
+
+    <a
+        href="https://x.com/8yapii"
+        target="_blank"
+        rel="noopener"
+        class="button"
+    >
+
+        <span class="icon">
+            𝕏
+        </span>
+
+        <span>
+            X / Twitter
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://www.youtube.com/@8yapii"
-            class="btn btn-light"
-            target="_blank"
-        >
+
+    <!-- YOUTUBE -->
+
+    <a
+        href="https://www.youtube.com/@8yapii"
+        target="_blank"
+        rel="noopener"
+        class="button"
+    >
+
+        <span class="icon">
+            ▶
+        </span>
+
+        <span>
             YouTube
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://www.8yapi.tr"
-            class="btn btn-light"
-            target="_blank"
-        >
+
+    <!-- İNTERNET SİTESİ -->
+
+    <a
+        href="https://www.8yapi.tr"
+        target="_blank"
+        rel="noopener"
+        class="button full"
+    >
+
+        <span class="icon">
+            ◉
+        </span>
+
+        <span>
             İnternet Sitesi
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="https://www.google.com/search?q=8+Yap%C4%B1+Alanya"
-            class="btn btn-light"
-            target="_blank"
-        >
+
+    <!-- GOOGLE -->
+
+    <a
+        href="https://www.google.com/search?sca_esv=8f55d1c39308862b&sxsrf=APpeQnvqfpxVtffHufKP81CALMsV1jswyg:1789650598745&uds=AJ5uw1_a2D0D09lxm8gpKKOTUn4rD8NCBwdIE873U_ctyfTrNm3SuyN9INY1TMQ9YnLuUCgBYNXSpS3submYQaRIvHkostKlZboeXLGY_4DGfPkxn3GkJi4yoVJWZqaiLJAjwMN3qLsHVhggIE-pstmFEXsWrctayQ&q=8Yap%C4%B1+Yorumlar&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_3xm3BfDiL88669Qnru8LvwTsEy6TWBWZIyDBJUjpK9lfqOo5i3fXezppItQsfWolYI1ffo48DO_7-LulgS5_gp43liG&hl=tr-TR&sa=X&ved=2ahUKEwi16daB2PWWAxU3lP0HHRslDQMQ_4MLegQISRAQ&biw=1920&bih=919&dpr=1"
+        target="_blank"
+        rel="noopener"
+        class="button full"
+    >
+
+        <span class="icon">
+            ★
+        </span>
+
+        <span>
             Google Değerlendirme
-        </a>
+        </span>
+
+    </a>
 
 
-        <a
-            href="teklif.html"
-            class="btn btn-main"
-        >
-            <span>
-                Teklif Al
-                <span class="btn-sub">
-                    PROJENİZİ BİRLİKTE PLANLAYALIM
-                </span>
+
+    <!-- ===================================================
+         TEKLİF AL
+    =================================================== -->
+
+    <a
+        href="teklif.html"
+        class="button offer-button"
+    >
+
+        <span class="offer-icon">
+            ✦
+        </span>
+
+        <span class="offer-text">
+
+            <span class="offer-small">
+                PROJENİZ İÇİN
             </span>
-        </a>
+
+            <span class="offer-large">
+                Teklif Al
+            </span>
+
+        </span>
+
+    </a>
 
 
-        <button
-            class="btn btn-light"
-            onclick="copyIBAN()"
-        >
+
+    <!-- IBAN -->
+
+    <a
+        href="#"
+        class="button full"
+        onclick="copyIBAN();return false;"
+    >
+
+        <span class="icon">
+            ₺
+        </span>
+
+        <span>
             IBAN Numarası
-        </button>
+        </span>
+
+    </a>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     VISION
+======================================================= -->
+
+<section class="vision">
+
+
+    <div class="vision-label">
+        8 YAPI ARKASINDAKİ VİZYON
+    </div>
+
+
+    <div class="vision-title">
+
+        CENGİZ GALİTEKİN
+
+        <span>
+            kimdir?
+        </span>
 
     </div>
 
 
-    <!-- VISION -->
+    <div class="vision-text">
 
-    <section class="vision">
+        8 Yapı'nın arkasındaki yaklaşımı,
+        yapı sektörüne bakışını ve çalışma
+        anlayışını Cengiz Galitekin'in
+        hikâyesi üzerinden anlatacağımız
+        özel alan.
 
-        <div class="vision-title">
-            8 YAPI
-        </div>
+        <br><br>
 
-        <div class="vision-text">
-            Yapı, cephe, çatı, dekorasyon, peyzaj ve yaşam alanlarına
-            yönelik uygulamaları; tasarım, üretim ve uygulama süreçleriyle
-            birlikte ele alan bütünsel çözümler sunar.
-        </div>
+        Burada yalnızca bir özgeçmiş değil;
+        8 Yapı'nın nasıl bir anlayışla
+        hareket ettiği, yapı ve estetik
+        konusundaki yaklaşımı ve
+        “Çevresine Değer Katar” anlayışının
+        arkasındaki düşünce anlatılacak.
 
-    </section>
+    </div>
 
 
-    <!-- FOOTER -->
+    <div class="vision-sign">
+        Cengiz Galitekin
+    </div>
 
-    <footer class="footer">
 
-        8 Yapı<br>
-        Çevresine Değer Katar.
+</section>
 
-    </footer>
 
-</main>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    8 YAPI
+
+    <br>
+
+    Çevresine Değer Katar.
+
+</div>
+
+
+</div>
+
+</div>
+
 
 
 <script>
 
-/* SLIDER */
-
-let currentSlide = 0;
+/* =========================================================
+   SLIDESHOW
+========================================================= */
 
 const slides =
     document.querySelectorAll(".slide");
 
+const dots =
+    document.querySelectorAll(".dot");
+
+let currentSlide = 0;
+
+
 setInterval(function(){
 
-    if(!slides.length) return;
+    slides[currentSlide]
+        .classList
+        .remove("active");
 
-    slides[currentSlide].classList.remove("active");
-
-    currentSlide =
-        (currentSlide + 1) % slides.length;
-
-    slides[currentSlide].classList.add("active");
-
-},3500);
+    dots[currentSlide]
+        .classList
+        .remove("active");
 
 
-/* CATALOG */
+    currentSlide++;
 
-function openCatalog(){
 
-    const loader =
-        document.getElementById("catalogLoader");
+    if(currentSlide >= slides.length){
 
-    if(loader){
-        loader.classList.add("active");
+        currentSlide = 0;
+
     }
 
-    document.body.style.overflow = "hidden";
 
-    setTimeout(function(){
+    slides[currentSlide]
+        .classList
+        .add("active");
 
-        window.location.href =
-            "./8-yapi-katalog.pdf";
-
-    },650);
-
-}
+    dots[currentSlide]
+        .classList
+        .add("active");
 
 
-/*
-   PDF'den geri dönüldüğünde tarayıcı
-   sayfayı cache'den geri getirse bile
-   loading ekranını otomatik kapatır.
-*/
-
-window.addEventListener("pageshow",function(){
-
-    const loader =
-        document.getElementById("catalogLoader");
-
-    if(loader){
-        loader.classList.remove("active");
-    }
-
-    document.body.style.overflow = "";
-
-});
+},5000);
 
 
-/* CONTACT */
+
+/* =========================================================
+   CONTACT CARD
+========================================================= */
 
 function saveContact(){
-
-    const contact = {
-
-        name:"Cengiz Galitekin",
-
-        tel:"+905054108707"
-
-    };
 
     const vcard =
 `BEGIN:VCARD
 VERSION:3.0
-FN:${contact.name}
-TEL;TYPE=CELL:${contact.tel}
+N:Galitekin;Cengiz;;;
+FN:Cengiz Galitekin
+ORG:8 Yapı
+TITLE:Kurucu / Yönetim Kurulu Başkanı
+TEL;TYPE=CELL:+905054108707
 END:VCARD`;
+
 
     const blob =
         new Blob(
             [vcard],
-            {type:"text/vcard;charset=utf-8"}
+            {
+                type:
+                "text/vcard;charset=utf-8"
+            }
         );
+
 
     const url =
         URL.createObjectURL(blob);
 
+
     const a =
         document.createElement("a");
 
+
     a.href = url;
 
+
     a.download =
-        "Cengiz_Galitekin.vcf";
+        "Cengiz-Galitekin-8-Yapi.vcf";
+
 
     document.body.appendChild(a);
 
+
     a.click();
 
-    document.body.removeChild(a);
 
-    URL.revokeObjectURL(url);
+    a.remove();
+
+
+    setTimeout(function(){
+
+        URL.revokeObjectURL(url);
+
+    },1000);
 
 }
 
 
-/* IBAN */
+
+/* =========================================================
+   IBAN
+========================================================= */
+
+const IBAN =
+    "TR00 0000 0000 0000 0000 0000 00";
+
 
 function copyIBAN(){
 
-    const iban =
-        "TR000000000000000000000000";
+    if(
+        navigator.clipboard &&
+        window.isSecureContext
+    ){
 
-    navigator.clipboard.writeText(iban)
+        navigator.clipboard
+        .writeText(IBAN)
         .then(function(){
 
-            alert("IBAN numarası kopyalandı.");
-
-        })
-        .catch(function(){
-
             alert(
-                "IBAN: " + iban
+                "IBAN numarası kopyalandı."
             );
 
+        })
+
+        .catch(function(){
+
+            fallbackCopy(IBAN);
+
         });
+
+    }
+
+    else{
+
+        fallbackCopy(IBAN);
+
+    }
+
+}
+
+
+
+function fallbackCopy(text){
+
+    const input =
+        document.createElement("textarea");
+
+
+    input.value = text;
+
+
+    input.style.position =
+        "fixed";
+
+
+    input.style.opacity =
+        "0";
+
+
+    document.body.appendChild(input);
+
+
+    input.focus();
+
+    input.select();
+
+
+    try{
+
+        document.execCommand("copy");
+
+        alert(
+            "IBAN numarası kopyalandı."
+        );
+
+    }
+
+    catch(e){
+
+        alert(
+            "IBAN: " + text
+        );
+
+    }
+
+
+    input.remove();
 
 }
 
 </script>
+
 
 </body>
 </html>
