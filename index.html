@@ -3,30 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <title>8 Yapı | Çevresine Değer Katar.</title>
 
-<meta name="theme-color" content="#11152d">
-<meta name="description" content="8 Yapı — Çevresine Değer Katar.">
-
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&family=Parisienne&display=swap');
 
 :root{
-    --navy:#11152d;
-    --navy-light:#181d3b;
-    --green:#7EBB41;
-    --white:#ffffff;
-    --muted:#9ca2b2;
-    --line:rgba(255,255,255,.12);
-    --black:#080a12;
+    --white:#f7f7f4;
+    --paper:#efefea;
+    --ink:#171719;
+    --muted:#70706c;
+    --purple:#3d3185;
+    --green:#7ebb41;
+    --line:rgba(20,20,20,.12);
 }
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -34,930 +32,894 @@ html{
 }
 
 body{
-    min-height:100vh;
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(126,187,65,.16),
-            transparent 34%
-        ),
-        linear-gradient(
-            160deg,
-            #080a12 0%,
-            #11152d 52%,
-            #0a0d19 100%
-        );
-
-    color:white;
-    font-family:"Manrope",sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
 }
 
-/* =========================================
-   BACKGROUND
-========================================= */
+/* =====================================================
+   PAPER / TEXTURE
+===================================================== */
 
-.background-8{
+body::before{
+    content:"";
     position:fixed;
-    z-index:0;
+    inset:0;
+    pointer-events:none;
+    z-index:999;
+    opacity:.20;
+    background-image:
+        radial-gradient(rgba(0,0,0,.18) .5px,transparent .7px),
+        radial-gradient(rgba(0,0,0,.10) .4px,transparent .6px);
+    background-size:7px 7px,11px 11px;
+    mix-blend-mode:multiply;
+}
 
-    width:430px;
-    height:430px;
+/* =====================================================
+   INTRO
+===================================================== */
 
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:
+        radial-gradient(circle at 50% 48%,rgba(255,255,255,.95),rgba(239,239,234,.98)),
+        var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    animation:introExit 1.5s cubic-bezier(.77,0,.18,1) 7.8s forwards;
+}
+
+/* architectural grid */
+
+.intro-grid{
+    position:absolute;
+    inset:-10%;
+    opacity:.22;
+    background:
+        linear-gradient(90deg,transparent 49.8%,rgba(61,49,133,.15) 50%,transparent 50.2%),
+        linear-gradient(0deg,transparent 49.8%,rgba(61,49,133,.12) 50%,transparent 50.2%);
+    background-size:160px 160px;
+    transform:perspective(800px) rotateX(65deg) scale(1.5);
+    animation:gridMove 9s linear infinite;
+}
+
+@keyframes gridMove{
+    from{background-position:0 0;}
+    to{background-position:160px 160px;}
+}
+
+/* light sweep */
+
+.light-sweep{
+    position:absolute;
+    width:40vw;
+    height:150%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.9),
+        transparent
+    );
+    filter:blur(35px);
+    transform:rotate(18deg) translateX(-150vw);
+    animation:sweep 5s ease-in-out 1.2s forwards;
+}
+
+@keyframes sweep{
+    0%{transform:rotate(18deg) translateX(-150vw);}
+    55%{transform:rotate(18deg) translateX(150vw);}
+    100%{transform:rotate(18deg) translateX(150vw);}
+}
+
+/* architectural circles */
+
+.orbit{
+    position:absolute;
+    width:55vw;
+    height:55vw;
+    max-width:700px;
+    max-height:700px;
+    border:1px solid rgba(61,49,133,.10);
+    border-radius:50%;
+    animation:orbit 18s linear infinite;
+}
+
+.orbit::before,
+.orbit::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(126,187,65,.13);
+}
+
+.orbit::before{
+    inset:8%;
+}
+
+.orbit::after{
+    inset:18%;
+}
+
+@keyframes orbit{
+    to{transform:rotate(360deg);}
+}
+
+/* intro logo */
+
+.intro-content{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.intro-logo{
+    width:min(72vw,430px);
+    opacity:0;
+    transform:translateY(35px) scale(.78);
+    filter:blur(14px);
+    animation:
+        logoReveal 2s cubic-bezier(.16,1,.3,1) .8s forwards,
+        logoFloat 5s ease-in-out 3s infinite;
+}
+
+@keyframes logoReveal{
+    0%{
+        opacity:0;
+        transform:translateY(35px) scale(.78);
+        filter:blur(14px);
+    }
+    60%{
+        opacity:1;
+        filter:blur(0);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
+    }
+}
+
+@keyframes logoFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-7px);}
+}
+
+.intro-line{
+    width:0;
+    height:1px;
+    background:var(--green);
+    margin-top:27px;
+    animation:lineReveal 1.2s ease 2.5s forwards;
+}
+
+@keyframes lineReveal{
+    to{width:min(48vw,210px);}
+}
+
+.slogan{
+    margin-top:22px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(25px,6vw,42px);
+    font-weight:500;
+    letter-spacing:.12em;
+    opacity:0;
+    transform:translateY(15px);
+    animation:textReveal 1.4s ease 2.8s forwards;
+}
+
+@keyframes textReveal{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.owner{
+    margin-top:12px;
+    font-family:"Parisienne",cursive;
+    font-size:clamp(27px,7vw,48px);
+    color:#3d3185;
+    opacity:0;
+    transform:translateY(15px);
+    animation:
+        signatureReveal 1.7s cubic-bezier(.16,1,.3,1) 4s forwards;
+}
+
+@keyframes signatureReveal{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.intro-caption{
+    position:absolute;
+    bottom:30px;
     left:50%;
-    top:38%;
+    transform:translateX(-50%);
+    font-size:9px;
+    letter-spacing:.35em;
+    color:#777;
+    white-space:nowrap;
+    opacity:0;
+    animation:captionReveal 1s ease 5.2s forwards;
+}
 
-    transform:translate(-50%,-50%);
+@keyframes captionReveal{
+    to{opacity:.7;}
+}
 
-    opacity:.035;
+@keyframes introExit{
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.04);
+        pointer-events:none;
+    }
+}
 
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+    position:relative;
+    min-height:100vh;
+    opacity:0;
+    animation:mainReveal 1.8s ease 7.6s forwards;
+}
+
+@keyframes mainReveal{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:relative;
+    z-index:10;
+    padding:25px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header-logo{
+    width:150px;
+}
+
+.header-number{
+    font-size:11px;
+    letter-spacing:.18em;
+    color:#777;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    position:relative;
+    min-height:72vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding:50px 24px 90px;
+}
+
+.hero-watermark{
+    position:absolute;
+    right:-15%;
+    top:5%;
+    width:75%;
+    max-width:600px;
+    opacity:.055;
+    transform:rotate(-8deg);
     pointer-events:none;
 }
 
-.background-8 img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-}
-
-
-/* =========================================
-   MAIN
-========================================= */
-
-.page{
+.hero-content{
     position:relative;
-    z-index:2;
+    z-index:3;
+    width:min(100%,850px);
+}
 
-    width:min(440px,100%);
-    min-height:100vh;
-
-    margin:auto;
-
-    padding:
-        38px
-        22px
-        40px;
-
+.eyebrow{
     display:flex;
-    flex-direction:column;
-}
-
-
-/* =========================================
-   BRAND
-========================================= */
-
-.brand{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.brand-logo{
-    width:185px;
-    max-width:75%;
-
-    display:block;
-
-    margin:0 auto;
-}
-
-.brand-slogan{
-    margin-top:13px;
-
+    align-items:center;
+    gap:12px;
     font-size:10px;
-    letter-spacing:.28em;
-
-    color:#c7cad4;
-
+    letter-spacing:.32em;
     text-transform:uppercase;
+    color:#666;
+    margin-bottom:24px;
 }
 
-
-/* =========================================
-   PROFILE
-========================================= */
-
-.profile{
-    text-align:center;
-    margin-bottom:25px;
+.eyebrow::before{
+    content:"";
+    width:38px;
+    height:1px;
+    background:var(--green);
 }
 
-.profile-title{
-    font-size:12px;
-
-    color:var(--green);
-
-    letter-spacing:.22em;
-
-    text-transform:uppercase;
-
-    font-weight:700;
+.hero h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(55px,13vw,125px);
+    font-weight:500;
+    line-height:.82;
+    letter-spacing:-.045em;
 }
 
-.profile-description{
-    margin-top:10px;
-
-    color:#b5bac7;
-
-    font-size:12px;
-
-    line-height:1.7;
+.hero h1 span{
+    display:block;
+    color:var(--purple);
+    margin-left:10vw;
+    margin-top:15px;
 }
 
+.hero-description{
+    max-width:450px;
+    margin-top:38px;
+    margin-left:10vw;
+    color:#666;
+    font-size:14px;
+    line-height:1.9;
+}
 
-/* =========================================
-   MAIN ACTIONS
-========================================= */
+/* decorative moving lines */
+
+.hero-lines{
+    position:absolute;
+    right:4%;
+    top:20%;
+    width:30%;
+    height:60%;
+    overflow:hidden;
+    opacity:.35;
+}
+
+.hero-lines span{
+    position:absolute;
+    display:block;
+    width:100%;
+    height:1px;
+    background:var(--purple);
+    animation:lineDrift 5s ease-in-out infinite;
+}
+
+.hero-lines span:nth-child(1){top:15%;animation-delay:0s;}
+.hero-lines span:nth-child(2){top:35%;animation-delay:.7s;}
+.hero-lines span:nth-child(3){top:55%;animation-delay:1.4s;}
+.hero-lines span:nth-child(4){top:75%;animation-delay:2.1s;}
+
+@keyframes lineDrift{
+    0%,100%{transform:translateX(0);opacity:.2;}
+    50%{transform:translateX(-40px);opacity:.8;}
+}
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
 
 .actions{
-    display:flex;
-    flex-direction:column;
+    padding:0 20px 70px;
+}
 
+.actions-title{
+    font-size:10px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:#777;
+    margin-bottom:18px;
+}
+
+.action-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
     gap:10px;
-
-    margin-top:10px;
 }
 
 .action{
-    position:relative;
-
-    width:100%;
-
-    min-height:58px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:13px;
-
+    min-height:72px;
     border:1px solid var(--line);
-
-    border-radius:5px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-
-    color:white;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease;
-
-    cursor:pointer;
-
-    -webkit-tap-highlight-color:transparent;
+    background:rgba(255,255,255,.58);
+    backdrop-filter:blur(10px);
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 17px;
+    transition:.35s ease;
 }
 
 .action:hover{
-    transform:translateY(-2px);
-
-    border-color:rgba(126,187,65,.6);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(126,187,65,.13),
-            rgba(255,255,255,.035)
-        );
-}
-
-.action:active{
-    transform:scale(.985);
-}
-
-.action-icon{
-    width:25px;
-    height:25px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    color:var(--green);
-
-    font-size:17px;
-}
-
-.action-main{
-    background:var(--green);
-
-    color:#10130b;
-
     border-color:var(--green);
-
-    box-shadow:
-        0 10px 35px rgba(126,187,65,.12);
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(0,0,0,.07);
 }
 
-.action-main .action-icon{
-    color:#10130b;
+.action strong{
+    font-size:12px;
+    font-weight:500;
 }
 
-.action-main:hover{
-    background:#8ac94b;
-    border-color:#8ac94b;
+.action small{
+    font-size:16px;
+    color:var(--purple);
 }
 
+/* =====================================================
+   PRESENTATION CTA
+===================================================== */
 
-/* =========================================
-   SECONDARY ACTIONS
-========================================= */
-
-.quick-grid{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:10px;
-
-    margin-top:10px;
-}
-
-.quick{
-    min-height:62px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:7px;
-
-    border:1px solid var(--line);
-
-    border-radius:5px;
-
-    background:rgba(255,255,255,.025);
-
-    color:#e5e7ed;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-
-    transition:.25s;
-}
-
-.quick-icon{
-    color:var(--green);
-
-    font-size:18px;
-}
-
-.quick:hover{
-    background:rgba(126,187,65,.08);
-
-    border-color:rgba(126,187,65,.4);
-}
-
-
-/* =========================================
-   IBAN
-========================================= */
-
-.iban{
-    margin-top:10px;
-
-    border:1px solid var(--line);
-
-    border-radius:5px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.015)
-        );
-
-    padding:17px 18px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.iban:hover{
-    border-color:rgba(126,187,65,.45);
-}
-
-.iban-left{
-    display:flex;
-
-    align-items:center;
-
-    gap:13px;
-}
-
-.iban-icon{
-    color:var(--green);
-
-    font-size:19px;
-}
-
-.iban-info small{
-    display:block;
-
-    color:#73798a;
-
-    font-size:8px;
-
-    letter-spacing:.2em;
-
-    text-transform:uppercase;
-}
-
-.iban-info strong{
-    display:block;
-
-    margin-top:5px;
-
-    color:#dfe2e8;
-
-    font-size:11px;
-
-    font-weight:600;
-
-    letter-spacing:.08em;
-}
-
-.copy{
-    color:var(--green);
-
-    font-size:9px;
-
-    font-weight:700;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-}
-
-
-/* =========================================
-   SHOWROOM BUTTON
-========================================= */
-
-.showroom{
+.presentation{
     position:relative;
-
-    margin-top:28px;
-
-    padding:25px 22px;
-
+    margin:10px 20px 80px;
+    min-height:330px;
     overflow:hidden;
-
-    border:1px solid rgba(126,187,65,.42);
-
-    border-radius:6px;
-
     background:
-        linear-gradient(
-            135deg,
-            rgba(126,187,65,.12),
-            rgba(255,255,255,.025)
-        );
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.showroom:hover{
-    transform:translateY(-2px);
-
-    border-color:var(--green);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(126,187,65,.18),
-            rgba(255,255,255,.035)
-        );
-}
-
-.showroom::after{
-    content:"8";
-
-    position:absolute;
-
-    right:-8px;
-    top:-42px;
-
-    font-size:155px;
-
-    line-height:1;
-
-    font-weight:800;
-
-    color:rgba(126,187,65,.055);
-
-    pointer-events:none;
-}
-
-.showroom-top{
-    position:relative;
-    z-index:2;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-}
-
-.showroom-label{
-    color:var(--green);
-
-    font-size:9px;
-
-    font-weight:800;
-
-    letter-spacing:.28em;
-
-    text-transform:uppercase;
-}
-
-.showroom-arrow{
-    color:var(--green);
-
-    font-size:19px;
-}
-
-.showroom-title{
-    position:relative;
-    z-index:2;
-
-    margin-top:13px;
-
-    font-size:22px;
-
-    line-height:1.15;
-
-    letter-spacing:-.035em;
-
-    font-weight:800;
-}
-
-.showroom-description{
-    position:relative;
-    z-index:2;
-
-    margin-top:8px;
-
-    max-width:300px;
-
-    color:#a8adbb;
-
-    font-size:10px;
-
-    line-height:1.7;
-}
-
-
-/* =========================================
-   SHARE
-========================================= */
-
-.share-button{
-    width:100%;
-
-    margin-top:10px;
-
-    min-height:53px;
-
-    border:1px solid var(--line);
-
-    border-radius:5px;
-
-    background:transparent;
-
-    color:#b9bec9;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    font-family:inherit;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    letter-spacing:.17em;
-
-    text-transform:uppercase;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.share-button:hover{
+        linear-gradient(135deg,rgba(61,49,133,.97),rgba(35,29,75,.98));
     color:white;
-
-    border-color:rgba(255,255,255,.3);
+    display:flex;
+    align-items:flex-end;
+    padding:30px;
+    isolation:isolate;
 }
 
+.presentation::before{
+    content:"";
+    position:absolute;
+    width:360px;
+    height:360px;
+    right:-130px;
+    top:-130px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    animation:pulseOrbit 8s linear infinite;
+}
 
-/* =========================================
-   FOOTER
-========================================= */
+.presentation::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(120deg,transparent 45%,rgba(126,187,65,.25),transparent 55%);
+    transform:translateX(-100%);
+    animation:panelSweep 5s ease-in-out infinite;
+    z-index:-1;
+}
 
-.footer{
-    margin-top:auto;
+@keyframes pulseOrbit{
+    to{transform:rotate(360deg);}
+}
 
-    padding-top:42px;
+@keyframes panelSweep{
+    0%,45%{transform:translateX(-100%);}
+    70%,100%{transform:translateX(100%);}
+}
 
+.presentation-number{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:90px;
+    line-height:1;
+    opacity:.15;
+}
+
+.presentation-content{
+    position:relative;
+    z-index:3;
+}
+
+.presentation-label{
+    font-size:9px;
+    letter-spacing:.3em;
+    color:#bfc6b5;
+    margin-bottom:15px;
+}
+
+.presentation h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(42px,10vw,75px);
+    font-weight:500;
+    line-height:.9;
+    letter-spacing:.01em;
+}
+
+.presentation h2 span{
+    display:block;
+    color:#a9cf79;
+}
+
+.presentation p{
+    margin-top:22px;
+    max-width:400px;
+    font-size:12px;
+    line-height:1.8;
+    color:rgba(255,255,255,.72);
+}
+
+.presentation-button{
+    display:inline-flex;
+    align-items:center;
+    gap:15px;
+    margin-top:25px;
+    padding:14px 19px;
+    border:1px solid rgba(255,255,255,.4);
+    color:white;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:.15em;
+    transition:.3s ease;
+}
+
+.presentation-button:hover{
+    background:white;
+    color:var(--purple);
+}
+
+/* =====================================================
+   BRAND STATEMENT
+===================================================== */
+
+.statement{
+    padding:0 25px 90px;
     text-align:center;
 }
 
+.statement-symbol{
+    width:75px;
+    opacity:.7;
+    margin-bottom:25px;
+}
+
+.statement h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(30px,7vw,50px);
+    font-weight:500;
+    line-height:1.05;
+}
+
+.statement p{
+    margin:20px auto 0;
+    max-width:470px;
+    font-size:12px;
+    color:#777;
+    line-height:1.9;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:25px 20px 35px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
 .footer-logo{
-    width:100px;
-
-    opacity:.65;
+    width:105px;
 }
 
-.footer-line{
-    margin-top:13px;
-
-    color:#646a79;
-
-    font-size:8px;
-
-    letter-spacing:.22em;
-
-    text-transform:uppercase;
+footer span{
+    font-size:9px;
+    letter-spacing:.12em;
+    color:#888;
 }
 
-
-/* =========================================
-   TOAST
-========================================= */
-
-.toast{
-    position:fixed;
-
-    left:50%;
-    bottom:25px;
-
-    transform:
-        translate(-50%,20px);
-
-    z-index:100;
-
-    padding:12px 18px;
-
-    border-radius:5px;
-
-    background:#f2f3f4;
-
-    color:#11152d;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-
-    white-space:nowrap;
-}
-
-.toast.show{
-    opacity:1;
-
-    transform:
-        translate(-50%,0);
-}
-
-
-/* =========================================
+/* =====================================================
    DESKTOP
-========================================= */
+===================================================== */
 
 @media(min-width:700px){
 
-    body{
-        background:
-            radial-gradient(
-                circle at 50% 0%,
-                rgba(126,187,65,.12),
-                transparent 35%
-            ),
-            #080a12;
+    .header{
+        padding:35px 55px;
     }
 
-    .page{
-        min-height:100vh;
-
-        padding-top:55px;
-        padding-bottom:55px;
+    .header-logo{
+        width:190px;
     }
 
+    .hero{
+        min-height:78vh;
+        padding:80px 7vw 120px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .actions{
+        padding:0 7vw 100px;
+    }
+
+    .action-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .presentation{
+        margin:20px 7vw 110px;
+        min-height:500px;
+        padding:55px;
+    }
+
+    .presentation-number{
+        font-size:180px;
+    }
+
+    .statement{
+        padding-bottom:120px;
+    }
+
+    footer{
+        padding-left:7vw;
+        padding-right:7vw;
+    }
 }
 
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
 
-/* =========================================
-   SMALL PHONES
-========================================= */
+@media(prefers-reduced-motion:reduce){
 
-@media(max-width:360px){
-
-    .page{
-        padding-left:16px;
-        padding-right:16px;
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
     }
-
-    .brand-logo{
-        width:165px;
-    }
-
-    .action{
-        min-height:54px;
-
-        font-size:10px;
-    }
-
-    .showroom-title{
-        font-size:20px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- =====================================================
+     CINEMATIC INTRO
+===================================================== -->
 
-<!-- BACKGROUND 8 -->
+<section class="intro">
 
-<div class="background-8">
-    <img src="assets/logo_8.svg" alt="">
-</div>
+    <div class="intro-grid"></div>
 
+    <div class="orbit"></div>
 
-<main class="page">
+    <div class="light-sweep"></div>
 
-
-    <!-- BRAND -->
-
-    <header class="brand">
+    <div class="intro-content">
 
         <img
             src="assets/8yapi_logo.svg"
-            class="brand-logo"
+            class="intro-logo"
             alt="8 Yapı"
         >
 
-        <div class="brand-slogan">
+        <div class="intro-line"></div>
+
+        <div class="slogan">
             Çevresine Değer Katar.
+        </div>
+
+        <div class="owner">
+            Cengiz Galitekin
+        </div>
+
+    </div>
+
+    <div class="intro-caption">
+        YAPI · TASARIM · UYGULAMA
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+    <header class="header">
+
+        <img
+            src="assets/8yapi_logo.svg"
+            class="header-logo"
+            alt="8 Yapı"
+        >
+
+        <div class="header-number">
+            08 / 01
         </div>
 
     </header>
 
 
-    <!-- PROFILE -->
+    <!-- HERO -->
 
-    <section class="profile">
+    <section class="hero">
 
-        <div class="profile-title">
-            Yapı • Tasarım • Uygulama
+        <img
+            src="assets/logo_8.svg"
+            class="hero-watermark"
+            alt=""
+        >
+
+        <div class="hero-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <p class="profile-description">
-            Yapının ihtiyaçlarını bütünsel bir yaklaşımla
-            ele alan uygulama ve çözüm merkezi.
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                8 Yapı
+            </div>
+
+            <h1>
+                Yaşamı
+                <span>inşa ediyoruz.</span>
+            </h1>
+
+            <p class="hero-description">
+                Yapıya yalnızca bir yapı olarak değil;
+                çevresiyle, yaşamıyla ve geleceğiyle
+                birlikte bakıyoruz.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <section class="actions">
+
+        <div class="actions-title">
+            Hızlı Erişim
+        </div>
+
+        <div class="action-grid">
+
+            <a href="tel:+905XXXXXXXXX" class="action">
+                <strong>Hemen Ara</strong>
+                <small>↗</small>
+            </a>
+
+            <a href="#" class="action" onclick="saveContact(event)">
+                <strong>Telefona Kaydet</strong>
+                <small>＋</small>
+            </a>
+
+            <a href="#" class="action" onclick="shareCard(event)">
+                <strong>Smart Kartı Paylaş</strong>
+                <small>↗</small>
+            </a>
+
+            <a href="https://wa.me/905XXXXXXXXX" class="action">
+                <strong>WhatsApp</strong>
+                <small>↗</small>
+            </a>
+
+            <a href="#" class="action">
+                <strong>Instagram</strong>
+                <small>↗</small>
+            </a>
+
+            <a href="#" class="action">
+                <strong>Facebook</strong>
+                <small>↗</small>
+            </a>
+
+            <a href="#" class="action">
+                <strong>Google Yorumları</strong>
+                <small>↗</small>
+            </a>
+
+            <a href="#" class="action" onclick="copyIban(event)">
+                <strong>IBAN Kopyala</strong>
+                <small>⌁</small>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRESENTATION -->
+
+    <section class="presentation">
+
+        <div class="presentation-number">
+            8
+        </div>
+
+        <div class="presentation-content">
+
+            <div class="presentation-label">
+                DİJİTAL SHOWROOM · PROJE · VİZYON
+            </div>
+
+            <h2>
+                8 Yapı
+                <span>Tanıtım & Proje</span>
+            </h2>
+
+            <p>
+                Yapının arkasındaki yaklaşımı,
+                uzmanlık alanlarımızı, projelerimizi
+                ve çalışma sistemimizi keşfedin.
+            </p>
+
+            <a href="tanitim.html" class="presentation-button">
+                DİJİTAL SHOWROOM'A GİR
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATEMENT -->
+
+    <section class="statement">
+
+        <img
+            src="assets/logo_8.svg"
+            class="statement-symbol"
+            alt="8"
+        >
+
+        <h3>
+            Yapıya değer,
+            <br>
+            çevreye değer,
+            <br>
+            yaşama değer.
+        </h3>
+
+        <p>
+            8 Yapı'nın dünyasını ve projelerini
+            keşfetmek için tanıtım alanına geçin.
         </p>
 
     </section>
 
 
-    <!-- MAIN ACTIONS -->
-
-    <section class="actions">
-
-
-        <!-- HEMEN ARA -->
-
-        <a
-            href="tel:+905XXXXXXXXX"
-            class="action action-main"
-        >
-
-            <span class="action-icon">☎</span>
-
-            <span>Hemen Ara</span>
-
-        </a>
-
-
-        <!-- TELEFONA KAYDET -->
-
-        <a
-            href="tel:+905XXXXXXXXX"
-            class="action"
-        >
-
-            <span class="action-icon">＋</span>
-
-            <span>Telefona Kaydet</span>
-
-        </a>
-
-
-    </section>
-
-
-    <!-- QUICK ACCESS -->
-
-    <section class="quick-grid">
-
-
-        <!-- WHATSAPP -->
-
-        <a
-            href="https://wa.me/905XXXXXXXXX"
-            class="quick"
-            target="_blank"
-        >
-
-            <span class="quick-icon">◉</span>
-
-            <span>WhatsApp</span>
-
-        </a>
-
-
-        <!-- INSTAGRAM -->
-
-        <a
-            href="#"
-            class="quick"
-        >
-
-            <span class="quick-icon">◎</span>
-
-            <span>Instagram</span>
-
-        </a>
-
-
-        <!-- FACEBOOK -->
-
-        <a
-            href="#"
-            class="quick"
-        >
-
-            <span class="quick-icon">f</span>
-
-            <span>Facebook</span>
-
-        </a>
-
-
-        <!-- GOOGLE -->
-
-        <a
-            href="#"
-            class="quick"
-        >
-
-            <span class="quick-icon">★</span>
-
-            <span>Google</span>
-
-        </a>
-
-
-    </section>
-
-
-    <!-- IBAN -->
-
-    <div
-        class="iban"
-        onclick="copyIBAN()"
-    >
-
-        <div class="iban-left">
-
-            <div class="iban-icon">
-                ₺
-            </div>
-
-            <div class="iban-info">
-
-                <small>
-                    Banka Hesap Bilgisi
-                </small>
-
-                <strong id="ibanText">
-                    IBAN BİLGİSİ EKLENECEK
-                </strong>
-
-            </div>
-
-        </div>
-
-        <div class="copy">
-            Kopyala
-        </div>
-
-    </div>
-
-
-    <!-- SHOWROOM -->
-
-    <a
-        href="tanitim.html"
-        class="showroom"
-    >
-
-        <div class="showroom-top">
-
-            <div class="showroom-label">
-                8 Yapı
-            </div>
-
-            <div class="showroom-arrow">
-                ↗
-            </div>
-
-        </div>
-
-        <div class="showroom-title">
-            Tanıtım & Proje
-        </div>
-
-        <div class="showroom-description">
-            8 Yapı'nın uzmanlık alanlarını,
-            projelerini, kurumsal yaklaşımını
-            ve uygulamalarını keşfedin.
-        </div>
-
-    </a>
-
-
-    <!-- SMART CARD SHARE -->
-
-    <button
-        class="share-button"
-        onclick="shareCard()"
-    >
-
-        <span>↗</span>
-
-        <span>Smart Kartı Paylaş</span>
-
-    </button>
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
+    <footer>
 
         <img
             src="assets/8yapi_logo.svg"
@@ -965,144 +927,114 @@ body{
             alt="8 Yapı"
         >
 
-        <div class="footer-line">
-            Çevresine Değer Katar.
-        </div>
+        <span>
+            ÇEVRESİNE DEĞER KATAR.
+        </span>
 
     </footer>
-
 
 </main>
 
 
-<!-- TOAST -->
-
-<div
-    class="toast"
-    id="toast"
-></div>
-
-
 <script>
 
-/* =========================================
-   AYARLAR
-   BURAYI BİLGİLER GELDİĞİNDE DEĞİŞTİRECEĞİZ
-========================================= */
+/* =====================================================
+   TELEFONA KAYDET
+   Gerçek bilgiler daha sonra değiştirilecek.
+===================================================== */
 
-const IBAN =
-"TR00 0000 0000 0000 0000 0000 00";
+function saveContact(event){
 
+    event.preventDefault();
 
-/* =========================================
-   TOAST
-========================================= */
+    const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:Cengiz Galitekin
+ORG:8 Yapı
+TEL;TYPE=CELL:+905XXXXXXXXX
+END:VCARD`;
 
-function showToast(message){
+    const blob = new Blob(
+        [vcard],
+        {type:"text/vcard;charset=utf-8"}
+    );
 
-    const toast =
-        document.getElementById("toast");
+    const url = URL.createObjectURL(blob);
 
-    toast.textContent = message;
+    const link = document.createElement("a");
 
-    toast.classList.add("show");
+    link.href = url;
+    link.download = "8-Yapi-Cengiz-Galitekin.vcf";
 
-    setTimeout(function(){
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
 
-        toast.classList.remove("show");
-
-    },2200);
-
+    URL.revokeObjectURL(url);
 }
 
 
-/* =========================================
-   IBAN COPY
-========================================= */
+/* =====================================================
+   SMART KART PAYLAŞ
+===================================================== */
 
-function copyIBAN(){
+async function shareCard(event){
 
-    if(
-        IBAN.includes("0000")
-    ){
-
-        showToast(
-            "IBAN bilgisi henüz eklenmedi."
-        );
-
-        return;
-    }
-
-    navigator.clipboard.writeText(
-        IBAN.replaceAll(" ","")
-    );
-
-    showToast(
-        "IBAN kopyalandı."
-    );
-
-}
-
-
-/* =========================================
-   SMART CARD SHARE
-========================================= */
-
-async function shareCard(){
+    event.preventDefault();
 
     const shareData = {
-
-        title:
-            "8 Yapı | Çevresine Değer Katar.",
-
-        text:
-            "8 Yapı dijital kartını görüntüleyin.",
-
-        url:
-            window.location.href
-
+        title:"8 Yapı",
+        text:"8 Yapı — Çevresine Değer Katar.",
+        url:window.location.href
     };
 
+    try{
 
-    if(
-        navigator.share
-    ){
+        if(navigator.share){
 
-        try{
+            await navigator.share(shareData);
 
-            await navigator.share(
-                shareData
-            );
-
-        }catch(error){
-
-            // kullanıcı paylaşımı iptal etti
-
-        }
-
-    }else{
-
-        try{
+        }else{
 
             await navigator.clipboard.writeText(
                 window.location.href
             );
 
-            showToast(
-                "Kart bağlantısı kopyalandı."
-            );
-
-        }catch(error){
-
-            showToast(
-                "Kart bağlantısı: " +
-                window.location.href
-            );
+            alert("Kart bağlantısı kopyalandı.");
 
         }
 
-    }
+    }catch(error){
 
+        console.log(error);
+
+    }
+}
+
+
+/* =====================================================
+   IBAN
+===================================================== */
+
+async function copyIban(event){
+
+    event.preventDefault();
+
+    const iban =
+        "TR00 0000 0000 0000 0000 0000 00";
+
+    try{
+
+        await navigator.clipboard.writeText(iban);
+
+        alert("IBAN kopyalandı.");
+
+    }catch(error){
+
+        alert("IBAN kopyalanamadı.");
+
+    }
 }
 
 </script>
