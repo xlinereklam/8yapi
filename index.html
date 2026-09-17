@@ -125,15 +125,12 @@ body{
             #e9ebea 100%
         );
 
-    overflow:hidden;
-
     animation:introExit .8s ease 2.55s forwards;
 
     pointer-events:none;
+
 }
 
-
-/* mimari daire */
 
 .intro::before{
 
@@ -161,8 +158,6 @@ body{
 
 }
 
-
-/* ikinci mimari çizgi */
 
 .intro::after{
 
@@ -193,8 +188,6 @@ body{
 
 }
 
-
-/* logo */
 
 .intro-logo{
 
@@ -229,8 +222,6 @@ body{
 }
 
 
-/* kırmızı ışık */
-
 .intro-light{
 
     position:absolute;
@@ -259,8 +250,6 @@ body{
 }
 
 
-/* alt yazı */
-
 .intro-caption{
 
     position:absolute;
@@ -273,24 +262,32 @@ body{
 
     text-align:center;
 
-    font-family:"Manrope",Arial,sans-serif;
+    font-family:
+        "Allura",
+        "URW Chancery L",
+        "Apple Chancery",
+        cursive;
 
-    font-size:8px;
+    font-size:34px;
 
-    font-weight:700;
+    font-weight:400;
 
-    letter-spacing:4px;
+    letter-spacing:.5px;
 
-    color:#53606d;
+    color:#17253a;
+
+    transform:
+        translateY(8px)
+        rotate(-2deg);
 
     opacity:0;
 
-    transform:translateY(8px);
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.9);
 
     animation:
-
         introCaption
-        .8s
+        .9s
         ease
         1.35s
         forwards;
@@ -378,12 +375,16 @@ body{
 
     from{
         opacity:0;
-        transform:translateY(8px);
+        transform:
+            translateY(8px)
+            rotate(-2deg);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:
+            translateY(0)
+            rotate(-2deg);
     }
 
 }
@@ -431,8 +432,6 @@ body{
 
 }
 
-
-/* mimari hareket */
 
 .page::before{
 
@@ -939,8 +938,6 @@ body{
 
 }
 
-
-/* cam ışığı */
 
 .button::before{
 
@@ -1573,7 +1570,7 @@ body{
     >
 
     <div class="intro-caption">
-        ÇEVRESİNE DEĞER KATAR
+        Cengiz Galitekin
     </div>
 
 </div>
@@ -2114,11 +2111,6 @@ END:VCARD`;
    IBAN
 ========================================================= */
 
-/*
-   GERÇEK IBAN GELDİĞİNDE
-   SADECE BURAYI DEĞİŞTİRECEĞİZ.
-*/
-
 const IBAN =
     "TR00 0000 0000 0000 0000 0000 00";
 
@@ -2213,17 +2205,6 @@ function fallbackCopy(text){
 ========================================================= */
 
 function openCatalog(){
-
-    /*
-       PDF GitHub'a yüklendiğinde:
-
-       window.open(
-           "./assets/8-yapi-katalog.pdf",
-           "_blank"
-       );
-
-       olarak değiştireceğiz.
-    */
 
     alert(
         "8 Yapı Dijital Kataloğu hazırlanıyor."
