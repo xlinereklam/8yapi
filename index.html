@@ -6,26 +6,27 @@
 
 <title>8 Yapı | Çevresine Değer Katar.</title>
 
-<meta name="description" content="8 Yapı — Çatı, cephe, dekorasyon, site girişleri, kapı ve pencere sistemleri, yer kaplamaları, çevre ve peyzaj çözümleri.">
+<meta name="theme-color" content="#11152d">
+<meta name="description" content="8 Yapı — Çevresine Değer Katar.">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root{
     --navy:#11152d;
-    --navy2:#171d3d;
+    --navy-light:#181d3b;
     --green:#7EBB41;
     --white:#ffffff;
-    --soft:#eef0f3;
-    --gray:#a8adba;
+    --muted:#9ca2b2;
     --line:rgba(255,255,255,.12);
-    --dark:#080a13;
+    --black:#080a12;
 }
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -33,1784 +34,1074 @@ html{
 }
 
 body{
-    background:var(--dark);
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(126,187,65,.16),
+            transparent 34%
+        ),
+        linear-gradient(
+            160deg,
+            #080a12 0%,
+            #11152d 52%,
+            #0a0d19 100%
+        );
+
     color:white;
-    font-family:"DM Sans",sans-serif;
+    font-family:"Manrope",sans-serif;
     overflow-x:hidden;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
+/* =========================================
+   BACKGROUND
+========================================= */
 
-button{
-    font-family:inherit;
-}
-
-::selection{
-    background:var(--green);
-    color:#101010;
-}
-
-/* =========================
-   LOADER
-========================= */
-
-.loader{
+.background-8{
     position:fixed;
-    inset:0;
-    background:#080a13;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:opacity 1s ease,visibility 1s ease;
-}
+    z-index:0;
 
-.loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
+    width:430px;
+    height:430px;
 
-.loader-inner{
-    width:min(86vw,430px);
-    text-align:center;
-}
-
-.loader-symbol{
-    width:120px;
-    height:120px;
-    margin:auto;
-    opacity:0;
-    transform:scale(.75);
-    animation:logoIn 1.3s ease forwards;
-}
-
-.loader-symbol img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-}
-
-.loader-line{
-    width:0;
-    height:1px;
-    background:var(--green);
-    margin:28px auto 18px;
-    animation:lineIn 1.2s .7s ease forwards;
-}
-
-.loader-text{
-    letter-spacing:.42em;
-    font-size:10px;
-    color:#aeb2c0;
-    opacity:0;
-    animation:fadeIn 1s 1.2s ease forwards;
-}
-
-@keyframes logoIn{
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-@keyframes lineIn{
-    to{width:100%}
-}
-
-@keyframes fadeIn{
-    to{opacity:1}
-}
-
-/* =========================
-   GLOBAL
-========================= */
-
-.container{
-    width:min(1200px,90vw);
-    margin:auto;
-}
-
-.section{
-    position:relative;
-    padding:140px 0;
-}
-
-.eyebrow{
-    color:var(--green);
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.32em;
-    text-transform:uppercase;
-    margin-bottom:22px;
-}
-
-.big-title{
-    font-family:"Manrope",sans-serif;
-    font-size:clamp(44px,7vw,94px);
-    line-height:.95;
-    letter-spacing:-.055em;
-    font-weight:700;
-}
-
-.big-title span{
-    color:var(--green);
-}
-
-.section-intro{
-    max-width:640px;
-    color:#aeb2c0;
-    font-size:17px;
-    line-height:1.85;
-    margin-top:30px;
-}
-
-/* =========================
-   TOP MARK
-========================= */
-
-.top-mark{
-    position:absolute;
-    top:30px;
     left:50%;
-    transform:translateX(-50%);
-    z-index:10;
-}
+    top:38%;
 
-.top-mark img{
-    width:145px;
-    height:auto;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 75% 40%,rgba(126,187,65,.13),transparent 30%),
-        linear-gradient(115deg,#090b15 0%,#11152d 60%,#0a0d19 100%);
-}
-
-.hero-grid{
-    position:absolute;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:80px 80px;
-    mask-image:linear-gradient(to bottom,transparent,black 25%,black 70%,transparent);
-}
-
-.hero-8{
-    position:absolute;
-    right:-3vw;
-    top:50%;
-    transform:translateY(-50%);
-    width:min(55vw,720px);
-    opacity:.07;
-}
-
-.hero-8 img{
-    width:100%;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    width:min(1200px,90vw);
-    margin:auto;
-    padding-top:70px;
-}
-
-.hero-kicker{
-    font-size:12px;
-    letter-spacing:.35em;
-    color:#afb4c2;
-    text-transform:uppercase;
-    margin-bottom:28px;
-}
-
-.hero-title{
-    font-family:"Manrope",sans-serif;
-    font-weight:800;
-    font-size:clamp(65px,11vw,160px);
-    line-height:.82;
-    letter-spacing:-.075em;
-}
-
-.hero-title .outline{
-    color:transparent;
-    -webkit-text-stroke:1px rgba(255,255,255,.55);
-}
-
-.hero-slogan{
-    margin-top:45px;
-    font-family:"Manrope",sans-serif;
-    font-size:clamp(20px,2.3vw,30px);
-    letter-spacing:.08em;
-    font-weight:400;
-}
-
-.hero-bottom{
-    margin-top:65px;
-    display:flex;
-    align-items:center;
-    gap:25px;
-}
-
-.hero-button{
-    display:inline-flex;
-    align-items:center;
-    gap:16px;
-    border:1px solid rgba(255,255,255,.28);
-    padding:17px 24px;
-    font-size:12px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    transition:.3s;
-}
-
-.hero-button:hover{
-    background:var(--green);
-    border-color:var(--green);
-    color:#111;
-}
-
-.scroll-note{
-    color:#7f8492;
-    font-size:10px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-}
-
-/* =========================
-   MANIFESTO
-========================= */
-
-.manifesto{
-    background:#f2f3f4;
-    color:#101326;
-}
-
-.manifesto .eyebrow{
-    color:#597b34;
-}
-
-.manifesto .big-title{
-    max-width:1000px;
-}
-
-.manifesto-copy{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:70px;
-    margin-top:80px;
-}
-
-.manifesto-box{
-    border-top:1px solid rgba(17,21,45,.2);
-    padding-top:25px;
-}
-
-.manifesto-box h3{
-    font-family:"Manrope";
-    font-size:13px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    margin-bottom:18px;
-}
-
-.manifesto-box p{
-    font-size:16px;
-    line-height:1.9;
-    color:#555968;
-}
-
-/* =========================
-   8 SYSTEM
-========================= */
-
-.system{
-    background:#0d1020;
-}
-
-.system-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:50px;
-    margin-bottom:80px;
-}
-
-.system-number{
-    font-family:"Manrope";
-    font-size:clamp(110px,18vw,250px);
-    line-height:.7;
-    font-weight:800;
-    color:rgba(255,255,255,.035);
-    user-select:none;
-}
-
-.system-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    border-top:1px solid var(--line);
-    border-left:1px solid var(--line);
-}
-
-.system-card{
-    min-height:300px;
-    padding:42px;
-    border-right:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
-    transition:.45s;
-    cursor:pointer;
-}
-
-.system-card:before{
-    content:"";
-    position:absolute;
-    width:0;
-    height:100%;
-    left:0;
-    top:0;
-    background:var(--green);
-    transition:.45s;
-}
-
-.system-card:hover:before{
-    width:5px;
-}
-
-.system-card:hover{
-    background:#151a34;
-}
-
-.system-no{
-    color:var(--green);
-    font-size:11px;
-    letter-spacing:.25em;
-}
-
-.system-card h3{
-    font-family:"Manrope";
-    font-size:clamp(25px,3vw,38px);
-    letter-spacing:-.03em;
-    margin-top:55px;
-    font-weight:600;
-}
-
-.system-card p{
-    color:#858b9b;
-    font-size:14px;
-    line-height:1.8;
-    max-width:400px;
-    margin-top:18px;
-}
-
-.system-arrow{
-    position:absolute;
-    right:38px;
-    bottom:38px;
-    font-size:22px;
-    color:#666c7c;
-    transition:.3s;
-}
-
-.system-card:hover .system-arrow{
-    color:var(--green);
-    transform:translate(5px,-5px);
-}
-
-/* =========================
-   CORPORATE VISUAL
-========================= */
-
-.visual-section{
-    background:#f2f3f4;
-    color:#101326;
-    overflow:hidden;
-}
-
-.visual-layout{
-    display:grid;
-    grid-template-columns:42% 58%;
-    min-height:650px;
-    align-items:center;
-}
-
-.visual-copy{
-    padding-right:60px;
-}
-
-.visual-copy .big-title{
-    font-size:clamp(42px,5vw,75px);
-}
-
-.visual-frame{
-    height:650px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    background:#e4e6e8;
-}
-
-.visual-frame:before{
-    content:"";
-    position:absolute;
-    inset:35px;
-    border:1px solid rgba(17,21,45,.15);
-}
-
-.visual-frame img{
-    position:relative;
-    z-index:2;
-    width:80%;
-    max-height:80%;
-    object-fit:contain;
-}
-
-.visual-index{
-    position:absolute;
-    top:50px;
-    left:55px;
-    font-size:10px;
-    letter-spacing:.25em;
-    color:#777b87;
-}
-
-/* =========================
-   PROJECT AREA
-========================= */
-
-.projects{
-    background:#11152d;
-}
-
-.project-intro{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:50px;
-    margin-bottom:70px;
-}
-
-.project-placeholder{
-    min-height:620px;
-    background:
-        linear-gradient(135deg,#161a31,#080a13);
-    border:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
-}
-
-.project-placeholder:before{
-    content:"PROJE ARŞİVİ";
-    position:absolute;
-    left:50%;
-    top:50%;
     transform:translate(-50%,-50%);
-    font-family:"Manrope";
-    font-size:clamp(35px,6vw,90px);
-    font-weight:800;
-    color:rgba(255,255,255,.035);
-    letter-spacing:-.06em;
-    white-space:nowrap;
-}
 
-.project-meta{
-    position:absolute;
-    left:45px;
-    bottom:40px;
-    z-index:2;
-}
-
-.project-meta small{
-    color:var(--green);
-    letter-spacing:.25em;
-    font-size:10px;
-}
-
-.project-meta h3{
-    font-family:"Manrope";
-    font-size:clamp(28px,4vw,52px);
-    margin-top:12px;
-}
-
-/* =========================
-   VISION MISSION
-========================= */
-
-.vision{
-    background:#151a34;
-}
-
-.vision-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1px;
-    background:var(--line);
-    margin-top:80px;
-}
-
-.vision-card{
-    background:#11152d;
-    padding:65px;
-    min-height:400px;
-    position:relative;
-}
-
-.vision-card .number{
-    font-family:"Manrope";
-    font-size:90px;
-    color:rgba(255,255,255,.045);
-    position:absolute;
-    right:35px;
-    top:20px;
-    font-weight:800;
-}
-
-.vision-card h3{
-    color:var(--green);
-    font-size:12px;
-    letter-spacing:.3em;
-    margin-bottom:35px;
-}
-
-.vision-card p{
-    font-family:"Manrope";
-    font-size:clamp(22px,3vw,36px);
-    line-height:1.35;
-    letter-spacing:-.025em;
-}
-
-/* =========================
-   CATALOG
-========================= */
-
-.catalog{
-    background:#f2f3f4;
-    color:#101326;
-}
-
-.catalog-layout{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
-}
-
-.catalog-box{
-    min-height:550px;
-    background:#11152d;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.catalog-box img{
-    width:200px;
-    opacity:.9;
-}
-
-.catalog-pages{
-    position:absolute;
-    bottom:30px;
-    right:35px;
-    font-family:"Manrope";
-    font-size:70px;
-    font-weight:800;
-    color:rgba(255,255,255,.07);
-}
-
-.catalog-copy h2{
-    font-family:"Manrope";
-    font-size:clamp(45px,6vw,82px);
-    line-height:.95;
-    letter-spacing:-.06em;
-}
-
-.catalog-copy p{
-    color:#626675;
-    line-height:1.85;
-    margin-top:30px;
-    max-width:500px;
-}
-
-.catalog-button{
-    display:inline-flex;
-    margin-top:35px;
-    padding:17px 25px;
-    background:#11152d;
-    color:white;
-    font-size:11px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-}
-
-/* =========================
-   CHECKUP
-========================= */
-
-.checkup{
-    background:#0a0c16;
-}
-
-.checkup-box{
-    margin-top:80px;
-    border:1px solid var(--line);
-    padding:55px;
-    background:#0e1120;
-}
-
-.checkup-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    margin-top:45px;
-    background:var(--line);
-}
-
-.check-item{
-    background:#11152d;
-    padding:35px 25px;
-    min-height:145px;
-    transition:.3s;
-}
-
-.check-item:hover{
-    background:#18203d;
-}
-
-.check-item span{
-    display:block;
-    color:var(--green);
-    font-size:10px;
-    letter-spacing:.2em;
-    margin-bottom:18px;
-}
-
-.check-item h4{
-    font-family:"Manrope";
-    font-size:18px;
-    font-weight:500;
-}
-
-.check-button{
-    display:inline-block;
-    margin-top:45px;
-    border:1px solid rgba(126,187,65,.5);
-    padding:18px 25px;
-    color:var(--green);
-    font-size:11px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-}
-
-/* =========================
-   FOUNDER
-========================= */
-
-.founder{
-    background:#f2f3f4;
-    color:#101326;
-}
-
-.founder-layout{
-    display:grid;
-    grid-template-columns:35% 65%;
-    min-height:650px;
-    align-items:center;
-}
-
-.founder-symbol{
-    height:550px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#11152d;
-    position:relative;
-    overflow:hidden;
-}
-
-.founder-symbol img{
-    width:270px;
-    opacity:.95;
-}
-
-.founder-copy{
-    padding-left:80px;
-}
-
-.founder-copy h2{
-    font-family:"Manrope";
-    font-size:clamp(45px,6vw,85px);
-    line-height:.95;
-    letter-spacing:-.06em;
-}
-
-.founder-copy p{
-    margin-top:35px;
-    color:#606473;
-    line-height:1.9;
-    max-width:620px;
-}
-
-/* =========================
-   ASSISTANT
-========================= */
-
-.assistant{
-    background:#11152d;
-}
-
-.assistant-panel{
-    margin-top:75px;
-    border:1px solid var(--line);
-    padding:55px;
-}
-
-.assistant-top{
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-}
-
-.assistant-status{
-    color:var(--green);
-    font-size:10px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-    margin-top:50px;
-}
-
-.field{
-    border:1px solid var(--line);
-    padding:25px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.field:hover{
-    border-color:rgba(126,187,65,.55);
-    background:#151a34;
-}
-
-.field span{
-    color:#6f7585;
-    font-size:10px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-}
-
-.field strong{
-    display:block;
-    font-family:"Manrope";
-    margin-top:10px;
-    font-size:17px;
-    font-weight:500;
-}
-
-.assistant-button{
-    display:inline-block;
-    margin-top:35px;
-    padding:19px 28px;
-    background:var(--green);
-    color:#10120b;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-}
-
-/* =========================
-   FINAL
-========================= */
-
-.final{
-    min-height:80vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background:
-        radial-gradient(circle at center,rgba(126,187,65,.1),transparent 30%),
-        #080a13;
-    position:relative;
-    overflow:hidden;
-}
-
-.final-symbol{
-    position:absolute;
-    width:min(70vw,800px);
     opacity:.035;
+
+    pointer-events:none;
 }
 
-.final-symbol img{
+.background-8 img{
     width:100%;
+    height:100%;
+    object-fit:contain;
 }
 
-.final-content{
+
+/* =========================================
+   MAIN
+========================================= */
+
+.page{
     position:relative;
     z-index:2;
-}
 
-.final-content .logo{
-    width:180px;
-    margin-bottom:65px;
-}
+    width:min(440px,100%);
+    min-height:100vh;
 
-.final-content h2{
-    font-family:"Manrope";
-    font-size:clamp(45px,8vw,105px);
-    letter-spacing:-.07em;
-    line-height:.9;
-}
-
-.final-content p{
-    color:#969baa;
-    margin-top:30px;
-    letter-spacing:.18em;
-    font-size:12px;
-    text-transform:uppercase;
-}
-
-.final-cta{
-    display:inline-flex;
-    margin-top:45px;
-    background:var(--green);
-    color:#10120b;
-    padding:20px 30px;
-    font-weight:700;
-    font-size:11px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    border-top:1px solid var(--line);
-    background:#080a13;
-    padding:35px 0;
-}
-
-.footer-inner{
-    width:min(1200px,90vw);
     margin:auto;
+
+    padding:
+        38px
+        22px
+        40px;
+
     display:flex;
-    justify-content:space-between;
+    flex-direction:column;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.brand-logo{
+    width:185px;
+    max-width:75%;
+
+    display:block;
+
+    margin:0 auto;
+}
+
+.brand-slogan{
+    margin-top:13px;
+
+    font-size:10px;
+    letter-spacing:.28em;
+
+    color:#c7cad4;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.profile-title{
+    font-size:12px;
+
+    color:var(--green);
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
+    font-weight:700;
+}
+
+.profile-description{
+    margin-top:10px;
+
+    color:#b5bac7;
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================
+   MAIN ACTIONS
+========================================= */
+
+.actions{
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:10px;
+}
+
+.action{
+    position:relative;
+
+    width:100%;
+
+    min-height:58px;
+
+    display:flex;
+
     align-items:center;
-    gap:30px;
+
+    justify-content:center;
+
+    gap:13px;
+
+    border:1px solid var(--line);
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    color:white;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.action:hover{
+    transform:translateY(-2px);
+
+    border-color:rgba(126,187,65,.6);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(126,187,65,.13),
+            rgba(255,255,255,.035)
+        );
+}
+
+.action:active{
+    transform:scale(.985);
+}
+
+.action-icon{
+    width:25px;
+    height:25px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--green);
+
+    font-size:17px;
+}
+
+.action-main{
+    background:var(--green);
+
+    color:#10130b;
+
+    border-color:var(--green);
+
+    box-shadow:
+        0 10px 35px rgba(126,187,65,.12);
+}
+
+.action-main .action-icon{
+    color:#10130b;
+}
+
+.action-main:hover{
+    background:#8ac94b;
+    border-color:#8ac94b;
+}
+
+
+/* =========================================
+   SECONDARY ACTIONS
+========================================= */
+
+.quick-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:10px;
+}
+
+.quick{
+    min-height:62px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    border:1px solid var(--line);
+
+    border-radius:5px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#e5e7ed;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+    transition:.25s;
+}
+
+.quick-icon{
+    color:var(--green);
+
+    font-size:18px;
+}
+
+.quick:hover{
+    background:rgba(126,187,65,.08);
+
+    border-color:rgba(126,187,65,.4);
+}
+
+
+/* =========================================
+   IBAN
+========================================= */
+
+.iban{
+    margin-top:10px;
+
+    border:1px solid var(--line);
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
+
+    padding:17px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.iban:hover{
+    border-color:rgba(126,187,65,.45);
+}
+
+.iban-left{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+}
+
+.iban-icon{
+    color:var(--green);
+
+    font-size:19px;
+}
+
+.iban-info small{
+    display:block;
+
+    color:#73798a;
+
+    font-size:8px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+}
+
+.iban-info strong{
+    display:block;
+
+    margin-top:5px;
+
+    color:#dfe2e8;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    letter-spacing:.08em;
+}
+
+.copy{
+    color:var(--green);
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================
+   SHOWROOM BUTTON
+========================================= */
+
+.showroom{
+    position:relative;
+
+    margin-top:28px;
+
+    padding:25px 22px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(126,187,65,.42);
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(126,187,65,.12),
+            rgba(255,255,255,.025)
+        );
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.showroom:hover{
+    transform:translateY(-2px);
+
+    border-color:var(--green);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(126,187,65,.18),
+            rgba(255,255,255,.035)
+        );
+}
+
+.showroom::after{
+    content:"8";
+
+    position:absolute;
+
+    right:-8px;
+    top:-42px;
+
+    font-size:155px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    color:rgba(126,187,65,.055);
+
+    pointer-events:none;
+}
+
+.showroom-top{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.showroom-label{
+    color:var(--green);
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.28em;
+
+    text-transform:uppercase;
+}
+
+.showroom-arrow{
+    color:var(--green);
+
+    font-size:19px;
+}
+
+.showroom-title{
+    position:relative;
+    z-index:2;
+
+    margin-top:13px;
+
+    font-size:22px;
+
+    line-height:1.15;
+
+    letter-spacing:-.035em;
+
+    font-weight:800;
+}
+
+.showroom-description{
+    position:relative;
+    z-index:2;
+
+    margin-top:8px;
+
+    max-width:300px;
+
+    color:#a8adbb;
+
+    font-size:10px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================
+   SHARE
+========================================= */
+
+.share-button{
+    width:100%;
+
+    margin-top:10px;
+
+    min-height:53px;
+
+    border:1px solid var(--line);
+
+    border-radius:5px;
+
+    background:transparent;
+
+    color:#b9bec9;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-family:inherit;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.17em;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.share-button:hover{
+    color:white;
+
+    border-color:rgba(255,255,255,.3);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+    margin-top:auto;
+
+    padding-top:42px;
+
+    text-align:center;
 }
 
 .footer-logo{
-    width:120px;
+    width:100px;
+
+    opacity:.65;
 }
 
-.footer-text{
-    color:#656a78;
-    font-size:10px;
-    letter-spacing:.12em;
+.footer-line{
+    margin-top:13px;
+
+    color:#646a79;
+
+    font-size:8px;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media(max-width:850px){
+/* =========================================
+   TOAST
+========================================= */
 
-    .section{
-        padding:100px 0;
-    }
+.toast{
+    position:fixed;
 
-    .hero{
-        min-height:95vh;
-    }
+    left:50%;
+    bottom:25px;
 
-    .hero-8{
-        width:100vw;
-        right:-30vw;
-        opacity:.05;
-    }
+    transform:
+        translate(-50%,20px);
 
-    .hero-content{
-        padding-top:80px;
-    }
+    z-index:100;
 
-    .manifesto-copy,
-    .vision-grid,
-    .catalog-layout,
-    .founder-layout{
-        grid-template-columns:1fr;
-    }
+    padding:12px 18px;
 
-    .manifesto-copy{
-        gap:45px;
-    }
+    border-radius:5px;
 
-    .system-grid{
-        grid-template-columns:1fr;
-    }
+    background:#f2f3f4;
 
-    .system-head,
-    .project-intro{
-        display:block;
-    }
+    color:#11152d;
 
-    .system-number{
-        display:none;
-    }
+    font-size:11px;
 
-    .visual-layout{
-        grid-template-columns:1fr;
-    }
+    font-weight:700;
 
-    .visual-copy{
-        padding:0 0 60px;
-    }
+    opacity:0;
 
-    .visual-frame{
-        height:480px;
-    }
+    pointer-events:none;
 
-    .project-placeholder{
-        min-height:470px;
-    }
+    transition:.3s;
 
-    .checkup-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .founder-symbol{
-        height:400px;
-    }
-
-    .founder-copy{
-        padding:65px 0 0;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .assistant-panel{
-        padding:30px;
-    }
-
-    .footer-inner{
-        flex-direction:column;
-        text-align:center;
-    }
+    white-space:nowrap;
 }
 
-@media(max-width:520px){
+.toast.show{
+    opacity:1;
 
-    .hero-title{
-        font-size:70px;
-    }
-
-    .top-mark img{
-        width:115px;
-    }
-
-    .system-card{
-        min-height:260px;
-        padding:30px;
-    }
-
-    .system-card h3{
-        margin-top:45px;
-    }
-
-    .checkup-grid{
-        grid-template-columns:1fr;
-    }
-
-    .vision-card{
-        padding:40px 30px;
-        min-height:330px;
-    }
-
-    .catalog-box{
-        min-height:400px;
-    }
-
-    .catalog-copy h2{
-        font-size:48px;
-    }
-
-    .final-content .logo{
-        width:145px;
-    }
+    transform:
+        translate(-50%,0);
 }
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:700px){
+
+    body{
+        background:
+            radial-gradient(
+                circle at 50% 0%,
+                rgba(126,187,65,.12),
+                transparent 35%
+            ),
+            #080a12;
+    }
+
+    .page{
+        min-height:100vh;
+
+        padding-top:55px;
+        padding-bottom:55px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media(max-width:360px){
+
+    .page{
+        padding-left:16px;
+        padding-right:16px;
+    }
+
+    .brand-logo{
+        width:165px;
+    }
+
+    .action{
+        min-height:54px;
+
+        font-size:10px;
+    }
+
+    .showroom-title{
+        font-size:20px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- LOADER -->
 
-<div class="loader" id="loader">
-    <div class="loader-inner">
-        <div class="loader-symbol">
-            <img src="assets/logo_8.svg" alt="8 Yapı">
-        </div>
+<!-- BACKGROUND 8 -->
 
-        <div class="loader-line"></div>
-
-        <div class="loader-text">
-            ÇEVRESİNE DEĞER KATAR.
-        </div>
-    </div>
+<div class="background-8">
+    <img src="assets/logo_8.svg" alt="">
 </div>
 
 
-<!-- HERO -->
+<main class="page">
 
-<section class="hero" id="top">
 
-    <div class="hero-grid"></div>
+    <!-- BRAND -->
 
-    <div class="top-mark">
-        <img src="assets/8yapi_logo.svg" alt="8 Yapı">
-    </div>
+    <header class="brand">
 
-    <div class="hero-8">
-        <img src="assets/logo_8.svg" alt="">
-    </div>
+        <img
+            src="assets/8yapi_logo.svg"
+            class="brand-logo"
+            alt="8 Yapı"
+        >
 
-    <div class="hero-content">
-
-        <div class="hero-kicker">
-            YAPI • TASARIM • UYGULAMA
-        </div>
-
-        <h1 class="hero-title">
-            YAPI<br>
-            <span class="outline">YENİDEN</span><br>
-            TASARLANIR.
-        </h1>
-
-        <div class="hero-slogan">
+        <div class="brand-slogan">
             Çevresine Değer Katar.
         </div>
 
-        <div class="hero-bottom">
+    </header>
 
-            <a href="#uzmanliklar" class="hero-button">
-                Dijital Showrooma Gir
-                <span>↗</span>
-            </a>
 
-            <div class="scroll-note">
-                Aşağı kaydır
-            </div>
+    <!-- PROFILE -->
 
-        </div>
+    <section class="profile">
 
-    </div>
-
-</section>
-
-
-<!-- MANIFESTO -->
-
-<section class="section manifesto">
-
-    <div class="container">
-
-        <div class="eyebrow">
-            00 / 8 YAPI
-        </div>
-
-        <h2 class="big-title">
-            YAPININ DEĞERİNİ<br>
-            <span>YENİDEN TANIMLIYORUZ.</span>
-        </h2>
-
-        <p class="section-intro">
-            Bir yapının değeri yalnızca görünüşüyle değil;
-            tasarımı, işlevselliği, dayanıklılığı ve çevresiyle
-            kurduğu bütünlükle ortaya çıkar.
-        </p>
-
-        <div class="manifesto-copy">
-
-            <div class="manifesto-box">
-
-                <h3>Yaklaşımımız</h3>
-
-                <p>
-                    Yapıyı tek bir uygulama olarak değil,
-                    birbirini tamamlayan detayların bütünü olarak
-                    değerlendiriyoruz. İhtiyacı analiz ediyor,
-                    uygun çözümü planlıyor ve uygulama sürecini
-                    bütünsel bir yaklaşımla ele alıyoruz.
-                </p>
-
-            </div>
-
-            <div class="manifesto-box">
-
-                <h3>Çevreyle Bütünlük</h3>
-
-                <p>
-                    Cepheden çatıya, bina girişinden çevre
-                    düzenlemesine kadar yapının çevresiyle
-                    kurduğu ilişkiyi tasarımın önemli bir parçası
-                    olarak görüyoruz.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- 8 UZMANLIK -->
-
-<section class="section system" id="uzmanliklar">
-
-    <div class="container">
-
-        <div class="system-head">
-
-            <div>
-
-                <div class="eyebrow">
-                    01 / UZMANLIK ALANLARI
-                </div>
-
-                <h2 class="big-title">
-                    SEKİZ ALAN.<br>
-                    <span>TEK BÜTÜNSEL YAKLAŞIM.</span>
-                </h2>
-
-            </div>
-
-            <div class="system-number">
-                8
-            </div>
-
-        </div>
-
-
-        <div class="system-grid">
-
-            <div class="system-card">
-                <div class="system-no">01 /</div>
-                <h3>Çatı</h3>
-                <p>
-                    Yapının üst örtüsüne yönelik yenileme,
-                    onarım, yalıtım ve uygulama çözümleri.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">02 /</div>
-                <h3>Cephe</h3>
-                <p>
-                    Cephe yenileme, kaplama, mantolama ve
-                    estetik uygulamalar.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">03 /</div>
-                <h3>Dekorasyon</h3>
-                <p>
-                    Yapının karakterini güçlendiren iç ve dış
-                    mekân dekorasyon çözümleri.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">04 /</div>
-                <h3>Site Girişleri</h3>
-                <p>
-                    Bina ve site girişlerinde mimari,
-                    estetik ve fonksiyonel uygulamalar.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">05 /</div>
-                <h3>Kapı & Pencere Sistemleri</h3>
-                <p>
-                    Yapının kullanım ve görünüm ihtiyaçlarına
-                    uygun kapı, pencere ve doğrama çözümleri.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">06 /</div>
-                <h3>Yer Kaplamaları</h3>
-                <p>
-                    Kullanım alanına ve mimari konsepte uygun
-                    zemin çözümleri.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">07 /</div>
-                <h3>Çevre & Peyzaj</h3>
-                <p>
-                    Yapı çevresinin estetik, fonksiyonel ve
-                    bütünsel olarak düzenlenmesi.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-            <div class="system-card">
-                <div class="system-no">08 /</div>
-                <h3>Kullandığımız Teknolojiler</h3>
-                <p>
-                    Tasarım, ölçüm, planlama ve uygulama
-                    süreçlerinde kullanılan teknolojiler.
-                </p>
-                <div class="system-arrow">↗</div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- KURUMSAL GÖRSEL -->
-
-<section class="section visual-section">
-
-    <div class="container visual-layout">
-
-        <div class="visual-copy">
-
-            <div class="eyebrow">
-                02 / KURUMSAL YAKLAŞIM
-            </div>
-
-            <h2 class="big-title">
-                TASARIMDAN<br>
-                <span>UYGULAMAYA.</span>
-            </h2>
-
-            <p class="section-intro">
-                Her projenin kendine özgü ihtiyaçlarını
-                değerlendiriyor; estetik, işlevsellik ve
-                uygulama detaylarını aynı çerçevede ele alıyoruz.
-            </p>
-
-        </div>
-
-        <div class="visual-frame">
-
-            <div class="visual-index">
-                8Y / VISUAL ARCHIVE
-            </div>
-
-            <img src="assets/kurumsal_görsel.svg" alt="8 Yapı">
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJE ARŞİVİ -->
-
-<section class="section projects">
-
-    <div class="container">
-
-        <div class="project-intro">
-
-            <div>
-
-                <div class="eyebrow">
-                    03 / PROJE ARŞİVİ
-                </div>
-
-                <h2 class="big-title">
-                    UYGULAMA<br>
-                    <span>GERÇEKLEŞTİRİLDİĞİNDE</span><br>
-                    GÖRÜNÜR.
-                </h2>
-
-            </div>
-
-            <p class="section-intro">
-                8 Yapı uygulamalarını gerçek proje görselleri
-                üzerinden inceleyin. Proje fotoğrafları
-                eklendiğinde bu alan interaktif proje arşivine
-                dönüşecektir.
-            </p>
-
-        </div>
-
-
-        <div class="project-placeholder">
-
-            <div class="project-meta">
-
-                <small>PROJECT ARCHIVE / 001</small>
-
-                <h3>
-                    Proje Görselleri
-                </h3>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- VİZYON MİSYON -->
-
-<section class="section vision">
-
-    <div class="container">
-
-        <div class="eyebrow">
-            04 / KURUMSAL KİMLİK
-        </div>
-
-        <h2 class="big-title">
-            BUGÜNÜN UYGULAMASI,<br>
-            <span>YARININ DEĞERİ.</span>
-        </h2>
-
-        <div class="vision-grid">
-
-            <div class="vision-card">
-
-                <div class="number">01</div>
-
-                <h3>VİZYON</h3>
-
-                <p>
-                    Yapılara yalnızca fiziksel bir uygulama
-                    olarak değil, uzun vadeli değer üreten
-                    yaşam alanları olarak yaklaşmak.
-                </p>
-
-            </div>
-
-
-            <div class="vision-card">
-
-                <div class="number">02</div>
-
-                <h3>MİSYON</h3>
-
-                <p>
-                    Tasarım, malzeme, uygulama ve çevre
-                    ilişkisini bir arada değerlendirerek
-                    ihtiyaçlara uygun yapı çözümleri
-                    geliştirmek.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- KATALOG -->
-
-<section class="section catalog">
-
-    <div class="container catalog-layout">
-
-        <div class="catalog-box">
-
-            <img src="assets/logo_8.svg" alt="8 Yapı">
-
-            <div class="catalog-pages">
-                48
-            </div>
-
-        </div>
-
-
-        <div class="catalog-copy">
-
-            <div class="eyebrow">
-                05 / DİJİTAL KATALOG
-            </div>
-
-            <h2>
-                8 YAPI<br>
-                PROJE<br>
-                ARŞİVİ
-            </h2>
-
-            <p>
-                Firmanın uygulama alanlarını, çalışma yaklaşımını
-                ve projelerini daha detaylı incelemek için
-                kurumsal kataloğumuzu keşfedin.
-            </p>
-
-            <a href="#" class="catalog-button" onclick="catalogAlert();return false;">
-                Kataloğu İncele ↗
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CHECK-UP -->
-
-<section class="section checkup">
-
-    <div class="container">
-
-        <div class="eyebrow">
-            06 / YAPI CHECK-UP
-        </div>
-
-        <h2 class="big-title">
-            YAPINIZIN<br>
-            <span>İHTİYACINI BELİRLEYİN.</span>
-        </h2>
-
-        <p class="section-intro">
-            Yapınızda hangi alanların yenilenmeye veya
-            geliştirmeye ihtiyaç duyduğunu belirleyin.
-            Seçimlerinize göre size özel bir proje talebi
-            hazırlayalım.
-        </p>
-
-
-        <div class="checkup-box">
-
-            <div class="assistant-status">
-                ÖN DEĞERLENDİRME
-            </div>
-
-            <div class="checkup-grid">
-
-                <div class="check-item">
-                    <span>01</span>
-                    <h4>Cephe</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>02</span>
-                    <h4>Çatı</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>03</span>
-                    <h4>Kapı & Pencere</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>04</span>
-                    <h4>Site Girişi</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>05</span>
-                    <h4>Yer Kaplamaları</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>06</span>
-                    <h4>Çevre & Peyzaj</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>07</span>
-                    <h4>Dekorasyon</h4>
-                </div>
-
-                <div class="check-item">
-                    <span>08</span>
-                    <h4>Teknoloji</h4>
-                </div>
-
-            </div>
-
-            <a href="#asistan" class="check-button">
-                Yapımı Değerlendirmeye Başla →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOUNDER -->
-
-<section class="section founder">
-
-    <div class="container founder-layout">
-
-        <div class="founder-symbol">
-
-            <img src="assets/logo_8.svg" alt="8 Yapı">
-
-        </div>
-
-
-        <div class="founder-copy">
-
-            <div class="eyebrow">
-                07 / YÖNETİM & VİZYON
-            </div>
-
-            <h2>
-                BİR YAPIYI<br>
-                <span>DEĞERLİ KILAN</span><br>
-                DETAYLARDIR.
-            </h2>
-
-            <p>
-                8 Yapı'nın kurumsal yaklaşımı; yapıların
-                ihtiyaçlarını doğru analiz etmek, uygulama
-                detaylarını doğru planlamak ve ortaya çıkan
-                değeri yapının bütünüyle birlikte değerlendirmek
-                üzerine kuruludur.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECT ASSISTANT -->
-
-<section class="section assistant" id="asistan">
-
-    <div class="container">
-
-        <div class="eyebrow">
-            08 / PROJE ASİSTANI
-        </div>
-
-        <h2 class="big-title">
-            PROJENİZİ<br>
-            <span>BİRLİKTE ŞEKİLLENDİRELİM.</span>
-        </h2>
-
-        <p class="section-intro">
-            İhtiyacınızı birkaç adımda belirleyin.
-            Seçtiğiniz bilgiler doğrultusunda 8 Yapı'ya
-            iletebileceğiniz proje talebinizi hazırlayın.
-        </p>
-
-
-        <div class="assistant-panel">
-
-            <div class="assistant-top">
-
-                <div>
-                    <div class="assistant-status">
-                        PROJE TALEBİ
-                    </div>
-                </div>
-
-                <div class="assistant-status">
-                    8Y / 01
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-                <div class="field">
-                    <span>Proje Türü</span>
-                    <strong>Seçim yapılacak</strong>
-                </div>
-
-                <div class="field">
-                    <span>Uygulama Alanı</span>
-                    <strong>Seçim yapılacak</strong>
-                </div>
-
-                <div class="field">
-                    <span>Yaklaşık Alan</span>
-                    <strong>Bilgi girilecek</strong>
-                </div>
-
-                <div class="field">
-                    <span>Konum</span>
-                    <strong>Bilgi girilecek</strong>
-                </div>
-
-                <div class="field">
-                    <span>Tasarım Desteği</span>
-                    <strong>Seçim yapılacak</strong>
-                </div>
-
-                <div class="field">
-                    <span>Notunuz</span>
-                    <strong>Detay ekle</strong>
-                </div>
-
-            </div>
-
-
-            <a href="#" class="assistant-button" onclick="requestStart();return false;">
-                Proje Talebi Oluştur
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FINAL -->
-
-<section class="final">
-
-    <div class="final-symbol">
-
-        <img src="assets/logo_8.svg" alt="">
-
-    </div>
-
-
-    <div class="final-content">
-
-        <img class="logo" src="assets/8yapi_logo.svg" alt="8 Yapı">
-
-        <h2>
-            ÇEVRESİNE<br>
-            <span>DEĞER KATAR.</span>
-        </h2>
-
-        <p>
+        <div class="profile-title">
             Yapı • Tasarım • Uygulama
+        </div>
+
+        <p class="profile-description">
+            Yapının ihtiyaçlarını bütünsel bir yaklaşımla
+            ele alan uygulama ve çözüm merkezi.
         </p>
 
-        <a href="#asistan" class="final-cta">
-            Projenizi Başlatın ↗
+    </section>
+
+
+    <!-- MAIN ACTIONS -->
+
+    <section class="actions">
+
+
+        <!-- HEMEN ARA -->
+
+        <a
+            href="tel:+905XXXXXXXXX"
+            class="action action-main"
+        >
+
+            <span class="action-icon">☎</span>
+
+            <span>Hemen Ara</span>
+
         </a>
 
-    </div>
 
-</section>
+        <!-- TELEFONA KAYDET -->
+
+        <a
+            href="tel:+905XXXXXXXXX"
+            class="action"
+        >
+
+            <span class="action-icon">＋</span>
+
+            <span>Telefona Kaydet</span>
+
+        </a>
 
 
-<footer>
+    </section>
 
-    <div class="footer-inner">
 
-        <img class="footer-logo" src="assets/8yapi_logo.svg" alt="8 Yapı">
+    <!-- QUICK ACCESS -->
 
-        <div class="footer-text">
-            © 8 YAPI — ÇEVRESİNE DEĞER KATAR.
+    <section class="quick-grid">
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            href="https://wa.me/905XXXXXXXXX"
+            class="quick"
+            target="_blank"
+        >
+
+            <span class="quick-icon">◉</span>
+
+            <span>WhatsApp</span>
+
+        </a>
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+            href="#"
+            class="quick"
+        >
+
+            <span class="quick-icon">◎</span>
+
+            <span>Instagram</span>
+
+        </a>
+
+
+        <!-- FACEBOOK -->
+
+        <a
+            href="#"
+            class="quick"
+        >
+
+            <span class="quick-icon">f</span>
+
+            <span>Facebook</span>
+
+        </a>
+
+
+        <!-- GOOGLE -->
+
+        <a
+            href="#"
+            class="quick"
+        >
+
+            <span class="quick-icon">★</span>
+
+            <span>Google</span>
+
+        </a>
+
+
+    </section>
+
+
+    <!-- IBAN -->
+
+    <div
+        class="iban"
+        onclick="copyIBAN()"
+    >
+
+        <div class="iban-left">
+
+            <div class="iban-icon">
+                ₺
+            </div>
+
+            <div class="iban-info">
+
+                <small>
+                    Banka Hesap Bilgisi
+                </small>
+
+                <strong id="ibanText">
+                    IBAN BİLGİSİ EKLENECEK
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="copy">
+            Kopyala
         </div>
 
     </div>
 
-</footer>
+
+    <!-- SHOWROOM -->
+
+    <a
+        href="tanitim.html"
+        class="showroom"
+    >
+
+        <div class="showroom-top">
+
+            <div class="showroom-label">
+                8 Yapı
+            </div>
+
+            <div class="showroom-arrow">
+                ↗
+            </div>
+
+        </div>
+
+        <div class="showroom-title">
+            Tanıtım & Proje
+        </div>
+
+        <div class="showroom-description">
+            8 Yapı'nın uzmanlık alanlarını,
+            projelerini, kurumsal yaklaşımını
+            ve uygulamalarını keşfedin.
+        </div>
+
+    </a>
+
+
+    <!-- SMART CARD SHARE -->
+
+    <button
+        class="share-button"
+        onclick="shareCard()"
+    >
+
+        <span>↗</span>
+
+        <span>Smart Kartı Paylaş</span>
+
+    </button>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <img
+            src="assets/8yapi_logo.svg"
+            class="footer-logo"
+            alt="8 Yapı"
+        >
+
+        <div class="footer-line">
+            Çevresine Değer Katar.
+        </div>
+
+    </footer>
+
+
+</main>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
 
 
 <script>
 
-/* =========================
-   LOADER
-========================= */
+/* =========================================
+   AYARLAR
+   BURAYI BİLGİLER GELDİĞİNDE DEĞİŞTİRECEĞİZ
+========================================= */
 
-window.addEventListener("load",function(){
+const IBAN =
+"TR00 0000 0000 0000 0000 0000 00";
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
 
     setTimeout(function(){
 
-        document.getElementById("loader").classList.add("hide");
+        toast.classList.remove("show");
 
-    },1800);
+    },2200);
 
-});
+}
 
 
-/* =========================
-   CATALOG
-========================= */
+/* =========================================
+   IBAN COPY
+========================================= */
 
-function catalogAlert(){
+function copyIBAN(){
 
-    alert(
-        "8 Yapı kurumsal kataloğu hazırlanıyor.\n\n" +
-        "PDF dosyasını GitHub'a eklediğimizde " +
-        "bu buton doğrudan kataloğu açacaktır."
+    if(
+        IBAN.includes("0000")
+    ){
+
+        showToast(
+            "IBAN bilgisi henüz eklenmedi."
+        );
+
+        return;
+    }
+
+    navigator.clipboard.writeText(
+        IBAN.replaceAll(" ","")
+    );
+
+    showToast(
+        "IBAN kopyalandı."
     );
 
 }
 
 
-/* =========================
-   PROJECT REQUEST
-========================= */
+/* =========================================
+   SMART CARD SHARE
+========================================= */
 
-function requestStart(){
+async function shareCard(){
 
-    const code =
-        "8Y-" +
-        new Date().toISOString()
-        .slice(0,10)
-        .replaceAll("-","") +
-        "-" +
-        Math.floor(1000 + Math.random()*9000);
+    const shareData = {
 
-    alert(
-        "Proje talep sistemi\n\n" +
-        "Proje Kodunuz: " + code +
-        "\n\n" +
-        "Bir sonraki aşamada bu alanı " +
-        "gerçek seçim ekranına dönüştüreceğiz."
-    );
+        title:
+            "8 Yapı | Çevresine Değer Katar.",
+
+        text:
+            "8 Yapı dijital kartını görüntüleyin.",
+
+        url:
+            window.location.href
+
+    };
+
+
+    if(
+        navigator.share
+    ){
+
+        try{
+
+            await navigator.share(
+                shareData
+            );
+
+        }catch(error){
+
+            // kullanıcı paylaşımı iptal etti
+
+        }
+
+    }else{
+
+        try{
+
+            await navigator.clipboard.writeText(
+                window.location.href
+            );
+
+            showToast(
+                "Kart bağlantısı kopyalandı."
+            );
+
+        }catch(error){
+
+            showToast(
+                "Kart bağlantısı: " +
+                window.location.href
+            );
+
+        }
+
+    }
 
 }
 
