@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
->
-
-<meta name="theme-color" content="#f4f2ed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>8 Yapı | Cengiz Galitekin</title>
 
 <style>
 
 /* =====================================================
-   RESET
+   TEMEL
 ===================================================== */
 
 *{
@@ -26,197 +19,135 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     width:100%;
     min-height:100%;
 }
 
 body{
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(0,0,0,.035) 0 1px,
-            transparent 1px
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(0,0,0,.025) 0 1px,
-            transparent 1px
-        ),
-        #e7e5e0;
-
-    background-size:
-        19px 19px,
-        27px 27px;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color:#151515;
-
+    background:#e4e2dd;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#171717;
     display:flex;
     justify-content:center;
-
-    overflow-x:hidden;
 }
 
 
 /* =====================================================
-   TELEFON GÖVDESİ
+   TELEFON GÖRÜNÜMÜ
 ===================================================== */
 
 .phone{
-
-    width:min(100vw,430px);
-
+    width:min(100%,430px);
     min-height:100vh;
-
-    position:relative;
-
-    background:#f6f5f1;
-
+    background:#f5f3ee;
     overflow:hidden;
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.15);
+    box-shadow:0 20px 70px rgba(0,0,0,.15);
 }
-
 
 @media(max-width:600px){
 
     body{
-        background:#f6f5f1;
+        background:#f5f3ee;
     }
 
     .phone{
         width:100%;
         box-shadow:none;
     }
-
 }
 
 
 /* =====================================================
-   ANA İÇERİK
+   KAĞIT / MİMARİ DOKU
 ===================================================== */
 
 .page{
-
-    width:100%;
-
     min-height:100vh;
+    padding:24px 19px 35px;
 
-    padding:
-        25px
-        20px
-        35px;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(0,0,0,.035) 0 1px,
+            transparent 1.2px
+        ),
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(0,0,0,.025) 0 1px,
+            transparent 1.2px
+        ),
+        #f5f3ee;
+
+    background-size:19px 19px,27px 27px;
 }
 
 
 /* =====================================================
-   ÜST LOGO
+   LOGO
 ===================================================== */
 
 .logo-area{
-
-    width:100%;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    padding:
-        8px
-        0
-        18px;
+    min-height:85px;
+    padding:5px 0 8px;
 }
 
-.logo{
-
+.main-logo{
     display:block;
-
-    width:190px;
-
+    width:205px;
     max-width:78%;
-
     height:auto;
-
-    object-fit:contain;
-
 }
 
 
 /* =====================================================
-   CENGİZ GALİTEKİN
+   İSİM
 ===================================================== */
 
 .person{
-
     text-align:center;
-
-    margin-bottom:20px;
+    margin-top:2px;
+    margin-bottom:18px;
 }
 
 .person-name{
-
     font-family:
-        "Segoe Print",
-        "Bradley Hand",
         "URW Chancery L",
         "Apple Chancery",
+        "Segoe Print",
+        "Bradley Hand",
         cursive;
 
-    font-size:22px;
-
+    font-size:24px;
     font-weight:400;
-
-    letter-spacing:.2px;
-
-    line-height:1.25;
-
+    letter-spacing:.1px;
+    line-height:1.2;
+    color:#292929;
     transform:rotate(-2deg);
-
-    color:#272727;
 }
 
-.person-company{
-
+.person-role{
     margin-top:7px;
-
-    font-size:10px;
-
+    font-size:9px;
     letter-spacing:3px;
-
     color:#777;
-
     text-transform:uppercase;
 }
 
 
 /* =====================================================
-   AYIRICI
+   İNCE ÇİZGİ
 ===================================================== */
 
 .divider{
-
-    width:52px;
-
+    width:48px;
     height:1px;
-
     background:#222;
-
     opacity:.25;
-
-    margin:
-        0
-        auto
-        20px;
+    margin:0 auto 18px;
 }
 
 
@@ -225,113 +156,85 @@ body{
 ===================================================== */
 
 .slideshow{
-
     position:relative;
-
     width:100%;
-
-    height:230px;
-
+    height:235px;
     overflow:hidden;
-
     border-radius:7px;
-
     background:#ddd;
 
     box-shadow:
-        0 12px 28px rgba(0,0,0,.14);
+        0 12px 30px rgba(0,0,0,.15);
 }
 
 .slide{
-
     position:absolute;
-
     inset:0;
 
     width:100%;
-
     height:100%;
 
     object-fit:cover;
 
     opacity:0;
 
-    transform:scale(1.035);
+    transform:scale(1.07);
 
     transition:
-        opacity 1.25s ease,
-        transform 5.5s ease;
-
-    display:block;
+        opacity 1.5s ease-in-out,
+        transform 7s ease-out;
 }
 
 .slide.active{
-
     opacity:1;
-
     transform:scale(1);
 }
 
 
-/* FOTOĞRAF ÜZERİNE MİMARİ PERDE */
+/* fotoğrafın üstüne çok hafif perde */
 
 .slideshow::after{
-
     content:"";
-
     position:absolute;
-
     inset:0;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0,0,0,.04),
-            rgba(0,0,0,.12)
+            rgba(0,0,0,.02),
+            rgba(0,0,0,.13)
         );
 
     pointer-events:none;
 }
 
 
-/* SLAYT NOKTALARI */
+/* =====================================================
+   SLAYT NOKTALARI
+===================================================== */
 
 .dots{
-
     position:absolute;
-
-    bottom:11px;
-
     left:50%;
-
+    bottom:11px;
     transform:translateX(-50%);
-
     z-index:5;
 
     display:flex;
-
     gap:6px;
 }
 
 .dot{
-
     width:5px;
-
     height:5px;
-
     border-radius:50%;
-
-    background:rgba(255,255,255,.45);
-
-    transition:.3s ease;
+    background:rgba(255,255,255,.55);
+    transition:.35s ease;
 }
 
 .dot.active{
-
-    width:17px;
-
-    border-radius:4px;
-
+    width:18px;
+    border-radius:5px;
     background:#fff;
 }
 
@@ -341,56 +244,40 @@ body{
 ===================================================== */
 
 .slogan{
-
     text-align:center;
-
-    padding:
-        20px
-        5px
-        19px;
+    padding:19px 5px 17px;
 }
 
 .slogan-main{
-
     font-family:
         Georgia,
         "Times New Roman",
         serif;
 
     font-size:18px;
-
-    letter-spacing:1px;
+    letter-spacing:.8px;
 }
 
 .slogan-sub{
-
     margin-top:6px;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    color:#777;
+    font-size:8px;
+    letter-spacing:2.8px;
+    color:#858585;
 }
 
 
 /* =====================================================
-   BUTON TEMELİ
+   GENEL BUTON
 ===================================================== */
 
 .button{
-
     width:100%;
-
-    min-height:60px;
+    min-height:59px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    gap:11px;
+    gap:10px;
 
     border-radius:6px;
 
@@ -399,22 +286,16 @@ body{
     margin-bottom:10px;
 
     font-size:14px;
-
     font-weight:600;
 
-    letter-spacing:.15px;
+    letter-spacing:.1px;
 
     transition:
         transform .18s ease,
         box-shadow .18s ease;
-
-    cursor:pointer;
-
-    border:none;
 }
 
 .button:active{
-
     transform:scale(.975);
 }
 
@@ -424,42 +305,33 @@ body{
 ===================================================== */
 
 .showroom{
-
-    min-height:82px;
-
-    background:#287a4a;
-
-    color:#fff;
-
-    box-shadow:
-        0 9px 22px rgba(40,122,74,.20);
+    min-height:84px;
 
     flex-direction:column;
 
     gap:4px;
 
-    margin-bottom:10px;
+    background:#2c8050;
+    color:#fff;
+
+    box-shadow:
+        0 10px 24px rgba(44,128,80,.22);
 }
 
-.showroom .small{
-
+.showroom-small{
     font-size:9px;
-
     letter-spacing:3px;
-
     opacity:.78;
 }
 
-.showroom .large{
-
+.showroom-large{
     font-family:
         Georgia,
         "Times New Roman",
         serif;
 
     font-size:17px;
-
-    letter-spacing:.2px;
+    text-align:center;
 }
 
 
@@ -468,85 +340,64 @@ body{
 ===================================================== */
 
 .catalog{
-
-    min-height:67px;
-
-    background:#20201e;
-
+    background:#22221f;
     color:#fff;
 
+    min-height:64px;
+
     box-shadow:
-        0 8px 18px rgba(0,0,0,.13);
+        0 8px 18px rgba(0,0,0,.12);
 }
 
-.catalog .icon{
-
-    font-size:19px;
-
-    opacity:.85;
+.catalog-icon{
+    font-size:18px;
 }
 
 
 /* =====================================================
-   HIZLI İLETİŞİM
+   BÖLÜM BAŞLIĞI
 ===================================================== */
 
 .section-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
 
     margin:
         25px
         0
         11px;
 
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
     font-size:9px;
-
     font-weight:700;
-
-    letter-spacing:2.5px;
-
-    color:#777;
+    letter-spacing:2.4px;
+    color:#818181;
 }
 
 .section-title::before{
-
     content:"";
-
-    width:23px;
-
+    width:22px;
     height:1px;
-
     background:#999;
 }
 
 
-/* BUTON GRID */
+/* =====================================================
+   İLETİŞİM GRID
+===================================================== */
 
 .actions{
-
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:9px;
 }
 
 .actions .button{
-
+    min-height:59px;
     margin:0;
 
-    min-height:57px;
-
     background:#fff;
-
-    color:#222;
+    color:#202020;
 
     border:
         1px solid rgba(0,0,0,.10);
@@ -558,42 +409,38 @@ body{
 }
 
 .actions .button.full{
-
-    grid-column:
-        1 / -1;
+    grid-column:1 / -1;
 }
 
 
 /* =====================================================
-   ICON
+   İKON
 ===================================================== */
 
 .icon{
-
-    font-size:17px;
-
-    min-width:18px;
-
+    min-width:19px;
     text-align:center;
-
+    font-size:17px;
     font-weight:400;
 }
 
 
 /* =====================================================
-   VİZYON KUTUSU
+   VİZYON
 ===================================================== */
 
 .vision{
+    margin-top:28px;
 
-    margin-top:27px;
-
-    padding:23px 19px 24px;
+    padding:
+        25px
+        20px
+        27px;
 
     background:
         linear-gradient(
             145deg,
-            #20201e,
+            #242421,
             #11110f
         );
 
@@ -602,7 +449,7 @@ body{
     border-radius:8px;
 
     box-shadow:
-        0 14px 32px rgba(0,0,0,.16);
+        0 15px 35px rgba(0,0,0,.17);
 
     position:relative;
 
@@ -610,43 +457,39 @@ body{
 }
 
 .vision::before{
-
     content:"8";
 
     position:absolute;
 
-    right:-12px;
-
-    top:-30px;
+    right:-8px;
+    top:-28px;
 
     font-family:
         Georgia,
         serif;
 
-    font-size:150px;
-
-    font-weight:bold;
-
-    opacity:.045;
+    font-size:160px;
 
     line-height:1;
+
+    color:#fff;
+
+    opacity:.035;
 }
 
 .vision-label{
+    position:relative;
+    z-index:2;
 
     font-size:8px;
-
     letter-spacing:3px;
+    color:#a9a8a3;
 
-    color:#aaa;
-
-    margin-bottom:10px;
+    margin-bottom:11px;
 }
 
 .vision-title{
-
     position:relative;
-
     z-index:2;
 
     font-family:
@@ -655,73 +498,60 @@ body{
         serif;
 
     font-size:20px;
-
     line-height:1.25;
 
     margin-bottom:16px;
 }
 
 .vision-title span{
-
     display:block;
-
-    color:#b9b7b0;
+    color:#aaa9a4;
 }
 
 .vision-text{
-
     position:relative;
-
     z-index:2;
 
     font-size:12px;
-
     line-height:1.75;
 
-    color:#d1d0cb;
+    color:#d0cfca;
 }
 
-
-/* =====================================================
-   VİZYON İMZA
-===================================================== */
-
 .vision-sign{
+    position:relative;
+    z-index:2;
 
-    margin-top:19px;
-
+    margin-top:20px;
     padding-top:14px;
 
     border-top:
         1px solid rgba(255,255,255,.12);
 
     font-family:
-        "Segoe Print",
-        "Bradley Hand",
         "URW Chancery L",
         "Apple Chancery",
+        "Segoe Print",
+        "Bradley Hand",
         cursive;
 
-    font-size:17px;
+    font-size:18px;
 
     transform:rotate(-2deg);
-
-    color:#fff;
 }
 
 
 /* =====================================================
-   FOOTER
+   ALT
 ===================================================== */
 
 .footer{
-
     text-align:center;
 
     padding:
         28px
         0
-        10px;
+        5px;
 
     font-size:8px;
 
@@ -734,7 +564,7 @@ body{
 
 
 /* =====================================================
-   KISA EKRAN
+   KISA TELEFON
 ===================================================== */
 
 @media(max-height:700px){
@@ -743,19 +573,32 @@ body{
         padding-top:18px;
     }
 
+    .logo-area{
+        min-height:72px;
+    }
+
     .slideshow{
-        height:195px;
+        height:205px;
+    }
+
+    .slogan{
+        padding-top:14px;
+        padding-bottom:13px;
     }
 
     .button{
         min-height:54px;
     }
 
+    .showroom{
+        min-height:76px;
+    }
+
 }
 
 
 /* =====================================================
-   ÇOK DAR TELEFON
+   DAR TELEFON
 ===================================================== */
 
 @media(max-width:360px){
@@ -765,12 +608,16 @@ body{
         padding-right:15px;
     }
 
-    .logo{
-        width:170px;
+    .main-logo{
+        width:180px;
+    }
+
+    .person-name{
+        font-size:21px;
     }
 
     .slideshow{
-        height:190px;
+        height:195px;
     }
 
     .actions .button{
@@ -780,7 +627,6 @@ body{
 }
 
 </style>
-
 </head>
 
 
@@ -798,30 +644,16 @@ body{
 <div class="logo-area">
 
     <img
-        class="logo"
-        src="./assets/8yapi_logo.svg"
+        src="./assets/8yapi_logo.png"
+        class="main-logo"
         alt="8 Yapı"
-        onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
     >
-
-    <div
-        id="logoFallback"
-        style="
-            display:none;
-            font-family:Georgia,serif;
-            font-size:34px;
-            font-weight:bold;
-            letter-spacing:5px;
-        "
-    >
-        8 YAPI
-    </div>
 
 </div>
 
 
 <!-- =====================================================
-     CENGİZ
+     CENGİZ GALİTEKİN
 ===================================================== -->
 
 <div class="person">
@@ -830,7 +662,7 @@ body{
         Cengiz Galitekin
     </div>
 
-    <div class="person-company">
+    <div class="person-role">
         8 Yapı
     </div>
 
@@ -841,33 +673,33 @@ body{
 
 
 <!-- =====================================================
-     GERÇEK CEPHE SLAYTI
+     CEPHE SLAYT
 ===================================================== -->
 
 <div class="slideshow">
 
     <img
-        class="slide active"
         src="./assets/cephe01.png"
-        alt="8 Yapı Cephe Projesi"
+        class="slide active"
+        alt="8 Yapı proje görseli"
     >
 
     <img
-        class="slide"
         src="./assets/cephe02.png"
-        alt="8 Yapı Cephe Projesi"
+        class="slide"
+        alt="8 Yapı proje görseli"
     >
 
     <img
-        class="slide"
         src="./assets/cephe03.png"
-        alt="8 Yapı Cephe Projesi"
+        class="slide"
+        alt="8 Yapı proje görseli"
     >
 
     <img
-        class="slide"
         src="./assets/cephe04.png"
-        alt="8 Yapı Cephe Projesi"
+        class="slide"
+        alt="8 Yapı proje görseli"
     >
 
 
@@ -909,11 +741,11 @@ body{
     class="button showroom"
 >
 
-    <span class="small">
+    <span class="showroom-small">
         DİJİTAL SHOWROOM
     </span>
 
-    <span class="large">
+    <span class="showroom-large">
         HİZMETLERİMİZ ve FİYATLANDIRMALAR
     </span>
 
@@ -925,13 +757,12 @@ body{
 ===================================================== -->
 
 <a
-    href="./assets/8-yapi-katalog.pdf"
+    href="#"
     class="button catalog"
-    target="_blank"
-    rel="noopener"
+    onclick="catalogComingSoon();return false;"
 >
 
-    <span class="icon">
+    <span class="catalog-icon">
         ▤
     </span>
 
@@ -943,7 +774,7 @@ body{
 
 
 <!-- =====================================================
-     HIZLI İŞLEMLER
+     İLETİŞİM
 ===================================================== -->
 
 <div class="section-title">
@@ -995,9 +826,9 @@ body{
 
     <a
         href="https://wa.me/905054108707"
-        class="button"
         target="_blank"
         rel="noopener"
+        class="button"
     >
 
         <span class="icon">
@@ -1016,7 +847,7 @@ body{
     <a
         href="#"
         class="button"
-        onclick="return false;"
+        onclick="notReady('Instagram');return false;"
     >
 
         <span class="icon">
@@ -1035,7 +866,7 @@ body{
     <a
         href="#"
         class="button"
-        onclick="return false;"
+        onclick="notReady('Facebook');return false;"
     >
 
         <span class="icon">
@@ -1054,7 +885,7 @@ body{
     <a
         href="#"
         class="button"
-        onclick="return false;"
+        onclick="notReady('X / Twitter');return false;"
     >
 
         <span class="icon">
@@ -1073,7 +904,7 @@ body{
     <a
         href="#"
         class="button"
-        onclick="return false;"
+        onclick="notReady('YouTube');return false;"
     >
 
         <span class="icon">
@@ -1092,7 +923,7 @@ body{
     <a
         href="#"
         class="button full"
-        onclick="return false;"
+        onclick="notReady('Google Değerlendirme');return false;"
     >
 
         <span class="icon">
@@ -1124,11 +955,12 @@ body{
 
     </a>
 
+
 </div>
 
 
 <!-- =====================================================
-     VİZYON
+     CENGİZ GALİTEKİN VİZYON
 ===================================================== -->
 
 <section class="vision">
@@ -1149,17 +981,18 @@ body{
 
     <div class="vision-text">
 
-        8 Yapı'nın yaklaşımını, çalışma anlayışını
-        ve yapı sektöründeki bakış açısını burada
-        anlatacağız.
+        8 Yapı'nın arkasındaki yaklaşımı,
+        yapı sektörüne bakışını ve çalışma
+        anlayışını Cengiz Galitekin'in
+        kendi hikâyesi üzerinden anlatacağımız
+        özel alan.
 
         <br><br>
 
-        Bu bölüm yalnızca bir özgeçmiş alanı değil;
-        Cengiz Galitekin'in yapı, estetik, işçilik,
-        teknoloji ve çevresine değer katma anlayışını
-        müşteriye doğrudan aktaran özel bir marka
-        alanı olacak.
+        Burada yalnızca bir özgeçmiş değil;
+        8 Yapı'nın neden kurulduğu, hangi
+        anlayışla çalıştığı ve yapılan işlerde
+        hangi değerin hedeflendiği anlatılacak.
 
     </div>
 
@@ -1193,7 +1026,7 @@ body{
 <script>
 
 /* =====================================================
-   CEPHE SLAYT SİSTEMİ
+   SLAYT SİSTEMİ
 ===================================================== */
 
 const slides =
@@ -1206,43 +1039,26 @@ let currentSlide = 0;
 
 
 /*
-   Her fotoğraf 4 saniye kalıyor.
-   Geçiş yaklaşık 1.25 saniye.
+   4 saniyede bir fotoğraf değişiyor.
+   Fotoğrafın geçişi 1.5 saniye.
+   Hafif zoom yaklaşık 7 saniyede tamamlanıyor.
 */
 
-setInterval(
+setInterval(function(){
 
-    function(){
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
 
-        slides[currentSlide]
-            .classList.remove("active");
+    currentSlide++;
 
-        dots[currentSlide]
-            .classList.remove("active");
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
 
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
 
-        currentSlide++;
-
-        if(
-            currentSlide >= slides.length
-        ){
-
-            currentSlide = 0;
-
-        }
-
-
-        slides[currentSlide]
-            .classList.add("active");
-
-        dots[currentSlide]
-            .classList.add("active");
-
-    },
-
-    4000
-
-);
+},4000);
 
 
 /* =====================================================
@@ -1264,8 +1080,7 @@ END:VCARD`;
         new Blob(
             [vcard],
             {
-                type:
-                    "text/vcard;charset=utf-8"
+                type:"text/vcard;charset=utf-8"
             }
         );
 
@@ -1286,17 +1101,11 @@ END:VCARD`;
 
     a.remove();
 
-    setTimeout(
+    setTimeout(function(){
 
-        function(){
+        URL.revokeObjectURL(url);
 
-            URL.revokeObjectURL(url);
-
-        },
-
-        1000
-
-    );
+    },1000);
 
 }
 
@@ -1317,27 +1126,19 @@ function copyIBAN(){
     ){
 
         navigator.clipboard
-            .writeText(IBAN)
-            .then(
+        .writeText(IBAN)
+        .then(function(){
 
-                function(){
-
-                    alert(
-                        "IBAN numarası kopyalandı."
-                    );
-
-                }
-
-            )
-            .catch(
-
-                function(){
-
-                    fallbackCopy(IBAN);
-
-                }
-
+            alert(
+                "IBAN numarası kopyalandı."
             );
+
+        })
+        .catch(function(){
+
+            fallbackCopy(IBAN);
+
+        });
 
     }else{
 
@@ -1356,13 +1157,11 @@ function fallbackCopy(text){
     input.value = text;
 
     input.style.position = "fixed";
-
     input.style.opacity = "0";
 
     document.body.appendChild(input);
 
     input.focus();
-
     input.select();
 
     try{
@@ -1385,8 +1184,34 @@ function fallbackCopy(text){
 
 }
 
-</script>
 
+/* =====================================================
+   HENÜZ LİNKİ VERİLMEYENLER
+===================================================== */
+
+function notReady(name){
+
+    alert(
+        name +
+        " bağlantısını gerçek hesap adresi geldiğinde ekleyeceğiz."
+    );
+
+}
+
+
+/* =====================================================
+   KATALOG
+===================================================== */
+
+function catalogComingSoon(){
+
+    alert(
+        "8 Yapı Dijital Kataloğu hazırlanıyor."
+    );
+
+}
+
+</script>
 
 </body>
 </html>
