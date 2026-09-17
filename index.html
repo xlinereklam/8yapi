@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -7,486 +6,1694 @@
 
 <title>8 Yapı | Çevresine Değer Katar</title>
 
+<meta name="description" content="8 Yapı - Dış cephe, dekorasyon, cephe kaplama, estetik tasarım, çatı, mermer, yalıtım, çevre düzenleme ve yapı çözümleri.">
+
 <style>
+
+:root{
+    --navy:#3D3185;
+    --green:#7EBB41;
+    --dark:#11131b;
+    --soft:#f5f6f8;
+    --white:#ffffff;
+    --text:#181a22;
+    --muted:#737783;
+}
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f5f7;
-    color:#151515;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--white);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-header{
-    background:#111;
-    color:#fff;
-    padding:22px 7%;
+button,
+a{
+    font-family:inherit;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:82px;
+    z-index:1000;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+
+    padding:0 5%;
+
+    background:rgba(17,19,27,.78);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-    font-size:30px;
+    color:#fff;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:5px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.header-nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.header-nav a{
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    opacity:.82;
+    transition:.25s;
+}
+
+.header-nav a:hover{
+    color:var(--green);
+    opacity:1;
+}
+
+.header-action{
+    background:var(--green);
+    color:#111;
+    padding:13px 20px;
+    border-radius:5px;
+    font-size:13px;
+    font-weight:800;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(13,15,24,.94) 0%,
+            rgba(13,15,24,.72) 45%,
+            rgba(13,15,24,.25) 100%
+        ),
+        url("assets/hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            rgba(61,49,133,.18) 45%,
+            rgba(126,187,65,.08) 100%
+        );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:900px;
+    padding:120px 7% 80px;
+}
+
+.hero-label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:var(--green);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:4px;
+    margin-bottom:24px;
+}
+
+.hero-label::before{
+    content:"";
+    width:38px;
+    height:2px;
+    background:var(--green);
+}
+
+.hero h1{
+    color:#fff;
+    font-size:clamp(52px,7vw,100px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:30px;
+    max-width:900px;
+}
+
+.hero h1 strong{
+    color:var(--green);
+}
+
+.hero-text{
+    color:rgba(255,255,255,.78);
+    font-size:19px;
+    line-height:1.7;
+    max-width:650px;
+    margin-bottom:38px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.btn-primary{
+    border:none;
+    background:var(--green);
+    color:#111;
+
+    padding:17px 28px;
+
+    font-size:14px;
+    font-weight:900;
+
+    border-radius:5px;
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.4);
+    color:#fff;
+
+    padding:16px 26px;
+
+    font-size:14px;
+    font-weight:800;
+
+    border-radius:5px;
+
+    transition:.25s;
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#111;
+}
+
+.hero-bottom{
+    position:absolute;
+    bottom:32px;
+    left:7%;
+    right:7%;
+
+    z-index:3;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+}
+
+.hero-scroll{
+    color:rgba(255,255,255,.5);
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+.hero-number{
+    color:rgba(255,255,255,.35);
+    font-size:80px;
+    font-weight:900;
+    line-height:.7;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    padding:110px 7%;
+    background:#fff;
+}
+
+.intro-grid{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:90px;
+    align-items:center;
+}
+
+.section-label{
+    color:var(--navy);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:4px;
+    margin-bottom:18px;
+}
+
+.intro h2{
+    font-size:clamp(38px,5vw,65px);
+    line-height:1;
+    letter-spacing:-2px;
+    margin-bottom:28px;
+}
+
+.intro h2 span{
+    color:var(--navy);
+}
+
+.intro p{
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.8;
+    max-width:600px;
+}
+
+.intro-visual{
+    min-height:470px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(61,49,133,.15),
+            rgba(126,187,65,.12)
+        ),
+        url("assets/intro.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    position:relative;
+}
+
+.intro-badge{
+    position:absolute;
+    right:-25px;
+    bottom:30px;
+
+    width:190px;
+    height:190px;
+
+    background:var(--navy);
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    font-size:15px;
+    line-height:1.5;
+    font-weight:800;
+}
+
+.intro-badge span{
+    color:var(--green);
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick{
+    background:var(--soft);
+    padding:30px 7%;
+}
+
+.quick-grid{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+
+    background:#ddd;
+}
+
+.quick-card{
+    background:#fff;
+    padding:32px 25px;
+
+    transition:.25s;
+}
+
+.quick-card:hover{
+    background:var(--navy);
+    color:#fff;
+}
+
+.quick-icon{
+    font-size:25px;
+    margin-bottom:22px;
+}
+
+.quick-card h3{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.quick-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.quick-card:hover p{
+    color:rgba(255,255,255,.7);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+    padding:120px 7%;
+    background:#fff;
+}
+
+.projects-head{
+    max-width:1250px;
+    margin:0 auto 45px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+}
+
+.projects-head h2{
+    font-size:clamp(38px,5vw,64px);
+    letter-spacing:-2px;
+}
+
+.projects-head p{
+    max-width:400px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.project-grid{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:16px;
+}
+
+.project{
+    min-height:360px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:#ddd;
+}
+
+.project:first-child{
+    min-height:560px;
+    grid-row:span 2;
+}
+
+.project-bg{
+    position:absolute;
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+
+    transition:.6s;
+}
+
+.project:hover .project-bg{
+    transform:scale(1.06);
+}
+
+.project-overlay{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:end;
+
+    padding:28px;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0,0,0,.88)
+        );
+
+    color:#fff;
+}
+
+.project-overlay small{
+    color:var(--green);
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.project-overlay h3{
+    font-size:25px;
+    margin-top:8px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    background:var(--dark);
+    color:#fff;
+    padding:120px 7%;
+}
+
+.services-inner{
+    max-width:1250px;
+    margin:auto;
+}
+
+.services-head{
+    max-width:700px;
+    margin-bottom:55px;
+}
+
+.services-head .section-label{
+    color:var(--green);
+}
+
+.services-head h2{
+    font-size:clamp(40px,5vw,68px);
+    line-height:1;
+    letter-spacing:-3px;
+}
+
+.services-head p{
+    margin-top:22px;
+    color:#9b9da7;
+    line-height:1.7;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+
+    background:#30323b;
+}
+
+.service{
+    background:var(--dark);
+    padding:34px 28px;
+    min-height:170px;
+
+    transition:.25s;
+}
+
+.service:hover{
+    background:var(--navy);
+}
+
+.service-number{
+    color:var(--green);
+    font-size:12px;
     font-weight:900;
     letter-spacing:2px;
 }
 
-.slogan{
+.service h3{
+    margin-top:25px;
+    font-size:21px;
+}
+
+.service p{
+    color:#858793;
     font-size:13px;
-    opacity:.75;
-}
-
-.hero{
-    background:#171717;
-    color:#fff;
-    min-height:380px;
-    display:flex;
-    align-items:center;
-    padding:60px 7%;
-}
-
-.hero-content{
-    max-width:750px;
-}
-
-.hero h1{
-    font-size:55px;
-    line-height:1;
-    margin-bottom:20px;
-}
-
-.hero h1 span{
-    color:#d8a84e;
-}
-
-.hero p{
-    font-size:19px;
     line-height:1.6;
-    color:#ccc;
+    margin-top:10px;
+}
+
+/* =========================
+   CATALOG
+========================= */
+
+.catalog{
+    padding:120px 7%;
+    background:
+        linear-gradient(
+            135deg,
+            #fff 0%,
+            #f5f5fa 100%
+        );
+}
+
+.catalog-box{
+    max-width:1250px;
+    min-height:460px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    overflow:hidden;
+}
+
+.catalog-content{
+    background:var(--navy);
+    color:#fff;
+
+    padding:65px;
+}
+
+.catalog-content .section-label{
+    color:var(--green);
+}
+
+.catalog-content h2{
+    font-size:clamp(42px,5vw,65px);
+    line-height:.95;
+    letter-spacing:-3px;
+}
+
+.catalog-content p{
+    color:rgba(255,255,255,.7);
+    line-height:1.7;
+    margin:25px 0 35px;
+}
+
+.catalog-image{
+    background:
+        linear-gradient(
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.05)
+        ),
+        url("assets/catalog-cover.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* =========================
+   ASSISTANT
+========================= */
+
+.assistant{
+    padding:120px 7%;
+    background:#fff;
+}
+
+.assistant-box{
+    max-width:1250px;
+    margin:auto;
+
+    background:var(--soft);
+
+    padding:70px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.assistant h2{
+    font-size:clamp(38px,5vw,60px);
+    line-height:1;
+    letter-spacing:-2px;
+}
+
+.assistant h2 span{
+    color:var(--navy);
+}
+
+.assistant p{
+    color:var(--muted);
+    line-height:1.7;
+    margin:22px 0 30px;
+}
+
+.assistant-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.assistant-option{
+    padding:20px;
+    background:#fff;
+    border:1px solid #e1e2e7;
+    font-weight:800;
+    font-size:14px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.assistant-option:hover{
+    border-color:var(--green);
+    transform:translateY(-2px);
+}
+
+.assistant-visual{
+    min-height:360px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(61,49,133,.2),
+            rgba(126,187,65,.1)
+        ),
+        url("assets/assistant.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* =========================
+   FOUNDER
+========================= */
+
+.founder{
+    background:#11131b;
+    color:#fff;
+    padding:120px 7%;
+}
+
+.founder-grid{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:400px 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.founder-photo{
+    height:520px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.25),
+            transparent
+        ),
+        url("assets/founder.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.founder-content .section-label{
+    color:var(--green);
+}
+
+.founder-content h2{
+    font-size:50px;
+    line-height:1;
+    margin-bottom:8px;
+}
+
+.founder-title{
+    color:var(--green);
+    font-weight:800;
     margin-bottom:30px;
 }
 
-.start-btn{
-    display:inline-block;
-    background:#d8a84e;
-    color:#111;
-    padding:16px 28px;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
-    border:none;
-    font-size:16px;
-}
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:50px 20px;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.section-title p{
-    color:#777;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:#fff;
-    border-radius:12px;
-    padding:30px 20px;
-    text-align:center;
-    cursor:pointer;
-    border:2px solid transparent;
-    transition:.25s;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.card:hover{
-    transform:translateY(-4px);
-}
-
-.card.selected{
-    border-color:#d8a84e;
-    background:#fffaf0;
-}
-
-.card-icon{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#777;
-    font-size:14px;
-    line-height:1.5;
-}
-
-#configurator{
-    display:none;
-}
-
-.step{
-    background:#fff;
-    border-radius:15px;
-    padding:30px;
+.founder-content blockquote{
+    font-size:25px;
+    line-height:1.45;
     margin-bottom:25px;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-.step h3{
-    margin-bottom:20px;
+.founder-content p{
+    color:#92949e;
+    line-height:1.8;
 }
 
-.options{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-}
+/* =========================
+   CTA
+========================= */
 
-.option{
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:18px;
-    cursor:pointer;
-    transition:.2s;
-}
+.cta{
+    padding:110px 7%;
 
-.option:hover{
-    border-color:#d8a84e;
-}
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            #29215f
+        );
 
-.option.selected{
-    border:2px solid #d8a84e;
-    background:#fffaf0;
-}
-
-.option strong{
-    display:block;
-    margin-bottom:6px;
-}
-
-.option small{
-    color:#777;
-}
-
-.inputs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-input,select{
-    width:100%;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:16px;
-}
-
-.quote{
-    background:#111;
     color:#fff;
-    border-radius:15px;
-    padding:30px;
-    margin-top:25px;
-}
-
-.quote h3{
-    margin-bottom:15px;
-}
-
-.total{
-    font-size:38px;
-    font-weight:bold;
-    color:#d8a84e;
-    margin:15px 0;
-}
-
-footer{
-    background:#111;
-    color:#aaa;
     text-align:center;
-    padding:30px;
-    margin-top:50px;
 }
 
-@media(max-width:600px){
-    .hero h1{
-        font-size:40px;
+.cta h2{
+    font-size:clamp(42px,6vw,75px);
+    line-height:.95;
+    letter-spacing:-3px;
+}
+
+.cta h2 span{
+    color:var(--green);
+}
+
+.cta p{
+    max-width:600px;
+    margin:25px auto 35px;
+    color:rgba(255,255,255,.72);
+    line-height:1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#0c0d12;
+    color:#fff;
+    padding:45px 7%;
+}
+
+.footer-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.footer-logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.footer-logo span{
+    color:var(--green);
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+}
+
+.footer-links a{
+    color:#858793;
+    font-size:12px;
+}
+
+.footer-links a:hover{
+    color:var(--green);
+}
+
+.copyright{
+    color:#555762;
+    font-size:11px;
+    margin-top:30px;
+    text-align:center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .header{
+        padding:0 20px;
     }
 
-    .inputs{
+    .header-nav{
+        display:none;
+    }
+
+    .header-action{
+        padding:11px 14px;
+    }
+
+    .hero-content{
+        padding:130px 25px 100px;
+    }
+
+    .hero h1{
+        font-size:54px;
+        letter-spacing:-3px;
+    }
+
+    .hero-text{
+        font-size:16px;
+    }
+
+    .hero-bottom{
+        left:25px;
+        right:25px;
+    }
+
+    .hero-number{
+        font-size:50px;
+    }
+
+    .intro-grid,
+    .catalog-box,
+    .assistant-box,
+    .founder-grid{
         grid-template-columns:1fr;
     }
 
-    header{
+    .intro,
+    .projects,
+    .services,
+    .catalog,
+    .assistant,
+    .founder{
+        padding:80px 25px;
+    }
+
+    .intro-visual{
+        min-height:360px;
+    }
+
+    .quick-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project,
+    .project:first-child{
+        min-height:400px;
+        grid-row:auto;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .catalog-content{
+        padding:45px 30px;
+    }
+
+    .catalog-image{
+        min-height:350px;
+    }
+
+    .assistant-box{
+        padding:40px 25px;
+        gap:40px;
+    }
+
+    .founder-grid{
+        gap:40px;
+    }
+
+    .founder-photo{
+        height:420px;
+    }
+
+    .footer-inner{
         flex-direction:column;
-        gap:8px;
+        align-items:flex-start;
     }
 }
+
+@media(max-width:550px){
+
+    .hero h1{
+        font-size:44px;
+    }
+
+    .quick-grid{
+        grid-template-columns:1fr;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .assistant-options{
+        grid-template-columns:1fr;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .btn-primary,
+    .btn-outline{
+        width:100%;
+        text-align:center;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">8 YAPI</div>
-    <div class="slogan">Çevresine Değer Katar.</div>
+<!-- HEADER -->
+
+<header class="header">
+
+    <a href="#" class="logo">
+        8<span>.</span>YAPI
+    </a>
+
+    <nav class="header-nav">
+        <a href="#projects">Projeler</a>
+        <a href="#services">Hizmetler</a>
+        <a href="#catalog">Katalog</a>
+        <a href="#founder">8 Yapı</a>
+    </nav>
+
+    <a href="#assistant" class="header-action">
+        PROJENİZİ BAŞLAT
+    </a>
+
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>Yapınız için<br><span>doğru çözümü</span> seçin.</h1>
 
-        <p>
-            İhtiyacınızı adım adım belirleyin.
-            Malzeme, ölçü ve uygulama seçeneklerini seçin.
-            Sistem sizin için tahmini teklif oluştursun.
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            8 YAPI
+        </div>
+
+        <h1>
+            Yapıya değil,<br>
+            <strong>değere</strong> dokunun.
+        </h1>
+
+        <p class="hero-text">
+            Dış cepheden çatıya, yalıtımdan mermer uygulamalarına,
+            bina girişlerinden çevre düzenlemesine kadar yapınızı
+            baştan sona ele alan çözümler.
         </p>
 
-        <button class="start-btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-            Teklif Oluşturmaya Başla
-        </button>
-    </div>
-</section>
+        <div class="hero-buttons">
 
-<section id="services" class="container">
+            <a href="#assistant" class="btn-primary">
+                PROJENİZİ BAŞLAT →
+            </a>
 
-    <div class="section-title">
-        <h2>Ne yaptırmak istiyorsunuz?</h2>
-        <p>İhtiyacınıza uygun hizmeti seçerek başlayın.</p>
-    </div>
-
-    <div class="cards">
-
-        <div class="card" onclick="selectService('Tabela',this)">
-            <div class="card-icon">🏢</div>
-            <h3>Tabela</h3>
-            <p>Işıklı, ışıksız, kutu harf ve özel tabela çözümleri.</p>
-        </div>
-
-        <div class="card" onclick="selectService('Cephe',this)">
-            <div class="card-icon">🏗️</div>
-            <h3>Cephe</h3>
-            <p>Kompozit, cam, cephe kaplama ve uygulama çözümleri.</p>
-        </div>
-
-        <div class="card" onclick="selectService('İç Mekân',this)">
-            <div class="card-icon">🏠</div>
-            <h3>İç Mekân</h3>
-            <p>İç mekân tasarım, kaplama ve dekoratif uygulamalar.</p>
-        </div>
-
-        <div class="card" onclick="selectService('Reklam',this)">
-            <div class="card-icon">📢</div>
-            <h3>Reklam</h3>
-            <p>Markanız için reklam ve tanıtım çözümleri.</p>
-        </div>
-
-    </div>
-</section>
-
-<section id="configurator" class="container">
-
-    <div class="section-title">
-        <h2>Teklifinizi Oluşturalım</h2>
-        <p id="selectedServiceText"></p>
-    </div>
-
-    <div class="step">
-
-        <h3>1. Ölçüler</h3>
-
-        <div class="inputs">
-
-            <div>
-                <label>Genişlik (metre)</label>
-                <input type="number" id="width" min="0" step="0.01" value="1" oninput="calculate()">
-            </div>
-
-            <div>
-                <label>Yükseklik (metre)</label>
-                <input type="number" id="height" min="0" step="0.01" value="1" oninput="calculate()">
-            </div>
+            <a href="#projects" class="btn-outline">
+                PROJELERİ KEŞFET
+            </a>
 
         </div>
 
     </div>
 
-    <div class="step">
+    <div class="hero-bottom">
 
-        <h3>2. Malzeme</h3>
-
-        <div class="options">
-
-            <div class="option selected" onclick="selectMaterial('Standart',100,this)">
-                <strong>Standart</strong>
-                <small>Ekonomik çözüm</small>
-            </div>
-
-            <div class="option" onclick="selectMaterial('Orta Segment',175,this)">
-                <strong>Orta Segment</strong>
-                <small>Dengeli çözüm</small>
-            </div>
-
-            <div class="option" onclick="selectMaterial('Premium',275,this)">
-                <strong>Premium</strong>
-                <small>Üst segment malzeme</small>
-            </div>
-
+        <div class="hero-scroll">
+            AŞAĞI KAYDIR ↓
         </div>
 
-    </div>
-
-    <div class="step">
-
-        <h3>3. Uygulama</h3>
-
-        <div class="options">
-
-            <div class="option selected" onclick="selectApplication('Standart Montaj',1,this)">
-                <strong>Standart Montaj</strong>
-                <small>Normal uygulama</small>
-            </div>
-
-            <div class="option" onclick="selectApplication('Zorlu Montaj',1.25,this)">
-                <strong>Zorlu Montaj</strong>
-                <small>Yükseklik / özel uygulama</small>
-            </div>
-
+        <div class="hero-number">
+            08
         </div>
-
-    </div>
-
-    <div class="quote">
-
-        <h3>Tahmini Teklif</h3>
-
-        <div id="summary">
-            Hizmet seçiniz.
-        </div>
-
-        <div class="total" id="total">
-            0 TL
-        </div>
-
-        <button class="start-btn" onclick="createQuote()">
-            Teklifi Oluştur
-        </button>
 
     </div>
 
 </section>
 
-<footer>
-    8 Yapı © 2026 — Çevresine Değer Katar.
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <div class="intro-grid">
+
+        <div>
+
+            <div class="section-label">
+                BİZ NE YAPIYORUZ?
+            </div>
+
+            <h2>
+                Bir binayı<br>
+                <span>değiştirmekten</span><br>
+                daha fazlası.
+            </h2>
+
+            <p>
+                8 Yapı; cephe, dekorasyon, estetik tasarım,
+                yalıtım, çatı, mermer, kapı-pencere, bina
+                girişleri, elektronik giriş sistemleri ve
+                çevre düzenlemeleri gibi farklı uygulamaları
+                tek bir çözüm anlayışında buluşturur.
+            </p>
+
+        </div>
+
+        <div class="intro-visual">
+
+            <div class="intro-badge">
+                <div>
+                    <span>ÇEVRESİNE</span><br>
+                    DEĞER<br>
+                    KATAR
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<section class="quick">
+
+    <div class="quick-grid">
+
+        <a href="#assistant" class="quick-card">
+
+            <div class="quick-icon">✦</div>
+
+            <h3>Proje Asistanı</h3>
+
+            <p>
+                Ne yaptırmanız gerektiğinden emin değilseniz
+                birkaç adımda projenizi tanımlayın.
+            </p>
+
+        </a>
+
+
+        <a href="#catalog" class="quick-card">
+
+            <div class="quick-icon">▤</div>
+
+            <h3>48 Sayfalık Katalog</h3>
+
+            <p>
+                8 Yapı'nın hizmet ve uygulamalarını
+                detaylı şekilde inceleyin.
+            </p>
+
+        </a>
+
+
+        <a href="#projects" class="quick-card">
+
+            <div class="quick-icon">◈</div>
+
+            <h3>Projeler</h3>
+
+            <p>
+                Gerçek uygulamaları ve yapı dönüşümlerini
+                keşfedin.
+            </p>
+
+        </a>
+
+
+        <a href="#assistant" class="quick-card">
+
+            <div class="quick-icon">↗</div>
+
+            <h3>Teklif Talep Et</h3>
+
+            <p>
+                İhtiyacınızı bize aktarın.
+                8 Yapı ekibi sizinle iletişime geçsin.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section class="projects" id="projects">
+
+    <div class="projects-head">
+
+        <div>
+
+            <div class="section-label">
+                SEÇİLMİŞ ÇALIŞMALAR
+            </div>
+
+            <h2>
+                Projeler.
+            </h2>
+
+        </div>
+
+        <p>
+            Bir yapının değişimini anlatmanın en iyi yolu
+            sonucu göstermektir.
+        </p>
+
+    </div>
+
+
+    <div class="project-grid">
+
+        <div class="project">
+
+            <div
+                class="project-bg"
+                style="background-image:url('assets/project01.jpg')">
+            </div>
+
+            <div class="project-overlay">
+
+                <div>
+                    <small>DIŞ CEPHE</small>
+                    <h3>Estetik Cephe Dönüşümü</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div
+                class="project-bg"
+                style="background-image:url('assets/project02.jpg')">
+            </div>
+
+            <div class="project-overlay">
+
+                <div>
+                    <small>GİRİŞ</small>
+                    <h3>Bina Girişi</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div
+                class="project-bg"
+                style="background-image:url('assets/project03.jpg')">
+            </div>
+
+            <div class="project-overlay">
+
+                <div>
+                    <small>ÇEVRE</small>
+                    <h3>Yaşam Alanı</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div
+                class="project-bg"
+                style="background-image:url('assets/project04.jpg')">
+            </div>
+
+            <div class="project-overlay">
+
+                <div>
+                    <small>CEPHE</small>
+                    <h3>Modern Cephe</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div
+                class="project-bg"
+                style="background-image:url('assets/project05.jpg')">
+            </div>
+
+            <div class="project-overlay">
+
+                <div>
+                    <small>UYGULAMA</small>
+                    <h3>Yapı Yenileme</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+    <div class="services-inner">
+
+        <div class="services-head">
+
+            <div class="section-label">
+                ÇÖZÜMLERİMİZ
+            </div>
+
+            <h2>
+                Yapınız için<br>
+                ne gerekiyorsa.
+            </h2>
+
+            <p>
+                İhtiyacınızı tek tek farklı firmalara bölmek yerine,
+                projenizin ihtiyaç duyduğu uygulamaları tek bir
+                çözüm çatısı altında değerlendirin.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service">
+                <span class="service-number">01</span>
+                <h3>Dış Cephe</h3>
+                <p>Cephe yenileme ve estetik uygulamalar.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">02</span>
+                <h3>Cephe Kaplama</h3>
+                <p>Farklı yüzey ve malzeme çözümleri.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">03</span>
+                <h3>Yalıtım & Mantolama</h3>
+                <p>Yapının ısı ve yalıtım ihtiyaçları.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">04</span>
+                <h3>Estetik Tasarım</h3>
+                <p>Yapıya karakter kazandıran tasarım uygulamaları.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">05</span>
+                <h3>Çatı Yenileme</h3>
+                <p>Çatı yenileme ve uygulama çözümleri.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">06</span>
+                <h3>Mermer Uygulamaları</h3>
+                <p>Girişler ve farklı mimari alanlar için mermer.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">07</span>
+                <h3>Kapı & Pencere</h3>
+                <p>Yapıya uygun kapı ve pencere uygulamaları.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">08</span>
+                <h3>Bina Girişleri</h3>
+                <p>Sundurma, giriş ve karşılama alanları.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">09</span>
+                <h3>Elektronik Giriş</h3>
+                <p>Elektronik giriş ve erişim sistemleri.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">10</span>
+                <h3>Çevre Düzenleme</h3>
+                <p>Yapının çevresine değer katan uygulamalar.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">11</span>
+                <h3>Park & Sosyal Alan</h3>
+                <p>Yaşam alanları ve sosyal alan uygulamaları.</p>
+            </div>
+
+            <div class="service">
+                <span class="service-number">12</span>
+                <h3>Özel Projeler</h3>
+                <p>Projenizin ihtiyacına göre özel çözümler.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CATALOG -->
+
+<section class="catalog" id="catalog">
+
+    <div class="catalog-box">
+
+        <div class="catalog-content">
+
+            <div class="section-label">
+                8 YAPI KATALOĞU
+            </div>
+
+            <h2>
+                48 sayfa.<br>
+                Bir yapı<br>
+                dünyası.
+            </h2>
+
+            <p>
+                8 Yapı'nın hizmetlerini, uygulamalarını,
+                yaklaşımını ve projelerini detaylı şekilde
+                incelemek için dijital kataloğu açın.
+            </p>
+
+            <a
+                href="assets/8-yapi-katalog.pdf"
+                target="_blank"
+                class="btn-primary">
+                KATALOĞU AÇ →
+            </a>
+
+        </div>
+
+        <div class="catalog-image"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ASSISTANT -->
+
+<section class="assistant" id="assistant">
+
+    <div class="assistant-box">
+
+        <div>
+
+            <div class="section-label">
+                8 YAPI PROJE ASİSTANI
+            </div>
+
+            <h2>
+                Yapınız için<br>
+                nereden <span>başlamalı?</span>
+            </h2>
+
+            <p>
+                Ne yaptırmanız gerektiğinden emin değilseniz
+                sorun değil. Projenizi birkaç adımda tanımlayın.
+                Seçtiğiniz bilgiler 8 Yapı ekibine iletilerek
+                size özel görüşme süreci başlatılır.
+            </p>
+
+            <div class="assistant-options">
+
+                <button class="assistant-option"
+                        onclick="startProject('Dış Cephe')">
+                    Dış Cephe
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Yalıtım / Mantolama')">
+                    Yalıtım / Mantolama
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Çatı')">
+                    Çatı
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Bina Girişi')">
+                    Bina Girişi
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Mermer')">
+                    Mermer
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Çevre Düzenleme')">
+                    Çevre Düzenleme
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Kapı / Pencere')">
+                    Kapı / Pencere
+                </button>
+
+                <button class="assistant-option"
+                        onclick="startProject('Karar Veremedim')">
+                    Henüz Karar Vermedim
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="assistant-visual"></div>
+
+    </div>
+
+</section>
+
+
+<!-- FOUNDER -->
+
+<section class="founder" id="founder">
+
+    <div class="founder-grid">
+
+        <div class="founder-photo"></div>
+
+        <div class="founder-content">
+
+            <div class="section-label">
+                8 YAPI
+            </div>
+
+            <h2>
+                Bir vizyonun<br>
+                arkasında.
+            </h2>
+
+            <div class="founder-title">
+                CENGİZ GALİTEKİN
+            </div>
+
+            <blockquote>
+                “Bir yapıya değer katmak,
+                yalnızca onu yenilemek değil;
+                çevresiyle birlikte düşünmektir.”
+            </blockquote>
+
+            <p>
+                8 Yapı'nın yaklaşımını, firma sahibinin
+                vizyonunu ve markanın gelecek hedeflerini
+                anlatan özel bölüm.
+            </p>
+
+            <br>
+
+            <a
+                href="#assistant"
+                class="btn-primary">
+                PROJENİZİ DOĞRUDAN İLETİN →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="section-label" style="color:#7EBB41;">
+        ÇEVRESİNE DEĞER KATAR
+    </div>
+
+    <h2>
+        Yapınız için<br>
+        <span>bir sonraki adım.</span>
+    </h2>
+
+    <p>
+        Projenizi anlatın. İhtiyaçlarınızı birlikte
+        değerlendirelim.
+    </p>
+
+    <a
+        href="#assistant"
+        class="btn-primary">
+        PROJE TALEBİ OLUŞTUR →
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+            8<span>.</span>YAPI
+        </div>
+
+        <div class="footer-links">
+            <a href="#projects">Projeler</a>
+            <a href="#services">Hizmetler</a>
+            <a href="#catalog">Katalog</a>
+            <a href="#assistant">Teklif Talebi</a>
+            <a href="#founder">8 Yapı</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 8 Yapı — Çevresine Değer Katar.
+    </div>
+
 </footer>
+
 
 <script>
 
-let selectedService = "";
-let materialPrice = 100;
-let applicationMultiplier = 1;
+/* =========================
+   PROJE ASİSTANI
+========================= */
 
-function selectService(service,element){
+function startProject(service){
 
-    selectedService = service;
+    const phone = "905XXXXXXXXX";
 
-    document.querySelectorAll("#services .card").forEach(card=>{
-        card.classList.remove("selected");
-    });
+    const message =
+`8 YAPI PROJE TALEBİ
 
-    element.classList.add("selected");
+Merhaba, 8 Yapı dijital proje asistanı üzerinden iletişime geçiyorum.
 
-    document.getElementById("configurator").style.display="block";
+İLGİLENDİĞİM HİZMET:
+${service}
 
-    document.getElementById("selectedServiceText").innerHTML =
-        "Seçilen hizmet: <strong>"+service+"</strong>";
+Projem hakkında görüşmek ve bilgi almak istiyorum.
 
-    document.getElementById("configurator").scrollIntoView({
-        behavior:"smooth"
-    });
+Ad Soyad:
+Telefon:
+Proje / Yapı:
+Yaklaşık alan:
+Konum:
+Notlar:`;
 
-    calculate();
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url,"_blank");
+
 }
 
-function selectMaterial(name,price,element){
 
-    materialPrice = price;
+/* =========================
+   HEADER SCROLL
+========================= */
 
-    document.querySelectorAll(".step:nth-of-type(2) .option")
-        .forEach(option=>option.classList.remove("selected"));
+window.addEventListener("scroll",function(){
 
-    element.classList.add("selected");
+    const header = document.querySelector(".header");
 
-    calculate();
-}
-
-function selectApplication(name,multiplier,element){
-
-    applicationMultiplier = multiplier;
-
-    document.querySelectorAll(".step:nth-of-type(3) .option")
-        .forEach(option=>option.classList.remove("selected"));
-
-    element.classList.add("selected");
-
-    calculate();
-}
-
-function calculate(){
-
-    const width = parseFloat(document.getElementById("width").value) || 0;
-    const height = parseFloat(document.getElementById("height").value) || 0;
-
-    const area = width * height;
-
-    const total = area * materialPrice * applicationMultiplier;
-
-    document.getElementById("summary").innerHTML =
-        selectedService
-        ? selectedService + " • " + area.toFixed(2) + " m²"
-        : "Hizmet seçiniz.";
-
-    document.getElementById("total").innerHTML =
-        total.toLocaleString("tr-TR") + " TL";
-}
-
-function createQuote(){
-
-    if(!selectedService){
-        alert("Lütfen önce bir hizmet seçin.");
-        return;
+    if(window.scrollY > 50){
+        header.style.background = "rgba(17,19,27,.96)";
+    }else{
+        header.style.background = "rgba(17,19,27,.78)";
     }
 
-    alert(
-        "Teklif oluşturuldu!\n\n" +
-        "Hizmet: " + selectedService + "\n" +
-        "Toplam: " + document.getElementById("total").innerText
-    );
-}
+});
 
 </script>
 
