@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#f7f7f5">
 
 <title>8 Yapı | Cengiz Galitekin</title>
 
 <style>
 
 /* =====================================================
-   TEMEL
+   RESET
 ===================================================== */
 
 *{
@@ -19,36 +24,65 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
     width:100%;
     min-height:100%;
 }
 
 body{
-    background:#e4e2dd;
-    font-family:Arial,Helvetica,sans-serif;
-    color:#171717;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:#17191d;
+
     display:flex;
     justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(20,42,75,.07),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(180,150,80,.07),
+            transparent 30%
+        ),
+        #e8e9e7;
+
+    overflow-x:hidden;
 }
 
 
 /* =====================================================
-   TELEFON GÖRÜNÜMÜ
+   TELEFON
 ===================================================== */
 
 .phone{
+
     width:min(100%,430px);
+
     min-height:100vh;
-    background:#f5f3ee;
+
+    position:relative;
+
     overflow:hidden;
-    box-shadow:0 20px 70px rgba(0,0,0,.15);
+
+    background:#f8f8f6;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.16);
 }
 
 @media(max-width:600px){
 
     body{
-        background:#f5f3ee;
+        background:#f8f8f6;
     }
 
     .phone{
@@ -59,27 +93,126 @@ body{
 
 
 /* =====================================================
-   KAĞIT / MİMARİ DOKU
+   HAREKETLİ BEYAZ ZEMİN
 ===================================================== */
 
 .page{
+
+    position:relative;
+
     min-height:100vh;
-    padding:24px 19px 35px;
+
+    overflow:hidden;
+
+    padding:
+        24px
+        19px
+        38px;
 
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(0,0,0,.035) 0 1px,
-            transparent 1.2px
-        ),
-        radial-gradient(
-            circle at 80% 75%,
-            rgba(0,0,0,.025) 0 1px,
-            transparent 1.2px
-        ),
-        #f5f3ee;
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8f8f6 48%,
+            #f1f2f0 100%
+        );
+}
 
-    background-size:19px 19px,27px 27px;
+
+/* Mimari çizgiler */
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    top:-170px;
+    right:-250px;
+
+    border:
+        1px solid rgba(15,43,77,.07);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 0 35px rgba(15,43,77,.018),
+        0 0 0 70px rgba(15,43,77,.012);
+
+    animation:
+        architectureFloat 15s ease-in-out infinite;
+}
+
+.page::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    bottom:-160px;
+    left:-150px;
+
+    border:
+        1px solid rgba(190,155,70,.10);
+
+    transform:rotate(25deg);
+
+    animation:
+        architectureFloat2 18s ease-in-out infinite;
+}
+
+
+/* Zemindeki çok hafif ışık */
+
+@keyframes architectureFloat{
+
+    0%,100%{
+        transform:translate(0,0) scale(1);
+        opacity:.65;
+    }
+
+    50%{
+        transform:translate(-25px,25px) scale(1.06);
+        opacity:1;
+    }
+}
+
+@keyframes architectureFloat2{
+
+    0%,100%{
+        transform:rotate(25deg) translate(0,0);
+    }
+
+    50%{
+        transform:rotate(31deg) translate(20px,-15px);
+    }
+}
+
+
+/* =====================================================
+   TÜM İÇERİK Z-INDEX
+===================================================== */
+
+.logo-area,
+.person,
+.divider,
+.slideshow,
+.slogan,
+.button,
+.section-title,
+.actions,
+.vision,
+.footer{
+
+    position:relative;
+
+    z-index:3;
 }
 
 
@@ -88,87 +221,171 @@ body{
 ===================================================== */
 
 .logo-area{
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    min-height:85px;
-    padding:5px 0 8px;
+
+    min-height:82px;
+
+    padding:
+        3px
+        0
+        7px;
 }
 
 .main-logo{
+
     display:block;
+
     width:205px;
+
     max-width:78%;
+
     height:auto;
+
+    filter:
+        drop-shadow(
+            0 4px 7px rgba(0,0,0,.07)
+        );
+
+    animation:
+        logoFloat 5s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
 }
 
 
 /* =====================================================
-   İSİM
+   CENGİZ GALİTEKİN
 ===================================================== */
 
 .person{
+
     text-align:center;
-    margin-top:2px;
+
+    margin-top:3px;
+
     margin-bottom:18px;
 }
 
+
+/*
+   Daha zarif, ince, imza hissi.
+   Sistemde varsa URW Chancery / Apple Chancery
+   kullanılır.
+*/
+
 .person-name{
+
     font-family:
         "URW Chancery L",
         "Apple Chancery",
-        "Segoe Print",
-        "Bradley Hand",
+        "Brush Script MT",
+        "Segoe Script",
+        "Lucida Handwriting",
         cursive;
 
-    font-size:24px;
+    font-size:26px;
+
     font-weight:400;
-    letter-spacing:.1px;
+
+    letter-spacing:.3px;
+
     line-height:1.2;
-    color:#292929;
-    transform:rotate(-2deg);
+
+    color:#17253a;
+
+    transform:
+        rotate(-2.5deg);
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.8);
+
 }
 
+
+/* YENİ ÜNVAN */
+
 .person-role{
-    margin-top:7px;
-    font-size:9px;
-    letter-spacing:3px;
-    color:#777;
+
+    margin-top:10px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:8.5px;
+
+    font-weight:600;
+
+    letter-spacing:2.1px;
+
+    color:#69717b;
+
     text-transform:uppercase;
 }
 
 
 /* =====================================================
-   İNCE ÇİZGİ
+   AYIRICI
 ===================================================== */
 
 .divider{
-    width:48px;
+
+    width:50px;
+
     height:1px;
-    background:#222;
-    opacity:.25;
-    margin:0 auto 18px;
+
+    margin:
+        0
+        auto
+        18px;
+
+    background:#173452;
+
+    opacity:.22;
 }
 
 
 /* =====================================================
-   CEPHE SLAYT
+   SLAYT
 ===================================================== */
 
 .slideshow{
-    position:relative;
+
     width:100%;
+
     height:235px;
+
+    position:relative;
+
     overflow:hidden;
-    border-radius:7px;
+
+    border-radius:8px;
+
     background:#ddd;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.15);
+        0 14px 30px rgba(0,0,0,.13);
 }
 
 .slide{
+
     position:absolute;
+
     inset:0;
 
     width:100%;
@@ -178,31 +395,38 @@ body{
 
     opacity:0;
 
-    transform:scale(1.07);
+    transform:
+        scale(1.06);
 
     transition:
-        opacity 1.5s ease-in-out,
-        transform 7s ease-out;
+        opacity 1.6s ease-in-out,
+        transform 7s cubic-bezier(.2,.7,.2,1);
 }
 
 .slide.active{
+
     opacity:1;
-    transform:scale(1);
+
+    transform:
+        scale(1);
 }
 
 
-/* fotoğrafın üstüne çok hafif perde */
+/* Fotoğraf üzerine hafif mimari perde */
 
 .slideshow::after{
+
     content:"";
+
     position:absolute;
+
     inset:0;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0,0,0,.02),
-            rgba(0,0,0,.13)
+            rgba(7,25,45,.02),
+            rgba(7,25,45,.12)
         );
 
     pointer-events:none;
@@ -214,28 +438,45 @@ body{
 ===================================================== */
 
 .dots{
+
     position:absolute;
-    left:50%;
-    bottom:11px;
-    transform:translateX(-50%);
+
     z-index:5;
 
+    left:50%;
+    bottom:11px;
+
+    transform:
+        translateX(-50%);
+
     display:flex;
+
     gap:6px;
 }
 
 .dot{
+
     width:5px;
     height:5px;
+
     border-radius:50%;
-    background:rgba(255,255,255,.55);
-    transition:.35s ease;
+
+    background:
+        rgba(255,255,255,.55);
+
+    transition:.4s ease;
 }
 
 .dot.active{
+
     width:18px;
+
     border-radius:5px;
+
     background:#fff;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.8);
 }
 
 
@@ -244,59 +485,164 @@ body{
 ===================================================== */
 
 .slogan{
+
     text-align:center;
-    padding:19px 5px 17px;
+
+    padding:
+        19px
+        5px
+        17px;
 }
 
 .slogan-main{
+
     font-family:
         Georgia,
         "Times New Roman",
         serif;
 
     font-size:18px;
-    letter-spacing:.8px;
+
+    letter-spacing:1px;
+
+    color:#173d69;
+
+    text-shadow:
+        0 1px 0 #fff;
 }
 
 .slogan-sub{
+
     margin-top:6px;
+
     font-size:8px;
-    letter-spacing:2.8px;
-    color:#858585;
+
+    letter-spacing:3px;
+
+    color:#92969a;
 }
 
 
 /* =====================================================
-   GENEL BUTON
+   BUTON TEMEL
 ===================================================== */
 
 .button{
+
     width:100%;
-    min-height:59px;
+
+    min-height:60px;
+
+    position:relative;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     gap:10px;
 
-    border-radius:6px;
+    overflow:hidden;
+
+    border-radius:7px;
 
     text-decoration:none;
 
     margin-bottom:10px;
 
     font-size:14px;
+
     font-weight:600;
 
     letter-spacing:.1px;
 
+    cursor:pointer;
+
+    border:none;
+
     transition:
-        transform .18s ease,
-        box-shadow .18s ease;
+        transform .2s ease,
+        box-shadow .25s ease;
+}
+
+
+/* Cam ışık taraması */
+
+.button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-75%;
+
+    width:45%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255,255,255,.48),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:
+        buttonShine 5.5s ease-in-out infinite;
+}
+
+@keyframes buttonShine{
+
+    0%{
+        left:-75%;
+    }
+
+    35%{
+        left:125%;
+    }
+
+    100%{
+        left:125%;
+    }
+}
+
+
+/* Hafif cam kenarı */
+
+.button::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    border-radius:inherit;
+
+    pointer-events:none;
+}
+
+.button > *{
+
+    position:relative;
+
+    z-index:2;
 }
 
 .button:active{
-    transform:scale(.975);
+
+    transform:
+        scale(.965);
+
 }
 
 
@@ -305,33 +651,48 @@ body{
 ===================================================== */
 
 .showroom{
-    min-height:84px;
+
+    min-height:86px;
 
     flex-direction:column;
 
-    gap:4px;
+    gap:5px;
 
-    background:#2c8050;
     color:#fff;
 
+    background:
+        linear-gradient(
+            135deg,
+            #236d42,
+            #2f8955,
+            #246d42
+        );
+
     box-shadow:
-        0 10px 24px rgba(44,128,80,.22);
+        0 10px 24px rgba(38,119,73,.22);
 }
 
 .showroom-small{
+
     font-size:9px;
+
     letter-spacing:3px;
-    opacity:.78;
+
+    opacity:.82;
 }
 
 .showroom-large{
+
     font-family:
         Georgia,
         "Times New Roman",
         serif;
 
     font-size:17px;
+
     text-align:center;
+
+    letter-spacing:.1px;
 }
 
 
@@ -340,17 +701,25 @@ body{
 ===================================================== */
 
 .catalog{
-    background:#22221f;
+
+    min-height:65px;
+
     color:#fff;
 
-    min-height:64px;
+    background:
+        linear-gradient(
+            135deg,
+            #161d27,
+            #273445
+        );
 
     box-shadow:
-        0 8px 18px rgba(0,0,0,.12);
+        0 9px 21px rgba(20,31,45,.18);
 }
 
 .catalog-icon{
-    font-size:18px;
+
+    font-size:19px;
 }
 
 
@@ -359,57 +728,106 @@ body{
 ===================================================== */
 
 .section-title{
+
     display:flex;
+
     align-items:center;
+
     gap:9px;
 
     margin:
-        25px
+        26px
         0
         11px;
 
     font-size:9px;
+
     font-weight:700;
-    letter-spacing:2.4px;
-    color:#818181;
+
+    letter-spacing:2.5px;
+
+    color:#7d838a;
 }
 
 .section-title::before{
+
     content:"";
+
     width:22px;
+
     height:1px;
-    background:#999;
+
+    background:#9ca1a5;
 }
 
 
 /* =====================================================
-   İLETİŞİM GRID
+   İLETİŞİM BUTONLARI
 ===================================================== */
 
 .actions{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
     gap:9px;
 }
 
 .actions .button{
+
     min-height:59px;
+
     margin:0;
 
-    background:#fff;
-    color:#202020;
+    color:#1d2630;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.94),
+            rgba(243,245,245,.76)
+        );
 
     border:
-        1px solid rgba(0,0,0,.10);
+        1px solid rgba(25,50,75,.09);
 
     box-shadow:
-        0 4px 12px rgba(0,0,0,.045);
+        0 6px 16px rgba(20,35,50,.055);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
 
     font-size:13px;
 }
 
 .actions .button.full{
-    grid-column:1 / -1;
+
+    grid-column:
+        1 / -1;
+}
+
+
+/* =====================================================
+   BUTON HOVER
+===================================================== */
+
+@media(hover:hover){
+
+    .button:hover{
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 10px 24px rgba(20,40,60,.13);
+    }
+
 }
 
 
@@ -418,9 +836,13 @@ body{
 ===================================================== */
 
 .icon{
+
     min-width:19px;
+
     text-align:center;
+
     font-size:17px;
+
     font-weight:400;
 }
 
@@ -430,66 +852,73 @@ body{
 ===================================================== */
 
 .vision{
-    margin-top:28px;
+
+    margin-top:29px;
 
     padding:
-        25px
+        26px
         20px
-        27px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #242421,
-            #11110f
-        );
-
-    color:#fff;
-
-    border-radius:8px;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.17);
+        28px;
 
     position:relative;
 
     overflow:hidden;
+
+    border-radius:9px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #202c3a,
+            #111820
+        );
+
+    box-shadow:
+        0 16px 35px rgba(12,23,35,.19);
 }
 
 .vision::before{
+
     content:"8";
 
     position:absolute;
 
     right:-8px;
-    top:-28px;
+
+    top:-32px;
 
     font-family:
         Georgia,
         serif;
 
-    font-size:160px;
+    font-size:165px;
 
     line-height:1;
-
-    color:#fff;
 
     opacity:.035;
 }
 
 .vision-label{
+
     position:relative;
+
     z-index:2;
 
     font-size:8px;
+
     letter-spacing:3px;
-    color:#a9a8a3;
+
+    color:#aeb6be;
 
     margin-bottom:11px;
 }
 
 .vision-title{
+
     position:relative;
+
     z-index:2;
 
     font-family:
@@ -498,54 +927,68 @@ body{
         serif;
 
     font-size:20px;
+
     line-height:1.25;
 
     margin-bottom:16px;
 }
 
 .vision-title span{
+
     display:block;
-    color:#aaa9a4;
+
+    color:#aeb6be;
 }
 
 .vision-text{
+
     position:relative;
+
     z-index:2;
 
     font-size:12px;
+
     line-height:1.75;
 
-    color:#d0cfca;
+    color:#d2d7dc;
 }
 
 .vision-sign{
+
     position:relative;
+
     z-index:2;
 
     margin-top:20px;
+
     padding-top:14px;
 
     border-top:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.13);
 
     font-family:
         "URW Chancery L",
         "Apple Chancery",
-        "Segoe Print",
-        "Bradley Hand",
+        "Brush Script MT",
+        "Segoe Script",
+        "Lucida Handwriting",
         cursive;
 
     font-size:18px;
 
-    transform:rotate(-2deg);
+    font-weight:400;
+
+    transform:
+        rotate(-2deg);
 }
 
 
 /* =====================================================
-   ALT
+   FOOTER
 ===================================================== */
 
 .footer{
+
     text-align:center;
 
     padding:
@@ -557,7 +1000,7 @@ body{
 
     letter-spacing:2px;
 
-    color:#999;
+    color:#92969a;
 
     line-height:1.8;
 }
@@ -570,11 +1013,11 @@ body{
 @media(max-height:700px){
 
     .page{
-        padding-top:18px;
+        padding-top:17px;
     }
 
     .logo-area{
-        min-height:72px;
+        min-height:70px;
     }
 
     .slideshow{
@@ -587,13 +1030,12 @@ body{
     }
 
     .button{
-        min-height:54px;
+        min-height:55px;
     }
 
     .showroom{
-        min-height:76px;
+        min-height:77px;
     }
-
 }
 
 
@@ -613,7 +1055,7 @@ body{
     }
 
     .person-name{
-        font-size:21px;
+        font-size:22px;
     }
 
     .slideshow{
@@ -623,16 +1065,18 @@ body{
     .actions .button{
         font-size:12px;
     }
-
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="phone">
+
 
 <div class="page">
 
@@ -653,7 +1097,7 @@ body{
 
 
 <!-- =====================================================
-     CENGİZ GALİTEKİN
+     KURUCU
 ===================================================== -->
 
 <div class="person">
@@ -663,7 +1107,7 @@ body{
     </div>
 
     <div class="person-role">
-        8 Yapı
+        (KURUCU / YÖNETİM KURULU BAŞKANI)
     </div>
 
 </div>
@@ -673,10 +1117,11 @@ body{
 
 
 <!-- =====================================================
-     CEPHE SLAYT
+     CEPHE FOTOĞRAFLARI
 ===================================================== -->
 
 <div class="slideshow">
+
 
     <img
         src="./assets/cephe01.png"
@@ -684,17 +1129,20 @@ body{
         alt="8 Yapı proje görseli"
     >
 
+
     <img
         src="./assets/cephe02.png"
         class="slide"
         alt="8 Yapı proje görseli"
     >
 
+
     <img
         src="./assets/cephe03.png"
         class="slide"
         alt="8 Yapı proje görseli"
     >
+
 
     <img
         src="./assets/cephe04.png"
@@ -706,11 +1154,15 @@ body{
     <div class="dots">
 
         <span class="dot active"></span>
+
         <span class="dot"></span>
+
         <span class="dot"></span>
+
         <span class="dot"></span>
 
     </div>
+
 
 </div>
 
@@ -722,7 +1174,7 @@ body{
 <div class="slogan">
 
     <div class="slogan-main">
-        Çevresine Değer Katar.
+        Çevresine Değer Katar
     </div>
 
     <div class="slogan-sub">
@@ -785,25 +1237,17 @@ body{
 <div class="actions">
 
 
-    <!-- HEMEN ARA -->
-
     <a
         href="tel:+905054108707"
         class="button"
     >
 
-        <span class="icon">
-            ☎
-        </span>
+        <span class="icon">☎</span>
 
-        <span>
-            Hemen Ara
-        </span>
+        <span>Hemen Ara</span>
 
     </a>
 
-
-    <!-- TELEFONA KAYDET -->
 
     <a
         href="#"
@@ -811,18 +1255,12 @@ body{
         onclick="saveContact();return false;"
     >
 
-        <span class="icon">
-            ＋
-        </span>
+        <span class="icon">＋</span>
 
-        <span>
-            Telefona Kaydet
-        </span>
+        <span>Telefona Kaydet</span>
 
     </a>
 
-
-    <!-- WHATSAPP -->
 
     <a
         href="https://wa.me/905054108707"
@@ -831,18 +1269,12 @@ body{
         class="button"
     >
 
-        <span class="icon">
-            ◉
-        </span>
+        <span class="icon">◉</span>
 
-        <span>
-            WhatsApp
-        </span>
+        <span>WhatsApp</span>
 
     </a>
 
-
-    <!-- INSTAGRAM -->
 
     <a
         href="#"
@@ -850,18 +1282,12 @@ body{
         onclick="notReady('Instagram');return false;"
     >
 
-        <span class="icon">
-            ◎
-        </span>
+        <span class="icon">◎</span>
 
-        <span>
-            Instagram
-        </span>
+        <span>Instagram</span>
 
     </a>
 
-
-    <!-- FACEBOOK -->
 
     <a
         href="#"
@@ -869,18 +1295,12 @@ body{
         onclick="notReady('Facebook');return false;"
     >
 
-        <span class="icon">
-            f
-        </span>
+        <span class="icon">f</span>
 
-        <span>
-            Facebook
-        </span>
+        <span>Facebook</span>
 
     </a>
 
-
-    <!-- TWITTER / X -->
 
     <a
         href="#"
@@ -888,18 +1308,12 @@ body{
         onclick="notReady('X / Twitter');return false;"
     >
 
-        <span class="icon">
-            𝕏
-        </span>
+        <span class="icon">𝕏</span>
 
-        <span>
-            X / Twitter
-        </span>
+        <span>X / Twitter</span>
 
     </a>
 
-
-    <!-- YOUTUBE -->
 
     <a
         href="#"
@@ -907,18 +1321,12 @@ body{
         onclick="notReady('YouTube');return false;"
     >
 
-        <span class="icon">
-            ▶
-        </span>
+        <span class="icon">▶</span>
 
-        <span>
-            YouTube
-        </span>
+        <span>YouTube</span>
 
     </a>
 
-
-    <!-- GOOGLE -->
 
     <a
         href="#"
@@ -926,18 +1334,12 @@ body{
         onclick="notReady('Google Değerlendirme');return false;"
     >
 
-        <span class="icon">
-            ★
-        </span>
+        <span class="icon">★</span>
 
-        <span>
-            Google Değerlendirme
-        </span>
+        <span>Google Değerlendirme</span>
 
     </a>
 
-
-    <!-- IBAN -->
 
     <a
         href="#"
@@ -945,13 +1347,9 @@ body{
         onclick="copyIBAN();return false;"
     >
 
-        <span class="icon">
-            ₺
-        </span>
+        <span class="icon">₺</span>
 
-        <span>
-            IBAN Numarası
-        </span>
+        <span>IBAN Numarası</span>
 
     </a>
 
@@ -965,9 +1363,11 @@ body{
 
 <section class="vision">
 
+
     <div class="vision-label">
         8 YAPI ARKASINDAKİ VİZYON
     </div>
+
 
     <div class="vision-title">
 
@@ -979,26 +1379,31 @@ body{
 
     </div>
 
+
     <div class="vision-text">
 
         8 Yapı'nın arkasındaki yaklaşımı,
         yapı sektörüne bakışını ve çalışma
         anlayışını Cengiz Galitekin'in
-        kendi hikâyesi üzerinden anlatacağımız
+        hikâyesi üzerinden anlatacağımız
         özel alan.
 
         <br><br>
 
         Burada yalnızca bir özgeçmiş değil;
-        8 Yapı'nın neden kurulduğu, hangi
-        anlayışla çalıştığı ve yapılan işlerde
-        hangi değerin hedeflendiği anlatılacak.
+        8 Yapı'nın nasıl bir anlayışla
+        hareket ettiği, yapı ve estetik
+        konusundaki yaklaşımı ve
+        “Çevresine Değer Katar” anlayışının
+        arkasındaki düşünce anlatılacak.
 
     </div>
+
 
     <div class="vision-sign">
         Cengiz Galitekin
     </div>
+
 
 </section>
 
@@ -1020,13 +1425,15 @@ body{
 
 </div>
 
+
 </div>
 
 
 <script>
 
+
 /* =====================================================
-   SLAYT SİSTEMİ
+   SLAYT
 ===================================================== */
 
 const slides =
@@ -1039,26 +1446,39 @@ let currentSlide = 0;
 
 
 /*
-   4 saniyede bir fotoğraf değişiyor.
-   Fotoğrafın geçişi 1.5 saniye.
-   Hafif zoom yaklaşık 7 saniyede tamamlanıyor.
+   Fotoğraf 5 saniyede bir değişir.
+   Geçiş 1.6 saniyedir.
+   Böylece fotoğraflar hızlı hızlı kaymaz.
 */
 
 setInterval(function(){
 
-    slides[currentSlide].classList.remove("active");
-    dots[currentSlide].classList.remove("active");
+    slides[currentSlide]
+        .classList.remove("active");
+
+    dots[currentSlide]
+        .classList.remove("active");
+
 
     currentSlide++;
 
-    if(currentSlide >= slides.length){
+    if(
+        currentSlide >= slides.length
+    ){
+
         currentSlide = 0;
+
     }
 
-    slides[currentSlide].classList.add("active");
-    dots[currentSlide].classList.add("active");
 
-},4000);
+    slides[currentSlide]
+        .classList.add("active");
+
+    dots[currentSlide]
+        .classList.add("active");
+
+
+},5000);
 
 
 /* =====================================================
@@ -1073,33 +1493,44 @@ VERSION:3.0
 N:Galitekin;Cengiz;;;
 FN:Cengiz Galitekin
 ORG:8 Yapı
+TITLE:Kurucu / Yönetim Kurulu Başkanı
 TEL;TYPE=CELL:+905054108707
 END:VCARD`;
+
 
     const blob =
         new Blob(
             [vcard],
             {
-                type:"text/vcard;charset=utf-8"
+                type:
+                    "text/vcard;charset=utf-8"
             }
         );
+
 
     const url =
         URL.createObjectURL(blob);
 
+
     const a =
         document.createElement("a");
 
+
     a.href = url;
+
 
     a.download =
         "Cengiz-Galitekin-8-Yapi.vcf";
 
+
     document.body.appendChild(a);
+
 
     a.click();
 
+
     a.remove();
+
 
     setTimeout(function(){
 
@@ -1126,19 +1557,19 @@ function copyIBAN(){
     ){
 
         navigator.clipboard
-        .writeText(IBAN)
-        .then(function(){
+            .writeText(IBAN)
+            .then(function(){
 
-            alert(
-                "IBAN numarası kopyalandı."
-            );
+                alert(
+                    "IBAN numarası kopyalandı."
+                );
 
-        })
-        .catch(function(){
+            })
+            .catch(function(){
 
-            fallbackCopy(IBAN);
+                fallbackCopy(IBAN);
 
-        });
+            });
 
     }else{
 
@@ -1154,15 +1585,21 @@ function fallbackCopy(text){
     const input =
         document.createElement("textarea");
 
+
     input.value = text;
 
     input.style.position = "fixed";
+
     input.style.opacity = "0";
+
 
     document.body.appendChild(input);
 
+
     input.focus();
+
     input.select();
+
 
     try{
 
@@ -1180,13 +1617,14 @@ function fallbackCopy(text){
 
     }
 
+
     input.remove();
 
 }
 
 
 /* =====================================================
-   HENÜZ LİNKİ VERİLMEYENLER
+   HENÜZ GERÇEK LİNKİ VERİLMEYENLER
 ===================================================== */
 
 function notReady(name){
@@ -1206,10 +1644,11 @@ function notReady(name){
 function catalogComingSoon(){
 
     alert(
-        "8 Yapı Dijital Kataloğu hazırlanıyor."
+        "Katalog PDF'sini GitHub'a eklediğimizde bu buton doğrudan 48 sayfalık kataloğu açacak."
     );
 
 }
+
 
 </script>
 
