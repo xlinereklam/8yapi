@@ -4,18 +4,31 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
 <meta name="theme-color" content="#f7f7f5">
 
 <title>8 Yapı | Cengiz Galitekin</title>
 
+
+<!-- MODERN FONTLAR -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Allura&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+
 <style>
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -31,12 +44,7 @@ body{
 }
 
 body{
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family:"Manrope",Arial,sans-serif;
     color:#17191d;
 
     display:flex;
@@ -48,25 +56,25 @@ body{
             rgba(20,42,75,.07),
             transparent 28%
         ),
+
         radial-gradient(
             circle at 90% 80%,
             rgba(180,150,80,.07),
             transparent 30%
         ),
+
         #e8e9e7;
 
     overflow-x:hidden;
 }
 
 
-/* =====================================================
-   TELEFON
-===================================================== */
+/* =========================================================
+   PHONE FRAME
+========================================================= */
 
 .phone{
-
     width:min(100%,430px);
-
     min-height:100vh;
 
     position:relative;
@@ -79,6 +87,7 @@ body{
         0 25px 80px rgba(0,0,0,.16);
 }
 
+
 @media(max-width:600px){
 
     body{
@@ -89,12 +98,314 @@ body{
         width:100%;
         box-shadow:none;
     }
+
 }
 
 
-/* =====================================================
-   HAREKETLİ BEYAZ ZEMİN
-===================================================== */
+/* =========================================================
+   INTRO / OPENING ANIMATION
+========================================================= */
+
+.intro{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f4f5f3 48%,
+            #e9ebea 100%
+        );
+
+    overflow:hidden;
+
+    animation:introExit .8s ease 2.55s forwards;
+
+    pointer-events:none;
+}
+
+
+/* mimari daire */
+
+.intro::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:470px;
+    height:470px;
+
+    border:1px solid rgba(18,49,80,.10);
+
+    border-radius:50%;
+
+    box-shadow:
+
+        0 0 0 35px rgba(18,49,80,.025),
+
+        0 0 0 75px rgba(18,49,80,.018),
+
+        0 0 0 120px rgba(18,49,80,.012);
+
+    animation:
+        introCircle 2.5s ease forwards;
+
+}
+
+
+/* ikinci mimari çizgi */
+
+.intro::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180%;
+
+    height:1px;
+
+    left:-40%;
+
+    top:50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(177,145,65,.55),
+            rgba(20,52,82,.45),
+            transparent
+        );
+
+    transform:rotate(-18deg) scaleX(0);
+
+    animation:introLine 1.8s ease .35s forwards;
+
+}
+
+
+/* logo */
+
+.intro-logo{
+
+    position:relative;
+
+    z-index:5;
+
+    width:235px;
+
+    max-width:70%;
+
+    opacity:0;
+
+    transform:
+        translateY(15px)
+        scale(.88);
+
+    filter:
+        drop-shadow(
+            0 8px 16px
+            rgba(0,0,0,.10)
+        );
+
+    animation:
+
+        introLogo
+        1.25s
+        cubic-bezier(.2,.8,.2,1)
+        .45s
+        forwards;
+
+}
+
+
+/* kırmızı ışık */
+
+.intro-light{
+
+    position:absolute;
+
+    z-index:4;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(163,25,34,.20),
+            rgba(163,25,34,.05) 40%,
+            transparent 70%
+        );
+
+    filter:blur(4px);
+
+    opacity:0;
+
+    animation:introLight 1.5s ease .65s forwards;
+
+}
+
+
+/* alt yazı */
+
+.intro-caption{
+
+    position:absolute;
+
+    z-index:5;
+
+    bottom:24%;
+
+    width:100%;
+
+    text-align:center;
+
+    font-family:"Manrope",Arial,sans-serif;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    color:#53606d;
+
+    opacity:0;
+
+    transform:translateY(8px);
+
+    animation:
+
+        introCaption
+        .8s
+        ease
+        1.35s
+        forwards;
+
+}
+
+
+@keyframes introCircle{
+
+    0%{
+        transform:scale(.55);
+        opacity:0;
+    }
+
+    45%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:scale(1.05);
+        opacity:.55;
+    }
+
+}
+
+
+@keyframes introLine{
+
+    0%{
+        transform:rotate(-18deg) scaleX(0);
+        opacity:0;
+    }
+
+    100%{
+        transform:rotate(-18deg) scaleX(1);
+        opacity:1;
+    }
+
+}
+
+
+@keyframes introLogo{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(15px)
+            scale(.88);
+    }
+
+    55%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes introLight{
+
+    0%{
+        opacity:0;
+        transform:translateX(-120px);
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translateX(120px);
+    }
+
+}
+
+
+@keyframes introCaption{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes introExit{
+
+    0%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
 
 .page{
 
@@ -110,16 +421,18 @@ body{
         38px;
 
     background:
+
         linear-gradient(
             135deg,
             #ffffff 0%,
             #f8f8f6 48%,
             #f1f2f0 100%
         );
+
 }
 
 
-/* Mimari çizgiler */
+/* mimari hareket */
 
 .page::before{
 
@@ -134,17 +447,27 @@ body{
     right:-250px;
 
     border:
-        1px solid rgba(15,43,77,.07);
+        1px solid
+        rgba(15,43,77,.07);
 
     border-radius:50%;
 
     box-shadow:
-        0 0 0 35px rgba(15,43,77,.018),
-        0 0 0 70px rgba(15,43,77,.012);
+
+        0 0 0 35px
+        rgba(15,43,77,.018),
+
+        0 0 0 70px
+        rgba(15,43,77,.012);
 
     animation:
-        architectureFloat 15s ease-in-out infinite;
+        architectureFloat
+        15s
+        ease-in-out
+        infinite;
+
 }
+
 
 .page::after{
 
@@ -159,45 +482,61 @@ body{
     left:-150px;
 
     border:
-        1px solid rgba(190,155,70,.10);
+        1px solid
+        rgba(190,155,70,.10);
 
     transform:rotate(25deg);
 
     animation:
-        architectureFloat2 18s ease-in-out infinite;
+        architectureFloat2
+        18s
+        ease-in-out
+        infinite;
+
 }
 
-
-/* Zemindeki çok hafif ışık */
 
 @keyframes architectureFloat{
 
     0%,100%{
-        transform:translate(0,0) scale(1);
+        transform:
+            translate(0,0)
+            scale(1);
+
         opacity:.65;
     }
 
     50%{
-        transform:translate(-25px,25px) scale(1.06);
+        transform:
+            translate(-25px,25px)
+            scale(1.06);
+
         opacity:1;
     }
+
 }
+
 
 @keyframes architectureFloat2{
 
     0%,100%{
-        transform:rotate(25deg) translate(0,0);
+        transform:
+            rotate(25deg)
+            translate(0,0);
     }
 
     50%{
-        transform:rotate(31deg) translate(20px,-15px);
+        transform:
+            rotate(31deg)
+            translate(20px,-15px);
     }
+
 }
 
 
-/* =====================================================
-   TÜM İÇERİK Z-INDEX
-===================================================== */
+/* =========================================================
+   Z-INDEX
+========================================================= */
 
 .logo-area,
 .person,
@@ -213,19 +552,19 @@ body{
     position:relative;
 
     z-index:3;
+
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGO
-===================================================== */
+========================================================= */
 
 .logo-area{
 
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     min-height:82px;
@@ -234,7 +573,9 @@ body{
         3px
         0
         7px;
+
 }
+
 
 .main-logo{
 
@@ -248,12 +589,18 @@ body{
 
     filter:
         drop-shadow(
-            0 4px 7px rgba(0,0,0,.07)
+            0 4px 7px
+            rgba(0,0,0,.07)
         );
 
     animation:
-        logoFloat 5s ease-in-out infinite;
+        logoFloat
+        5s
+        ease-in-out
+        infinite;
+
 }
+
 
 @keyframes logoFloat{
 
@@ -264,12 +611,13 @@ body{
     50%{
         transform:translateY(-3px);
     }
+
 }
 
 
-/* =====================================================
+/* =========================================================
    CENGİZ GALİTEKİN
-===================================================== */
+========================================================= */
 
 .person{
 
@@ -278,70 +626,62 @@ body{
     margin-top:3px;
 
     margin-bottom:18px;
+
 }
 
-
-/*
-   Daha zarif, ince, imza hissi.
-   Sistemde varsa URW Chancery / Apple Chancery
-   kullanılır.
-*/
 
 .person-name{
 
     font-family:
+        "Allura",
         "URW Chancery L",
         "Apple Chancery",
-        "Brush Script MT",
-        "Segoe Script",
-        "Lucida Handwriting",
         cursive;
 
-    font-size:26px;
+    font-size:34px;
 
     font-weight:400;
 
-    letter-spacing:.3px;
+    letter-spacing:.4px;
 
-    line-height:1.2;
+    line-height:1.05;
 
     color:#17253a;
 
-    transform:
-        rotate(-2.5deg);
+    transform:rotate(-2deg);
 
     text-shadow:
-        0 1px 0 rgba(255,255,255,.8);
+        0 1px 0
+        rgba(255,255,255,.8);
 
 }
 
-
-/* YENİ ÜNVAN */
 
 .person-role{
 
     margin-top:10px;
 
     font-family:
+        "Manrope",
         Arial,
-        Helvetica,
         sans-serif;
 
-    font-size:8.5px;
+    font-size:8px;
 
-    font-weight:600;
+    font-weight:700;
 
-    letter-spacing:2.1px;
+    letter-spacing:2px;
 
     color:#69717b;
 
     text-transform:uppercase;
+
 }
 
 
-/* =====================================================
-   AYIRICI
-===================================================== */
+/* =========================================================
+   DIVIDER
+========================================================= */
 
 .divider{
 
@@ -357,12 +697,13 @@ body{
     background:#173452;
 
     opacity:.22;
+
 }
 
 
-/* =====================================================
-   SLAYT
-===================================================== */
+/* =========================================================
+   SLIDESHOW
+========================================================= */
 
 .slideshow{
 
@@ -379,8 +720,11 @@ body{
     background:#ddd;
 
     box-shadow:
-        0 14px 30px rgba(0,0,0,.13);
+        0 14px 30px
+        rgba(0,0,0,.13);
+
 }
+
 
 .slide{
 
@@ -395,24 +739,29 @@ body{
 
     opacity:0;
 
-    transform:
-        scale(1.06);
+    transform:scale(1.06);
 
     transition:
-        opacity 1.6s ease-in-out,
-        transform 7s cubic-bezier(.2,.7,.2,1);
+
+        opacity
+        1.6s
+        ease-in-out,
+
+        transform
+        7s
+        cubic-bezier(.2,.7,.2,1);
+
 }
+
 
 .slide.active{
 
     opacity:1;
 
-    transform:
-        scale(1);
+    transform:scale(1);
+
 }
 
-
-/* Fotoğraf üzerine hafif mimari perde */
 
 .slideshow::after{
 
@@ -423,6 +772,7 @@ body{
     inset:0;
 
     background:
+
         linear-gradient(
             180deg,
             rgba(7,25,45,.02),
@@ -430,12 +780,9 @@ body{
         );
 
     pointer-events:none;
+
 }
 
-
-/* =====================================================
-   SLAYT NOKTALARI
-===================================================== */
 
 .dots{
 
@@ -444,6 +791,7 @@ body{
     z-index:5;
 
     left:50%;
+
     bottom:11px;
 
     transform:
@@ -452,11 +800,14 @@ body{
     display:flex;
 
     gap:6px;
+
 }
+
 
 .dot{
 
     width:5px;
+
     height:5px;
 
     border-radius:50%;
@@ -465,7 +816,9 @@ body{
         rgba(255,255,255,.55);
 
     transition:.4s ease;
+
 }
+
 
 .dot.active{
 
@@ -476,13 +829,15 @@ body{
     background:#fff;
 
     box-shadow:
-        0 0 8px rgba(255,255,255,.8);
+        0 0 8px
+        rgba(255,255,255,.8);
+
 }
 
 
-/* =====================================================
+/* =========================================================
    SLOGAN
-===================================================== */
+========================================================= */
 
 .slogan{
 
@@ -492,7 +847,9 @@ body{
         19px
         5px
         17px;
+
 }
+
 
 .slogan-main{
 
@@ -509,23 +866,33 @@ body{
 
     text-shadow:
         0 1px 0 #fff;
+
 }
+
 
 .slogan-sub{
 
     margin-top:6px;
 
-    font-size:8px;
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:7px;
+
+    font-weight:600;
 
     letter-spacing:3px;
 
     color:#92969a;
+
 }
 
 
-/* =====================================================
-   BUTON TEMEL
-===================================================== */
+/* =========================================================
+   BUTTON SYSTEM
+========================================================= */
 
 .button{
 
@@ -551,6 +918,11 @@ body{
 
     margin-bottom:10px;
 
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
     font-size:14px;
 
     font-weight:600;
@@ -564,10 +936,11 @@ body{
     transition:
         transform .2s ease,
         box-shadow .25s ease;
+
 }
 
 
-/* Cam ışık taraması */
+/* cam ışığı */
 
 .button::before{
 
@@ -584,6 +957,7 @@ body{
     height:100%;
 
     background:
+
         linear-gradient(
             100deg,
             transparent,
@@ -594,8 +968,13 @@ body{
     transform:skewX(-20deg);
 
     animation:
-        buttonShine 5.5s ease-in-out infinite;
+        buttonShine
+        5.5s
+        ease-in-out
+        infinite;
+
 }
+
 
 @keyframes buttonShine{
 
@@ -610,10 +989,9 @@ body{
     100%{
         left:125%;
     }
+
 }
 
-
-/* Hafif cam kenarı */
 
 .button::after{
 
@@ -624,43 +1002,48 @@ body{
     inset:0;
 
     border:
-        1px solid rgba(255,255,255,.35);
+        1px solid
+        rgba(255,255,255,.35);
 
     border-radius:inherit;
 
     pointer-events:none;
+
 }
+
 
 .button > *{
 
     position:relative;
 
     z-index:2;
+
 }
+
 
 .button:active{
 
-    transform:
-        scale(.965);
+    transform:scale(.965);
 
 }
 
 
-/* =====================================================
-   DİJİTAL SHOWROOM
-===================================================== */
+/* =========================================================
+   SHOWROOM BUTTON
+========================================================= */
 
 .showroom{
 
-    min-height:86px;
+    min-height:92px;
 
     flex-direction:column;
 
-    gap:5px;
+    gap:6px;
 
     color:#fff;
 
     background:
+
         linear-gradient(
             135deg,
             #236d42,
@@ -669,36 +1052,51 @@ body{
         );
 
     box-shadow:
-        0 10px 24px rgba(38,119,73,.22);
+        0 10px 24px
+        rgba(38,119,73,.22);
+
 }
+
 
 .showroom-small{
 
-    font-size:9px;
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+    font-size:8px;
+
+    font-weight:700;
 
     letter-spacing:3px;
 
     opacity:.82;
+
 }
+
 
 .showroom-large{
 
     font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+        "Manrope",
+        Arial,
+        sans-serif;
 
-    font-size:17px;
+    font-size:15px;
+
+    font-weight:800;
+
+    letter-spacing:.2px;
 
     text-align:center;
 
-    letter-spacing:.1px;
 }
 
 
-/* =====================================================
-   KATALOG
-===================================================== */
+/* =========================================================
+   CATALOG
+========================================================= */
 
 .catalog{
 
@@ -707,6 +1105,7 @@ body{
     color:#fff;
 
     background:
+
         linear-gradient(
             135deg,
             #161d27,
@@ -714,18 +1113,22 @@ body{
         );
 
     box-shadow:
-        0 9px 21px rgba(20,31,45,.18);
+        0 9px 21px
+        rgba(20,31,45,.18);
+
 }
+
 
 .catalog-icon{
 
     font-size:19px;
+
 }
 
 
-/* =====================================================
-   BÖLÜM BAŞLIĞI
-===================================================== */
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
 .section-title{
 
@@ -740,14 +1143,21 @@ body{
         0
         11px;
 
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
     font-size:9px;
 
-    font-weight:700;
+    font-weight:800;
 
     letter-spacing:2.5px;
 
     color:#7d838a;
+
 }
+
 
 .section-title::before{
 
@@ -758,12 +1168,13 @@ body{
     height:1px;
 
     background:#9ca1a5;
+
 }
 
 
-/* =====================================================
-   İLETİŞİM BUTONLARI
-===================================================== */
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
 
 .actions{
 
@@ -774,7 +1185,9 @@ body{
         1fr;
 
     gap:9px;
+
 }
+
 
 .actions .button{
 
@@ -785,6 +1198,7 @@ body{
     color:#1d2630;
 
     background:
+
         linear-gradient(
             135deg,
             rgba(255,255,255,.94),
@@ -792,10 +1206,12 @@ body{
         );
 
     border:
-        1px solid rgba(25,50,75,.09);
+        1px solid
+        rgba(25,50,75,.09);
 
     box-shadow:
-        0 6px 16px rgba(20,35,50,.055);
+        0 6px 16px
+        rgba(20,35,50,.055);
 
     backdrop-filter:
         blur(7px);
@@ -804,18 +1220,17 @@ body{
         blur(7px);
 
     font-size:13px;
+
 }
+
 
 .actions .button.full{
 
     grid-column:
         1 / -1;
+
 }
 
-
-/* =====================================================
-   BUTON HOVER
-===================================================== */
 
 @media(hover:hover){
 
@@ -825,15 +1240,13 @@ body{
             translateY(-2px);
 
         box-shadow:
-            0 10px 24px rgba(20,40,60,.13);
+            0 10px 24px
+            rgba(20,40,60,.13);
+
     }
 
 }
 
-
-/* =====================================================
-   İKON
-===================================================== */
 
 .icon{
 
@@ -844,12 +1257,13 @@ body{
     font-size:17px;
 
     font-weight:400;
+
 }
 
 
-/* =====================================================
-   VİZYON
-===================================================== */
+/* =========================================================
+   VISION
+========================================================= */
 
 .vision{
 
@@ -869,6 +1283,7 @@ body{
     color:#fff;
 
     background:
+
         linear-gradient(
             145deg,
             #202c3a,
@@ -876,8 +1291,11 @@ body{
         );
 
     box-shadow:
-        0 16px 35px rgba(12,23,35,.19);
+        0 16px 35px
+        rgba(12,23,35,.19);
+
 }
+
 
 .vision::before{
 
@@ -898,7 +1316,9 @@ body{
     line-height:1;
 
     opacity:.035;
+
 }
+
 
 .vision-label{
 
@@ -906,14 +1326,23 @@ body{
 
     z-index:2;
 
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
     font-size:8px;
+
+    font-weight:700;
 
     letter-spacing:3px;
 
     color:#aeb6be;
 
     margin-bottom:11px;
+
 }
+
 
 .vision-title{
 
@@ -931,14 +1360,18 @@ body{
     line-height:1.25;
 
     margin-bottom:16px;
+
 }
+
 
 .vision-title span{
 
     display:block;
 
     color:#aeb6be;
+
 }
+
 
 .vision-text{
 
@@ -946,12 +1379,19 @@ body{
 
     z-index:2;
 
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
     font-size:12px;
 
     line-height:1.75;
 
     color:#d2d7dc;
+
 }
+
 
 .vision-sign{
 
@@ -964,28 +1404,26 @@ body{
     padding-top:14px;
 
     border-top:
-        1px solid rgba(255,255,255,.13);
+        1px solid
+        rgba(255,255,255,.13);
 
     font-family:
+        "Allura",
         "URW Chancery L",
-        "Apple Chancery",
-        "Brush Script MT",
-        "Segoe Script",
-        "Lucida Handwriting",
         cursive;
 
-    font-size:18px;
+    font-size:25px;
 
     font-weight:400;
 
-    transform:
-        rotate(-2deg);
+    transform:rotate(-2deg);
+
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 .footer{
 
@@ -996,75 +1434,120 @@ body{
         0
         5px;
 
+    font-family:
+        "Manrope",
+        Arial,
+        sans-serif;
+
     font-size:8px;
+
+    font-weight:600;
 
     letter-spacing:2px;
 
     color:#92969a;
 
     line-height:1.8;
+
 }
 
 
-/* =====================================================
-   KISA TELEFON
-===================================================== */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-height:700px){
 
     .page{
+
         padding-top:17px;
+
     }
 
     .logo-area{
+
         min-height:70px;
+
     }
 
     .slideshow{
+
         height:205px;
+
     }
 
     .slogan{
+
         padding-top:14px;
+
         padding-bottom:13px;
+
     }
 
     .button{
+
         min-height:55px;
+
     }
 
     .showroom{
-        min-height:77px;
+
+        min-height:82px;
+
     }
+
 }
 
-
-/* =====================================================
-   DAR TELEFON
-===================================================== */
 
 @media(max-width:360px){
 
     .page{
+
         padding-left:15px;
+
         padding-right:15px;
+
     }
 
     .main-logo{
+
         width:180px;
+
     }
 
     .person-name{
-        font-size:22px;
+
+        font-size:30px;
+
     }
 
     .slideshow{
+
         height:195px;
+
     }
 
     .actions .button{
+
         font-size:12px;
+
     }
+
+}
+
+
+/* =========================================================
+   INTRO MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .intro{
+
+        position:fixed;
+
+    }
+
 }
 
 </style>
@@ -1075,15 +1558,38 @@ body{
 <body>
 
 
-<div class="phone">
+<!-- =======================================================
+     OPENING ANIMATION
+======================================================= -->
 
+<div class="intro">
+
+    <div class="intro-light"></div>
+
+    <img
+        src="./assets/8yapi_logo.png"
+        class="intro-logo"
+        alt="8 Yapı"
+    >
+
+    <div class="intro-caption">
+        ÇEVRESİNE DEĞER KATAR
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<div class="phone">
 
 <div class="page">
 
 
-<!-- =====================================================
-     LOGO
-===================================================== -->
+<!-- LOGO -->
 
 <div class="logo-area">
 
@@ -1096,9 +1602,8 @@ body{
 </div>
 
 
-<!-- =====================================================
-     KURUCU
-===================================================== -->
+
+<!-- PERSON -->
 
 <div class="person">
 
@@ -1113,12 +1618,14 @@ body{
 </div>
 
 
+
 <div class="divider"></div>
 
 
-<!-- =====================================================
-     CEPHE FOTOĞRAFLARI
-===================================================== -->
+
+<!-- =======================================================
+     PROJECT SLIDESHOW
+======================================================= -->
 
 <div class="slideshow">
 
@@ -1163,13 +1670,11 @@ body{
 
     </div>
 
-
 </div>
 
 
-<!-- =====================================================
-     SLOGAN
-===================================================== -->
+
+<!-- SLOGAN -->
 
 <div class="slogan">
 
@@ -1184,9 +1689,10 @@ body{
 </div>
 
 
-<!-- =====================================================
-     DİJİTAL SHOWROOM
-===================================================== -->
+
+<!-- =======================================================
+     DIGITAL SHOWROOM
+======================================================= -->
 
 <a
     href="tanitim.html"
@@ -1198,20 +1704,21 @@ body{
     </span>
 
     <span class="showroom-large">
-        HİZMETLERİMİZ ve FİYATLANDIRMALAR
+        HİZMETLERİMİZ ve FİYATLANDIRMALARIMIZ
     </span>
 
 </a>
 
 
-<!-- =====================================================
-     DİJİTAL KATALOG
-===================================================== -->
+
+<!-- =======================================================
+     CATALOG
+======================================================= -->
 
 <a
     href="#"
     class="button catalog"
-    onclick="catalogComingSoon();return false;"
+    onclick="openCatalog();return false;"
 >
 
     <span class="catalog-icon">
@@ -1225,29 +1732,40 @@ body{
 </a>
 
 
-<!-- =====================================================
-     İLETİŞİM
-===================================================== -->
+
+<!-- =======================================================
+     QUICK CONTACT
+======================================================= -->
 
 <div class="section-title">
     HIZLI İLETİŞİM
 </div>
 
 
+
 <div class="actions">
 
+
+    <!-- ARA -->
 
     <a
         href="tel:+905054108707"
         class="button"
     >
 
-        <span class="icon">☎</span>
+        <span class="icon">
+            ☎
+        </span>
 
-        <span>Hemen Ara</span>
+        <span>
+            Hemen Ara
+        </span>
 
     </a>
 
+
+
+    <!-- KİŞİ KAYDET -->
 
     <a
         href="#"
@@ -1255,12 +1773,19 @@ body{
         onclick="saveContact();return false;"
     >
 
-        <span class="icon">＋</span>
+        <span class="icon">
+            ＋
+        </span>
 
-        <span>Telefona Kaydet</span>
+        <span>
+            Telefona Kaydet
+        </span>
 
     </a>
 
+
+
+    <!-- WHATSAPP -->
 
     <a
         href="https://wa.me/905054108707"
@@ -1269,12 +1794,19 @@ body{
         class="button"
     >
 
-        <span class="icon">◉</span>
+        <span class="icon">
+            ◉
+        </span>
 
-        <span>WhatsApp</span>
+        <span>
+            WhatsApp
+        </span>
 
     </a>
 
+
+
+    <!-- INSTAGRAM -->
 
     <a
         href="#"
@@ -1282,12 +1814,19 @@ body{
         onclick="notReady('Instagram');return false;"
     >
 
-        <span class="icon">◎</span>
+        <span class="icon">
+            ◎
+        </span>
 
-        <span>Instagram</span>
+        <span>
+            Instagram
+        </span>
 
     </a>
 
+
+
+    <!-- FACEBOOK -->
 
     <a
         href="#"
@@ -1295,12 +1834,19 @@ body{
         onclick="notReady('Facebook');return false;"
     >
 
-        <span class="icon">f</span>
+        <span class="icon">
+            f
+        </span>
 
-        <span>Facebook</span>
+        <span>
+            Facebook
+        </span>
 
     </a>
 
+
+
+    <!-- X -->
 
     <a
         href="#"
@@ -1308,12 +1854,19 @@ body{
         onclick="notReady('X / Twitter');return false;"
     >
 
-        <span class="icon">𝕏</span>
+        <span class="icon">
+            𝕏
+        </span>
 
-        <span>X / Twitter</span>
+        <span>
+            X / Twitter
+        </span>
 
     </a>
 
+
+
+    <!-- YOUTUBE -->
 
     <a
         href="#"
@@ -1321,12 +1874,19 @@ body{
         onclick="notReady('YouTube');return false;"
     >
 
-        <span class="icon">▶</span>
+        <span class="icon">
+            ▶
+        </span>
 
-        <span>YouTube</span>
+        <span>
+            YouTube
+        </span>
 
     </a>
 
+
+
+    <!-- GOOGLE -->
 
     <a
         href="#"
@@ -1334,12 +1894,19 @@ body{
         onclick="notReady('Google Değerlendirme');return false;"
     >
 
-        <span class="icon">★</span>
+        <span class="icon">
+            ★
+        </span>
 
-        <span>Google Değerlendirme</span>
+        <span>
+            Google Değerlendirme
+        </span>
 
     </a>
 
+
+
+    <!-- IBAN -->
 
     <a
         href="#"
@@ -1347,9 +1914,13 @@ body{
         onclick="copyIBAN();return false;"
     >
 
-        <span class="icon">₺</span>
+        <span class="icon">
+            ₺
+        </span>
 
-        <span>IBAN Numarası</span>
+        <span>
+            IBAN Numarası
+        </span>
 
     </a>
 
@@ -1357,9 +1928,10 @@ body{
 </div>
 
 
-<!-- =====================================================
-     CENGİZ GALİTEKİN VİZYON
-===================================================== -->
+
+<!-- =======================================================
+     VISION
+======================================================= -->
 
 <section class="vision">
 
@@ -1408,9 +1980,8 @@ body{
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+
+<!-- FOOTER -->
 
 <div class="footer">
 
@@ -1425,16 +1996,15 @@ body{
 
 </div>
 
-
 </div>
+
 
 
 <script>
 
-
-/* =====================================================
-   SLAYT
-===================================================== */
+/* =========================================================
+   SLIDESHOW
+========================================================= */
 
 const slides =
     document.querySelectorAll(".slide");
@@ -1445,26 +2015,21 @@ const dots =
 let currentSlide = 0;
 
 
-/*
-   Fotoğraf 5 saniyede bir değişir.
-   Geçiş 1.6 saniyedir.
-   Böylece fotoğraflar hızlı hızlı kaymaz.
-*/
-
 setInterval(function(){
 
     slides[currentSlide]
-        .classList.remove("active");
+        .classList
+        .remove("active");
 
     dots[currentSlide]
-        .classList.remove("active");
+        .classList
+        .remove("active");
 
 
     currentSlide++;
 
-    if(
-        currentSlide >= slides.length
-    ){
+
+    if(currentSlide >= slides.length){
 
         currentSlide = 0;
 
@@ -1472,18 +2037,21 @@ setInterval(function(){
 
 
     slides[currentSlide]
-        .classList.add("active");
+        .classList
+        .add("active");
 
     dots[currentSlide]
-        .classList.add("active");
+        .classList
+        .add("active");
 
 
 },5000);
 
 
-/* =====================================================
-   TELEFONA KAYDET
-===================================================== */
+
+/* =========================================================
+   CONTACT CARD
+========================================================= */
 
 function saveContact(){
 
@@ -1503,7 +2071,7 @@ END:VCARD`;
             [vcard],
             {
                 type:
-                    "text/vcard;charset=utf-8"
+                "text/vcard;charset=utf-8"
             }
         );
 
@@ -1541,12 +2109,19 @@ END:VCARD`;
 }
 
 
-/* =====================================================
+
+/* =========================================================
    IBAN
-===================================================== */
+========================================================= */
+
+/*
+   GERÇEK IBAN GELDİĞİNDE
+   SADECE BURAYI DEĞİŞTİRECEĞİZ.
+*/
 
 const IBAN =
     "TR00 0000 0000 0000 0000 0000 00";
+
 
 
 function copyIBAN(){
@@ -1557,27 +2132,30 @@ function copyIBAN(){
     ){
 
         navigator.clipboard
-            .writeText(IBAN)
-            .then(function(){
+        .writeText(IBAN)
+        .then(function(){
 
-                alert(
-                    "IBAN numarası kopyalandı."
-                );
+            alert(
+                "IBAN numarası kopyalandı."
+            );
 
-            })
-            .catch(function(){
+        })
+        .catch(function(){
 
-                fallbackCopy(IBAN);
+            fallbackCopy(IBAN);
 
-            });
+        });
 
-    }else{
+    }
+
+    else{
 
         fallbackCopy(IBAN);
 
     }
 
 }
+
 
 
 function fallbackCopy(text){
@@ -1588,9 +2166,13 @@ function fallbackCopy(text){
 
     input.value = text;
 
-    input.style.position = "fixed";
 
-    input.style.opacity = "0";
+    input.style.position =
+        "fixed";
+
+
+    input.style.opacity =
+        "0";
 
 
     document.body.appendChild(input);
@@ -1609,7 +2191,9 @@ function fallbackCopy(text){
             "IBAN numarası kopyalandı."
         );
 
-    }catch(e){
+    }
+
+    catch(e){
 
         alert(
             "IBAN: " + text
@@ -1623,9 +2207,35 @@ function fallbackCopy(text){
 }
 
 
-/* =====================================================
-   HENÜZ GERÇEK LİNKİ VERİLMEYENLER
-===================================================== */
+
+/* =========================================================
+   CATALOG
+========================================================= */
+
+function openCatalog(){
+
+    /*
+       PDF GitHub'a yüklendiğinde:
+
+       window.open(
+           "./assets/8-yapi-katalog.pdf",
+           "_blank"
+       );
+
+       olarak değiştireceğiz.
+    */
+
+    alert(
+        "8 Yapı Dijital Kataloğu hazırlanıyor."
+    );
+
+}
+
+
+
+/* =========================================================
+   TEMPORARY SOCIAL BUTTONS
+========================================================= */
 
 function notReady(name){
 
@@ -1636,21 +2246,8 @@ function notReady(name){
 
 }
 
-
-/* =====================================================
-   KATALOG
-===================================================== */
-
-function catalogComingSoon(){
-
-    alert(
-        "Katalog PDF'sini GitHub'a eklediğimizde bu buton doğrudan 48 sayfalık kataloğu açacak."
-    );
-
-}
-
-
 </script>
+
 
 </body>
 </html>
