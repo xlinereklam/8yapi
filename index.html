@@ -250,13 +250,17 @@ body{
 }
 
 
+/* =========================================================
+   INTRO CENGİZ GALİTEKİN
+========================================================= */
+
 .intro-caption{
 
     position:absolute;
 
     z-index:5;
 
-    bottom:24%;
+    bottom:28%;
 
     width:100%;
 
@@ -268,7 +272,7 @@ body{
         "Apple Chancery",
         cursive;
 
-    font-size:34px;
+    font-size:43px;
 
     font-weight:400;
 
@@ -1806,9 +1810,10 @@ body{
     <!-- INSTAGRAM -->
 
     <a
-        href="#"
+        href="https://www.instagram.com/8yapii/"
+        target="_blank"
+        rel="noopener"
         class="button"
-        onclick="notReady('Instagram');return false;"
     >
 
         <span class="icon">
@@ -1826,9 +1831,10 @@ body{
     <!-- FACEBOOK -->
 
     <a
-        href="#"
+        href="https://www.facebook.com/8yapii"
+        target="_blank"
+        rel="noopener"
         class="button"
-        onclick="notReady('Facebook');return false;"
     >
 
         <span class="icon">
@@ -1846,9 +1852,10 @@ body{
     <!-- X -->
 
     <a
-        href="#"
+        href="https://x.com/8yapii"
+        target="_blank"
+        rel="noopener"
         class="button"
-        onclick="notReady('X / Twitter');return false;"
     >
 
         <span class="icon">
@@ -1866,9 +1873,10 @@ body{
     <!-- YOUTUBE -->
 
     <a
-        href="#"
+        href="https://www.youtube.com/@8yapii"
+        target="_blank"
+        rel="noopener"
         class="button"
-        onclick="notReady('YouTube');return false;"
     >
 
         <span class="icon">
@@ -1883,12 +1891,34 @@ body{
 
 
 
+    <!-- İNTERNET SİTESİ -->
+
+    <a
+        href="https://www.8yapi.tr"
+        target="_blank"
+        rel="noopener"
+        class="button full"
+    >
+
+        <span class="icon">
+            ◉
+        </span>
+
+        <span>
+            İnternet Sitesi
+        </span>
+
+    </a>
+
+
+
     <!-- GOOGLE -->
 
     <a
-        href="#"
+        href="https://www.google.com/search?sca_esv=8f55d1c39308862b&sxsrf=APpeQnvqfpxVtffHufKP81CALMsV1jswyg:1789650598745&uds=AJ5uw1_a2D0D09lxm8gpKKOTUn4rD8NCBwdIE873U_ctyfTrNm3SuyN9INY1TMQ9YnLuUCgBYNXSpS3submYQaRIvHkostKlZboeXLGY_4DGfPkxn3GkJi4yoVJWZqaiLJAjwMN3qLsHVhggIE-pstmFEXsWrctayQ&q=8Yap%C4%B1+Yorumlar&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_3xm3BfDiL88669Qnru8LvwTsEy6TWBWZIyDBJUjpK9lfqOo5i3fXezppItQsfWolYI1ffo48DO_7-LulgS5_gp43liG&hl=tr-TR&sa=X&ved=2ahUKEwi16daB2PWWAxU3lP0HHRslDQMQ_4MLegQISRAQ&biw=1920&bih=919&dpr=1"
+        target="_blank"
+        rel="noopener"
         class="button full"
-        onclick="notReady('Google Değerlendirme');return false;"
     >
 
         <span class="icon">
@@ -2115,7 +2145,6 @@ const IBAN =
     "TR00 0000 0000 0000 0000 0000 00";
 
 
-
 function copyIBAN(){
 
     if(
@@ -2209,21 +2238,6 @@ function openCatalog(){
 
     alert(
         "8 Yapı Dijital Kataloğu hazırlanıyor."
-    );
-
-}
-
-
-
-/* =========================================================
-   TEMPORARY SOCIAL BUTTONS
-========================================================= */
-
-function notReady(name){
-
-    alert(
-        name +
-        " bağlantısını gerçek hesap adresi geldiğinde ekleyeceğiz."
     );
 
 }
