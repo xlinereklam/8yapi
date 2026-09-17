@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="8 Yapı Proje ve Teklif Asistanı">
+<title>8 Yapı | Proje ve Teklif Asistanı</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --navy:#071426;
+    --navy2:#0d2038;
+    --red:#b5121b;
+    --red2:#e12631;
+    --white:#ffffff;
+    --off:#f5f6f8;
+    --gray:#718096;
+    --line:#dfe4ea;
+    --green:#168a55;
+}
+
+body{
+    font-family:'Manrope',sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(181,18,27,.07),transparent 28%),
+        radial-gradient(circle at 90% 90%,rgba(7,20,38,.08),transparent 30%),
+        #eef1f4;
+    color:var(--navy);
+    min-height:100vh;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(120deg,transparent 0 48%,rgba(7,20,38,.025) 48.2%,transparent 48.5%),
+        linear-gradient(25deg,transparent 0 65%,rgba(181,18,27,.025) 65.2%,transparent 65.5%);
+}
+
+/* APP */
+
+.app{
+    width:100%;
+    max-width:620px;
+    min-height:100vh;
+    margin:auto;
+    background:rgba(255,255,255,.93);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 0 60px rgba(7,20,38,.12);
+}
+
+@media(min-width:700px){
+    .app{
+        min-height:calc(100vh - 40px);
+        margin:20px auto;
+        border-radius:28px;
+    }
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(145deg,#071426,#102943);
+    color:white;
+    padding:20px 20px 18px;
+    position:relative;
+    overflow:hidden;
+}
+
+.header:after{
+    content:"";
+    position:absolute;
+    width:240px;
+    height:240px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    right:-100px;
+    top:-150px;
+}
+
+.header-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    z-index:2;
+}
+
+.logo{
+    width:105px;
+    max-height:54px;
+    object-fit:contain;
+    object-position:left center;
+    filter:brightness(0) invert(1);
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    border:1px solid rgba(255,255,255,.2);
+    padding:9px 13px;
+    border-radius:20px;
+    background:rgba(255,255,255,.06);
+}
+
+.header-title{
+    margin-top:20px;
+    position:relative;
+    z-index:2;
+}
+
+.header-title small{
+    display:block;
+    font-size:10px;
+    letter-spacing:2px;
+    opacity:.6;
+    margin-bottom:6px;
+}
+
+.header-title h1{
+    font-size:25px;
+    line-height:1.15;
+    letter-spacing:-.7px;
+}
+
+.header-title p{
+    margin-top:8px;
+    font-size:12px;
+    line-height:1.6;
+    color:rgba(255,255,255,.7);
+    max-width:480px;
+}
+
+/* PROGRESS */
+
+.progress-area{
+    padding:15px 20px 5px;
+    background:#fff;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.progress-info span{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:var(--gray);
+}
+
+.progress-info strong{
+    color:var(--navy);
+}
+
+.progress{
+    height:4px;
+    background:#e8ebef;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:14.28%;
+    background:linear-gradient(90deg,var(--red),var(--red2));
+    border-radius:10px;
+    transition:.45s ease;
+}
+
+/* CONTENT */
+
+.content{
+    padding:20px;
+    min-height:520px;
+}
+
+.step{
+    display:none;
+    animation:stepIn .4s ease;
+}
+
+.step.active{
+    display:block;
+}
+
+@keyframes stepIn{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.question-label{
+    font-size:11px;
+    font-weight:800;
+    color:var(--red);
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    margin-bottom:9px;
+}
+
+.question{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-.7px;
+    line-height:1.2;
+    color:var(--navy);
+}
+
+.question-sub{
+    margin-top:9px;
+    font-size:12px;
+    color:var(--gray);
+    line-height:1.65;
+}
+
+/* OPTIONS */
+
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:22px;
+}
+
+.option{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:15px;
+    padding:16px 13px;
+    cursor:pointer;
+    min-height:86px;
+    transition:.2s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.option:before{
+    content:"";
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:1px solid rgba(181,18,27,.06);
+    right:-20px;
+    bottom:-20px;
+}
+
+.option:hover{
+    transform:translateY(-2px);
+    border-color:#b8c1cb;
+    box-shadow:0 8px 22px rgba(7,20,38,.07);
+}
+
+.option.selected{
+    border-color:var(--red);
+    background:#fff8f8;
+    box-shadow:0 0 0 2px rgba(181,18,27,.08);
+}
+
+.option-icon{
+    font-size:20px;
+    margin-bottom:9px;
+}
+
+.option-title{
+    font-size:12px;
+    font-weight:800;
+}
+
+.option-desc{
+    margin-top:4px;
+    color:var(--gray);
+    font-size:9px;
+    line-height:1.4;
+}
+
+/* INPUTS */
+
+.field{
+    margin-top:18px;
+}
+
+.field label{
+    display:block;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:7px;
+    color:var(--navy);
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:13px;
+    background:#fff;
+    padding:14px;
+    font-family:inherit;
+    font-size:13px;
+    color:var(--navy);
+    outline:none;
+    transition:.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:var(--navy);
+    box-shadow:0 0 0 3px rgba(7,20,38,.06);
+}
+
+textarea{
+    resize:none;
+    min-height:125px;
+    line-height:1.6;
+}
+
+.input-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+/* SIZE OPTIONS */
+
+.size-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
+}
+
+.size{
+    padding:15px;
+    border:1px solid var(--line);
+    border-radius:13px;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.size.selected{
+    border-color:var(--red);
+    background:#fff7f7;
+    color:var(--red);
+}
+
+/* SUMMARY */
+
+.summary{
+    margin-top:20px;
+    border-radius:17px;
+    background:#f6f7f9;
+    border:1px solid #e6e9ed;
+    overflow:hidden;
+}
+
+.summary-head{
+    background:var(--navy);
+    color:#fff;
+    padding:14px 16px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:12px 15px;
+    border-bottom:1px solid #e5e8ec;
+    font-size:11px;
+}
+
+.summary-row:last-child{
+    border-bottom:0;
+}
+
+.summary-row span:first-child{
+    color:var(--gray);
+}
+
+.summary-row span:last-child{
+    text-align:right;
+    font-weight:800;
+    max-width:60%;
+}
+
+/* NOTICE */
+
+.notice{
+    margin-top:15px;
+    border-left:3px solid var(--red);
+    padding:11px 13px;
+    background:#fff7f7;
+    color:#596273;
+    font-size:10px;
+    line-height:1.6;
+    border-radius:0 9px 9px 0;
+}
+
+/* BUTTONS */
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.btn{
+    flex:1;
+    border:0;
+    border-radius:14px;
+    padding:15px;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.btn:active{
+    transform:scale(.97);
+}
+
+.btn-back{
+    background:#edf0f3;
+    color:var(--navy);
+}
+
+.btn-next{
+    background:var(--navy);
+    color:#fff;
+    box-shadow:0 8px 20px rgba(7,20,38,.15);
+}
+
+.btn-next:hover{
+    background:#102943;
+    transform:translateY(-1px);
+}
+
+.btn-whatsapp{
+    background:#168a55;
+    color:white;
+    width:100%;
+    box-shadow:0 10px 25px rgba(22,138,85,.2);
+}
+
+.btn-whatsapp:hover{
+    transform:translateY(-2px);
+}
+
+/* SUCCESS */
+
+.success{
+    text-align:center;
+    padding:25px 5px;
+}
+
+.success-icon{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    margin:0 auto 20px;
+    background:#eaf7f0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+}
+
+.success h2{
+    font-size:25px;
+    letter-spacing:-.6px;
+}
+
+.success p{
+    color:var(--gray);
+    font-size:12px;
+    line-height:1.7;
+    margin-top:10px;
+}
+
+.whatsapp-note{
+    margin-top:18px;
+    background:#f5f7f8;
+    padding:13px;
+    border-radius:12px;
+    font-size:10px;
+    color:#697586;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+.footer{
+    padding:15px 20px 22px;
+    text-align:center;
+    font-size:9px;
+    color:#9aa2ad;
+}
+
+.footer strong{
+    color:#6c7480;
+}
+
+/* MOBILE */
+
+@media(max-width:400px){
+    .options{
+        grid-template-columns:1fr;
+    }
+
+    .question{
+        font-size:22px;
+    }
+
+    .input-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="header-top">
+
+            <img src="./assets/8yapi_logo.png"
+                 class="logo"
+                 alt="8 Yapı">
+
+            <a href="index.html" class="back">
+                ← Kartıma Dön
+            </a>
+
+        </div>
+
+        <div class="header-title">
+            <small>8 YAPI • DİJİTAL ASİSTAN</small>
+            <h1>Projenizi Tanıyalım.</h1>
+            <p>
+                Size doğru yönlendirmeyi yapabilmemiz için
+                birkaç kısa bilgi yeterli.
+            </p>
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="progress-area">
+
+        <div class="progress-info">
+            <span id="stepText">ADIM 1 / 7</span>
+            <span><strong id="percent">14%</strong></span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+    </div>
+
+
+    <main class="content">
+
+
+        <!-- STEP 1 -->
+        <section class="step active" data-step="1">
+
+            <div class="question-label">01 • PROJE TÜRÜ</div>
+
+            <div class="question">
+                Projenizde hangi konuda çalışmak istiyorsunuz?
+            </div>
+
+            <div class="question-sub">
+                Birden fazla alan varsa, size en yakın olanı seçin.
+                Detayları ilerleyen adımda belirtebilirsiniz.
+            </div>
+
+            <div class="options">
+
+                <div class="option" data-value="Çatı">
+                    <div class="option-icon">⌂</div>
+                    <div class="option-title">Çatı</div>
+                    <div class="option-desc">Çatı yenileme, uygulama ve çözümler</div>
+                </div>
+
+                <div class="option" data-value="Cephe">
+                    <div class="option-icon">▥</div>
+                    <div class="option-title">Cephe</div>
+                    <div class="option-desc">Cephe kaplama, tasarım ve uygulama</div>
+                </div>
+
+                <div class="option" data-value="Dekorasyon">
+                    <div class="option-icon">◇</div>
+                    <div class="option-title">Dekorasyon</div>
+                    <div class="option-desc">İç ve dış mekân dekorasyon çalışmaları</div>
+                </div>
+
+                <div class="option" data-value="Site girişleri">
+                    <div class="option-icon">▣</div>
+                    <div class="option-title">Site Girişleri</div>
+                    <div class="option-desc">Giriş, kapı, güvenlik ve estetik çözümler</div>
+                </div>
+
+                <div class="option" data-value="Kapı ve pencere sistemleri">
+                    <div class="option-icon">□</div>
+                    <div class="option-title">Kapı & Pencere</div>
+                    <div class="option-desc">Kapı, pencere ve sistem uygulamaları</div>
+                </div>
+
+                <div class="option" data-value="Yer kaplamaları">
+                    <div class="option-icon">▦</div>
+                    <div class="option-title">Yer Kaplamaları</div>
+                    <div class="option-desc">Zemin ve yüzey uygulamaları</div>
+                </div>
+
+                <div class="option" data-value="Çevre / peyzaj">
+                    <div class="option-icon">♧</div>
+                    <div class="option-title">Çevre / Peyzaj</div>
+                    <div class="option-desc">Çevre düzenleme ve peyzaj uygulamaları</div>
+                </div>
+
+                <div class="option" data-value="Diğer">
+                    <div class="option-icon">+</div>
+                    <div class="option-title">Diğer</div>
+                    <div class="option-desc">Farklı bir proje veya özel uygulama</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STEP 2 -->
+        <section class="step" data-step="2">
+
+            <div class="question-label">02 • KONUM</div>
+
+            <div class="question">
+                Proje nerede?
+            </div>
+
+            <div class="question-sub">
+                İl, ilçe ve mümkünse mahalle bilgisi yeterli.
+            </div>
+
+            <div class="input-grid">
+
+                <div class="field">
+                    <label>İl</label>
+                    <input id="city" type="text" placeholder="Örn. Antalya">
+                </div>
+
+                <div class="field">
+                    <label>İlçe</label>
+                    <input id="district" type="text" placeholder="Örn. Alanya">
+                </div>
+
+            </div>
+
+            <div class="field">
+                <label>Mahalle / Bölge</label>
+                <input id="neighborhood"
+                       type="text"
+                       placeholder="Örn. Mahmutlar">
+            </div>
+
+            <div class="notice">
+                Konum bilgisi, projenin değerlendirilmesi ve gerektiğinde
+                keşif planlamasının yapılabilmesi için istenir.
+            </div>
+
+        </section>
+
+
+        <!-- STEP 3 -->
+        <section class="step" data-step="3">
+
+            <div class="question-label">03 • YAPI</div>
+
+            <div class="question">
+                Nasıl bir yapı üzerinde çalışıyoruz?
+            </div>
+
+            <div class="question-sub">
+                Projenize en yakın yapı tipini seçin.
+            </div>
+
+            <div class="options">
+
+                <div class="option" data-value="Villa">
+                    <div class="option-icon">⌂</div>
+                    <div class="option-title">Villa</div>
+                </div>
+
+                <div class="option" data-value="Apartman">
+                    <div class="option-icon">▥</div>
+                    <div class="option-title">Apartman</div>
+                </div>
+
+                <div class="option" data-value="Site">
+                    <div class="option-icon">▦</div>
+                    <div class="option-title">Site</div>
+                </div>
+
+                <div class="option" data-value="İş yeri">
+                    <div class="option-icon">▣</div>
+                    <div class="option-title">İş Yeri</div>
+                </div>
+
+                <div class="option" data-value="Otel">
+                    <div class="option-icon">◇</div>
+                    <div class="option-title">Otel</div>
+                </div>
+
+                <div class="option" data-value="Restoran">
+                    <div class="option-icon">◫</div>
+                    <div class="option-title">Restoran</div>
+                </div>
+
+                <div class="option" data-value="Diğer">
+                    <div class="option-icon">+</div>
+                    <div class="option-title">Diğer</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STEP 4 -->
+        <section class="step" data-step="4">
+
+            <div class="question-label">04 • PROJE DURUMU</div>
+
+            <div class="question">
+                Projeniz şu anda hangi aşamada?
+            </div>
+
+            <div class="question-sub">
+                Bu bilgi, talebinizi doğru anlamamıza yardımcı olur.
+            </div>
+
+            <div class="options">
+
+                <div class="option" data-value="Yeni yapı">
+                    <div class="option-icon">✦</div>
+                    <div class="option-title">Yeni Yapı</div>
+                    <div class="option-desc">Yeni yapılacak veya yapım aşamasında</div>
+                </div>
+
+                <div class="option" data-value="Mevcut yapı">
+                    <div class="option-icon">⌂</div>
+                    <div class="option-title">Mevcut Yapı</div>
+                    <div class="option-desc">Mevcut yapıya yeni uygulama</div>
+                </div>
+
+                <div class="option" data-value="Tadilat / yenileme">
+                    <div class="option-icon">↻</div>
+                    <div class="option-title">Tadilat / Yenileme</div>
+                    <div class="option-desc">Mevcut alanın yenilenmesi</div>
+                </div>
+
+                <div class="option" data-value="Proje aşaması">
+                    <div class="option-icon">◌</div>
+                    <div class="option-title">Proje Aşaması</div>
+                    <div class="option-desc">Henüz uygulama başlamadı</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STEP 5 -->
+        <section class="step" data-step="5">
+
+            <div class="question-label">05 • ÖLÇEK</div>
+
+            <div class="question">
+                Projenizin yaklaşık büyüklüğü nedir?
+            </div>
+
+            <div class="question-sub">
+                Kesin ölçü gerekmiyor. Yaklaşık bilgi yeterli.
+            </div>
+
+            <div class="size-options">
+
+                <div class="size" data-value="50 m² altı">
+                    50 m² altı
+                </div>
+
+                <div class="size" data-value="50–150 m²">
+                    50–150 m²
+                </div>
+
+                <div class="size" data-value="150–300 m²">
+                    150–300 m²
+                </div>
+
+                <div class="size" data-value="300–500 m²">
+                    300–500 m²
+                </div>
+
+                <div class="size" data-value="500–1000 m²">
+                    500–1000 m²
+                </div>
+
+                <div class="size" data-value="1000 m² üzeri">
+                    1000 m² üzeri
+                </div>
+
+                <div class="size" data-value="Bilmiyorum" style="grid-column:1/-1">
+                    Ölçüyü bilmiyorum
+                </div>
+
+            </div>
+
+            <div class="field">
+                <label>Varsa yaklaşık ölçü / kat / cephe bilgisi</label>
+                <input id="extraSize"
+                       type="text"
+                       placeholder="Örn. 5 kat, 4 cephe, yaklaşık 900 m²">
+            </div>
+
+        </section>
+
+
+        <!-- STEP 6 -->
+        <section class="step" data-step="6">
+
+            <div class="question-label">06 • PROJE DETAYI</div>
+
+            <div class="question">
+                Projenizi biraz anlatın.
+            </div>
+
+            <div class="question-sub">
+                Ne yapılmasını istediğinizi kendi cümlelerinizle yazabilirsiniz.
+                Teknik terim kullanmanız gerekmiyor.
+            </div>
+
+            <div class="field">
+                <label>Proje açıklaması</label>
+
+                <textarea id="description"
+                          placeholder="Örn. Binanın dış cephesini yenilemek istiyoruz. Daha modern bir görünüm, ısı yalıtımı ve giriş kısmında estetik bir çalışma düşünüyoruz..."></textarea>
+            </div>
+
+            <div class="notice">
+                Fotoğraf, mevcut durum görselleri veya proje çizimlerini
+                teklif talebinizden sonra WhatsApp üzerinden gönderebilirsiniz.
+            </div>
+
+        </section>
+
+
+        <!-- STEP 7 -->
+        <section class="step" data-step="7">
+
+            <div class="question-label">07 • İLETİŞİM</div>
+
+            <div class="question">
+                Size nasıl ulaşalım?
+            </div>
+
+            <div class="question-sub">
+                Talebiniz hazır. Son adımda iletişim bilgilerinizi ekleyin.
+            </div>
+
+            <div class="field">
+                <label>Ad Soyad / Firma Adı</label>
+                <input id="name"
+                       type="text"
+                       placeholder="Adınız veya firma adınız">
+            </div>
+
+            <div class="field">
+                <label>Telefon</label>
+                <input id="phone"
+                       type="tel"
+                       inputmode="tel"
+                       placeholder="05XX XXX XX XX">
+            </div>
+
+            <div class="notice">
+                Bilgileriniz burada hesaplanmaz veya herhangi bir fiyat
+                otomatik olarak oluşturulmaz. Talebiniz WhatsApp üzerinden
+                8 Yapı ekibine iletilir ve proje değerlendirmesi yapılır.
+            </div>
+
+        </section>
+
+
+        <!-- STEP 8 / SUMMARY -->
+        <section class="step" data-step="8">
+
+            <div class="question-label">SON ADIM • KONTROL</div>
+
+            <div class="question">
+                Proje bilgileriniz hazır.
+            </div>
+
+            <div class="question-sub">
+                WhatsApp'a göndermeden önce bilgilerinizi kontrol edin.
+            </div>
+
+            <div class="summary">
+
+                <div class="summary-head">
+                    8 YAPI • PROJE / TEKLİF TALEBİ
+                </div>
+
+                <div class="summary-row">
+                    <span>Hizmet</span>
+                    <span id="summaryService">—</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Konum</span>
+                    <span id="summaryLocation">—</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Yapı</span>
+                    <span id="summaryBuilding">—</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Proje durumu</span>
+                    <span id="summaryStatus">—</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Yaklaşık ölçek</span>
+                    <span id="summarySize">—</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Proje</span>
+                    <span id="summaryDescription">—</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>İletişim</span>
+                    <span id="summaryContact">—</span>
+                </div>
+
+            </div>
+
+            <div class="notice">
+                Gönder butonuna bastığınızda WhatsApp açılır ve hazırlanan
+                proje özeti mesaj olarak karşınıza gelir. Mesajı kontrol
+                ettikten sonra gönderirsiniz.
+            </div>
+
+            <div class="actions">
+
+                <button class="btn btn-back" onclick="prevStep()">
+                    ← Düzenle
+                </button>
+
+                <button class="btn btn-whatsapp" onclick="sendWhatsApp()">
+                    WhatsApp'a Gönder →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUCCESS -->
+        <section class="step" data-step="9">
+
+            <div class="success">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>Talebiniz Hazır.</h2>
+
+                <p>
+                    WhatsApp açıldı. Hazırlanan proje özetini kontrol ederek
+                    8 Yapı ekibine gönderebilirsiniz.
+                </p>
+
+                <div class="whatsapp-note">
+                    Projenize ait fotoğraf, video, çizim veya mevcut durum
+                    görsellerini de aynı WhatsApp görüşmesinden gönderebilirsiniz.
+                </div>
+
+                <div class="actions">
+
+                    <a href="index.html"
+                       class="btn btn-next"
+                       style="text-decoration:none;text-align:center;">
+                        8 Yapı Kartına Dön
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <strong>8 YAPI</strong> • Çevresine Değer Katar.
+    </footer>
+
+</div>
+
+
+<script>
+
+const totalSteps = 8;
+let currentStep = 1;
+
+const data = {
+    service:"",
+    city:"",
+    district:"",
+    neighborhood:"",
+    building:"",
+    status:"",
+    size:"",
+    extraSize:"",
+    description:"",
+    name:"",
+    phone:""
+};
+
+
+/* -------------------------
+   OPTION SELECTION
+------------------------- */
+
+document.querySelectorAll('.option').forEach(option => {
+
+    option.addEventListener('click', function(){
+
+        const parent = this.closest('.step');
+
+        parent.querySelectorAll('.option').forEach(item=>{
+            item.classList.remove('selected');
+        });
+
+        this.classList.add('selected');
+
+        const value = this.dataset.value;
+
+        if(parent.dataset.step === "1"){
+            data.service = value;
+        }
+
+        if(parent.dataset.step === "3"){
+            data.building = value;
+        }
+
+        if(parent.dataset.step === "4"){
+            data.status = value;
+        }
+
+    });
+
+});
+
+
+/* -------------------------
+   SIZE SELECTION
+------------------------- */
+
+document.querySelectorAll('.size').forEach(size => {
+
+    size.addEventListener('click', function(){
+
+        document.querySelectorAll('.size').forEach(item=>{
+            item.classList.remove('selected');
+        });
+
+        this.classList.add('selected');
+
+        data.size = this.dataset.value;
+
+    });
+
+});
+
+
+/* -------------------------
+   READ INPUTS
+------------------------- */
+
+function readInputs(){
+
+    data.city =
+        document.getElementById('city').value.trim();
+
+    data.district =
+        document.getElementById('district').value.trim();
+
+    data.neighborhood =
+        document.getElementById('neighborhood').value.trim();
+
+    data.extraSize =
+        document.getElementById('extraSize').value.trim();
+
+    data.description =
+        document.getElementById('description').value.trim();
+
+    data.name =
+        document.getElementById('name').value.trim();
+
+    data.phone =
+        document.getElementById('phone').value.trim();
+
+}
+
+
+/* -------------------------
+   VALIDATION
+------------------------- */
+
+function validateStep(step){
+
+    readInputs();
+
+    if(step === 1 && !data.service){
+        alert("Lütfen proje alanını seçin.");
+        return false;
+    }
+
+    if(step === 2){
+
+        if(!data.city || !data.district){
+            alert("Lütfen en az il ve ilçe bilgisini girin.");
+            return false;
+        }
+
+    }
+
+    if(step === 3 && !data.building){
+        alert("Lütfen yapı tipini seçin.");
+        return false;
+    }
+
+    if(step === 4 && !data.status){
+        alert("Lütfen projenizin mevcut durumunu seçin.");
+        return false;
+    }
+
+    if(step === 5 && !data.size){
+        alert("Lütfen yaklaşık proje ölçeğini seçin.");
+        return false;
+    }
+
+    if(step === 6 && data.description.length < 5){
+        alert("Lütfen projenizi birkaç cümleyle anlatın.");
+        return false;
+    }
+
+    if(step === 7){
+
+        if(data.name.length < 2){
+            alert("Lütfen adınızı veya firma adınızı girin.");
+            return false;
+        }
+
+        if(data.phone.length < 10){
+            alert("Lütfen geçerli bir telefon numarası girin.");
+            return false;
+        }
+
+    }
+
+    return true;
+
+}
+
+
+/* -------------------------
+   NEXT
+------------------------- */
+
+function nextStep(){
+
+    if(!validateStep(currentStep)){
+        return;
+    }
+
+    if(currentStep === 7){
+        prepareSummary();
+    }
+
+    if(currentStep < totalSteps){
+
+        currentStep++;
+
+        showStep();
+
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        });
+
+    }
+
+}
+
+
+/* -------------------------
+   PREVIOUS
+------------------------- */
+
+function prevStep(){
+
+    if(currentStep > 1){
+
+        currentStep--;
+
+        showStep();
+
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        });
+
+    }
+
+}
+
+
+/* -------------------------
+   SHOW STEP
+------------------------- */
+
+function showStep(){
+
+    document.querySelectorAll('.step').forEach(step=>{
+        step.classList.remove('active');
+    });
+
+    const target =
+        document.querySelector(
+            `.step[data-step="${currentStep}"]`
+        );
+
+    if(target){
+        target.classList.add('active');
+    }
+
+
+    const percent =
+        Math.round((currentStep / totalSteps) * 100);
+
+    document.getElementById('progressBar').style.width =
+        percent + "%";
+
+    document.getElementById('percent').textContent =
+        percent + "%";
+
+    document.getElementById('stepText').textContent =
+        "ADIM " + currentStep + " / " + totalSteps;
+
+}
+
+
+/* -------------------------
+   ADD NAVIGATION BUTTONS
+------------------------- */
+
+document.querySelectorAll('.step').forEach(step=>{
+
+    const number = Number(step.dataset.step);
+
+    if(number >= 1 && number <= 7){
+
+        const actions = document.createElement('div');
+
+        actions.className = 'actions';
+
+        if(number > 1){
+
+            const back =
+                document.createElement('button');
+
+            back.className = 'btn btn-back';
+
+            back.textContent = '← Geri';
+
+            back.onclick = prevStep;
+
+            actions.appendChild(back);
+
+        }
+
+        const next =
+            document.createElement('button');
+
+        next.className = 'btn btn-next';
+
+        next.textContent =
+            number === 7
+            ? 'Projeyi Kontrol Et →'
+            : 'Devam Et →';
+
+        next.onclick = nextStep;
+
+        actions.appendChild(next);
+
+        step.appendChild(actions);
+
+    }
+
+});
+
+
+/* -------------------------
+   SUMMARY
+------------------------- */
+
+function prepareSummary(){
+
+    readInputs();
+
+    document.getElementById('summaryService').textContent =
+        data.service || "Belirtilmedi";
+
+    const locationParts = [
+        data.city,
+        data.district,
+        data.neighborhood
+    ].filter(Boolean);
+
+    document.getElementById('summaryLocation').textContent =
+        locationParts.join(" / ") || "Belirtilmedi";
+
+    document.getElementById('summaryBuilding').textContent =
+        data.building || "Belirtilmedi";
+
+    document.getElementById('summaryStatus').textContent =
+        data.status || "Belirtilmedi";
+
+    let sizeText = data.size || "Belirtilmedi";
+
+    if(data.extraSize){
+        sizeText += " • " + data.extraSize;
+    }
+
+    document.getElementById('summarySize').textContent =
+        sizeText;
+
+    document.getElementById('summaryDescription').textContent =
+        data.description || "Belirtilmedi";
+
+    document.getElementById('summaryContact').textContent =
+        data.name + " • " + data.phone;
+
+}
+
+
+/* -------------------------
+   WHATSAPP
+------------------------- */
+
+function sendWhatsApp(){
+
+    readInputs();
+
+    const locationParts = [
+        data.city,
+        data.district,
+        data.neighborhood
+    ].filter(Boolean);
+
+    const location =
+        locationParts.join(" / ") || "Belirtilmedi";
+
+    let size =
+        data.size || "Belirtilmedi";
+
+    if(data.extraSize){
+        size += " / " + data.extraSize;
+    }
+
+
+    const message =
+`8 YAPI – PROJE / TEKLİF TALEBİ
+
+Merhaba 8 Yapı,
+
+Projem için bilgi ve teklif almak istiyorum.
+
+━━━━━━━━━━━━━━━━━━
+
+HİZMET
+${data.service}
+
+PROJE KONUMU
+${location}
+
+YAPI TİPİ
+${data.building}
+
+PROJE DURUMU
+${data.status}
+
+YAKLAŞIK ÖLÇEK
+${size}
+
+PROJE AÇIKLAMASI
+${data.description}
+
+━━━━━━━━━━━━━━━━━━
+
+İLETİŞİM
+
+Ad / Firma:
+${data.name}
+
+Telefon:
+${data.phone}
+
+━━━━━━━━━━━━━━━━━━
+
+Fotoğraf / proje görsellerini ayrıca WhatsApp üzerinden ileteceğim.
+
+Çevresine Değer Katar.
+8 Yapı`;
+
+
+    const whatsappURL =
+        "https://wa.me/905054108707?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(whatsappURL, "_blank");
+
+
+    currentStep = 9;
+
+    document.querySelectorAll('.step').forEach(step=>{
+        step.classList.remove('active');
+    });
+
+    document.querySelector('.step[data-step="9"]')
+        .classList.add('active');
+
+    document.getElementById('progressBar').style.width = "100%";
+    document.getElementById('percent').textContent = "100%";
+    document.getElementById('stepText').textContent = "TAMAMLANDI";
+
+}
+
+
+/* -------------------------
+   PHONE FORMAT
+------------------------- */
+
+document.getElementById('phone').addEventListener('input', function(){
+
+    let value = this.value.replace(/\D/g,'');
+
+    if(value.startsWith('90')){
+        value = '0' + value.substring(2);
+    }
+
+    if(value.length > 11){
+        value = value.substring(0,11);
+    }
+
+    this.value = value;
+
+});
+
+</script>
+
+</body>
+</html>
