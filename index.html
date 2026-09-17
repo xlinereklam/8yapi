@@ -1,1960 +1,704 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
->
+<title>8 Yapı | Business Smart Card</title>
 
-<meta name="theme-color" content="#f7f7f5">
-
-<title>8 Yapı | Cengiz Galitekin</title>
-
-
-<!-- MODERN FONTLAR -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Allura&family=Manrope:wght@400;500;600;700;800&display=swap"
-rel="stylesheet"
->
-
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-  RESET
-========================================================= */
 
 *{
 box-sizing:border-box;
 margin:0;
 padding:0;
--webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
 width:100%;
 min-height:100%;
 }
 
 body{
-font-family:"Manrope",Arial,sans-serif;
-color:#17191d;
-
+font-family:Montserrat,sans-serif;
+background:#e9e7e1;
 display:flex;
 justify-content:center;
-
-background:
-radial-gradient(
-circle at 20% 10%,
-rgba(20,42,75,.07),
-transparent 28%
-),
-
-radial-gradient(
-circle at 90% 80%,
-rgba(180,150,80,.07),
-transparent 30%
-),
-
-#e8e9e7;
-
+align-items:center;
+padding:20px 0;
+color:#17232d;
 overflow-x:hidden;
-}
-
-
-/* =========================================================
-  PHONE FRAME
-========================================================= */
-
-.phone{
-width:min(100%,430px);
-min-height:100vh;
-
-position:relative;
-
-overflow:hidden;
-
-background:#f8f8f6;
-
-box-shadow:
-0 25px 80px rgba(0,0,0,.16);
-}
-
-
-@media(max-width:600px){
-
-body{
-background:#f8f8f6;
 }
 
 .phone{
 width:100%;
+max-width:430px;
+min-height:100vh;
+background:#f8f7f3;
+position:relative;
+overflow:hidden;
+box-shadow:0 0 40px rgba(0,0,0,.12);
+}
+
+/* --------------------------------------------------
+   CATALOG LOADER
+-------------------------------------------------- */
+
+.catalog-loader{
+position:fixed;
+inset:0;
+z-index:99999;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(
+135deg,
+#f8f7f3 0%,
+#eef1ec 48%,
+#e6ebe7 100%
+);
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+transition:opacity .35s ease;
+}
+
+.catalog-loader.active{
+opacity:1;
+visibility:visible;
+pointer-events:auto;
+}
+
+.catalog-loader::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(31,68,53,.055) 1px,transparent 1px),
+linear-gradient(90deg,rgba(31,68,53,.055) 1px,transparent 1px);
+background-size:42px 42px;
+}
+
+.catalog-loader::after{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+border:1px solid rgba(31,68,53,.08);
+border-radius:50%;
+}
+
+.catalog-loader-panel{
+width:calc(100% - 40px);
+max-width:390px;
+padding:35px 25px;
+background:rgba(255,255,255,.78);
+border:1px solid rgba(31,68,53,.12);
+border-radius:18px;
+box-shadow:0 20px 60px rgba(20,40,30,.12);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+text-align:center;
+position:relative;
+z-index:2;
+}
+
+.catalog-loader-logo{
+width:105px;
+height:auto;
+object-fit:contain;
+margin-bottom:18px;
+}
+
+.catalog-loader-line{
+width:100%;
+height:2px;
+background:linear-gradient(
+90deg,
+#1f4435,
+#8aa68f,
+#1f4435
+);
+margin-bottom:22px;
+}
+
+.catalog-spinner{
+width:35px;
+height:35px;
+border-radius:50%;
+border:3px solid rgba(31,68,53,.12);
+border-top-color:#1f4435;
+border-right-color:#7c9d86;
+margin:0 auto 20px;
+animation:catalogSpin 1s linear infinite;
+}
+
+@keyframes catalogSpin{
+to{
+transform:rotate(360deg);
+}
+}
+
+.catalog-loader-title{
+font-size:14px;
+font-weight:700;
+letter-spacing:2px;
+color:#1f4435;
+margin-bottom:9px;
+}
+
+.catalog-loader-text{
+font-size:11px;
+line-height:1.7;
+color:#647069;
+letter-spacing:.2px;
+}
+
+.catalog-progress{
+width:100%;
+height:3px;
+background:rgba(31,68,53,.1);
+border-radius:20px;
+overflow:hidden;
+margin-top:24px;
+}
+
+.catalog-progress span{
+display:block;
+width:40%;
+height:100%;
+background:#1f4435;
+border-radius:20px;
+animation:catalogProgress 1.2s ease-in-out infinite;
+}
+
+@keyframes catalogProgress{
+0%{
+transform:translateX(-130%);
+}
+100%{
+transform:translateX(350%);
+}
+}
+
+.catalog-loader-brand{
+font-size:8px;
+font-weight:600;
+letter-spacing:2px;
+color:#8a938d;
+margin-top:18px;
+}
+
+/* --------------------------------------------------
+   INTRO
+-------------------------------------------------- */
+
+.intro{
+position:fixed;
+inset:0;
+z-index:9999;
+background:#f8f7f3;
+display:flex;
+align-items:center;
+justify-content:center;
+animation:introOut 4.7s forwards;
+pointer-events:none;
+}
+
+.intro-content{
+text-align:center;
+position:relative;
+width:90%;
+}
+
+.intro-logo{
+width:150px;
+height:auto;
+opacity:0;
+animation:introLogo 1s .35s forwards;
+}
+
+.intro-name{
+font-family:Allura,cursive;
+font-size:45px;
+color:#1f4435;
+margin-top:12px;
+opacity:0;
+animation:introName 1s 1.25s forwards;
+}
+
+.intro-role{
+font-size:8px;
+font-weight:600;
+letter-spacing:1.5px;
+color:#68736d;
+margin-top:3px;
+opacity:0;
+animation:introRole 1s 1.75s forwards;
+}
+
+.intro-line{
+height:1px;
+width:0;
+background:#1f4435;
+margin:20px auto;
+animation:introLine 1s 2.1s forwards;
+}
+
+.intro-circle{
+position:absolute;
+width:230px;
+height:230px;
+border:1px solid rgba(31,68,53,.12);
+border-radius:50%;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) scale(.4);
+opacity:0;
+animation:introCircle 1.5s 2.4s forwards;
+}
+
+@keyframes introLogo{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes introName{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes introRole{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes introLine{
+to{
+width:110px;
+}
+}
+
+@keyframes introCircle{
+to{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
+}
+
+@keyframes introOut{
+0%,82%{
+opacity:1;
+visibility:visible;
+}
+100%{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* --------------------------------------------------
+   MAIN
+-------------------------------------------------- */
+
+.main{
+padding:22px 18px 28px;
+}
+
+.logo{
+width:150px;
+display:block;
+margin:0 auto 5px;
+}
+
+.owner{
+text-align:center;
+}
+
+.owner-name{
+font-family:Allura,cursive;
+font-size:42px;
+line-height:1;
+color:#1f4435;
+}
+
+.owner-role{
+font-size:8px;
+font-weight:600;
+letter-spacing:1.4px;
+color:#68736d;
+margin-top:5px;
+}
+
+.divider{
+width:100px;
+height:1px;
+background:#1f4435;
+opacity:.35;
+margin:15px auto 18px;
+}
+
+/* --------------------------------------------------
+   SLIDESHOW
+-------------------------------------------------- */
+
+.slideshow{
+width:100%;
+height:235px;
+position:relative;
+overflow:hidden;
+border-radius:8px;
+background:#ddd;
+}
+
+.slide{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+animation:slideShow 20s infinite;
+}
+
+.slide:nth-child(1){
+animation-delay:0s;
+}
+
+.slide:nth-child(2){
+animation-delay:5s;
+}
+
+.slide:nth-child(3){
+animation-delay:10s;
+}
+
+.slide:nth-child(4){
+animation-delay:15s;
+}
+
+@keyframes slideShow{
+0%{
+opacity:0;
+}
+5%{
+opacity:1;
+}
+25%{
+opacity:1;
+}
+30%{
+opacity:0;
+}
+100%{
+opacity:0;
+}
+}
+
+/* --------------------------------------------------
+   BRAND TEXT
+-------------------------------------------------- */
+
+.brand-area{
+text-align:center;
+padding:18px 0 14px;
+}
+
+.slogan{
+font-family:Allura,cursive;
+font-size:36px;
+line-height:1;
+color:#1f4435;
+}
+
+.sub{
+font-size:8px;
+font-weight:600;
+letter-spacing:2px;
+color:#758079;
+margin-top:8px;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+
+.button{
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+width:100%;
+min-height:58px;
+margin-top:10px;
+border-radius:10px;
+text-decoration:none;
+overflow:hidden;
+transition:.25s ease;
+cursor:pointer;
+}
+
+.button::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:60%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.25),
+transparent
+);
+transform:skewX(-20deg);
+animation:shine 4s infinite;
+}
+
+@keyframes shine{
+0%,70%{
+left:-100%;
+}
+100%{
+left:150%;
+}
+}
+
+.button:active{
+transform:scale(.98);
+}
+
+.showroom{
+background:#1f4435;
+color:#fff;
+flex-direction:column;
+min-height:70px;
+padding:10px;
+}
+
+.showroom small{
+font-size:8px;
+letter-spacing:2px;
+opacity:.75;
+}
+
+.showroom strong{
+font-size:14px;
+letter-spacing:.3px;
+margin-top:3px;
+}
+
+.catalog{
+background:#17232d;
+color:#fff;
+font-size:12px;
+font-weight:600;
+letter-spacing:.4px;
+}
+
+.catalog-icon{
+font-size:22px;
+margin-right:12px;
+font-weight:300;
+}
+
+/* --------------------------------------------------
+   CONTACT GRID
+-------------------------------------------------- */
+
+.quick-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:10px;
+}
+
+.quick-grid .button{
+margin-top:0;
+min-height:53px;
+font-size:10px;
+font-weight:600;
+background:#fff;
+color:#26332d;
+border:1px solid rgba(31,68,53,.12);
+box-shadow:0 5px 18px rgba(0,0,0,.04);
+}
+
+.quick-grid .icon{
+font-size:18px;
+margin-right:8px;
+color:#1f4435;
+}
+
+.full{
+grid-column:1 / -1;
+}
+
+.review{
+background:#1f4435!important;
+color:#fff!important;
+border-color:#1f4435!important;
+}
+
+.review .icon{
+color:#fff;
+}
+
+.offer{
+background:#b32626!important;
+color:#fff!important;
+border-color:#b32626!important;
+min-height:68px!important;
+}
+
+.offer .icon{
+color:#fff!important;
+font-size:22px!important;
+}
+
+.offer-text{
+display:flex;
+flex-direction:column;
+text-align:left;
+line-height:1.15;
+}
+
+.offer-text small{
+font-size:8px;
+letter-spacing:1px;
+}
+
+.offer-text strong{
+font-size:14px;
+margin-top:3px;
+}
+
+/* --------------------------------------------------
+   VISION
+-------------------------------------------------- */
+
+.vision{
+margin-top:24px;
+padding:24px 20px;
+border-top:1px solid rgba(31,68,53,.12);
+text-align:center;
+}
+
+.vision-label{
+font-size:8px;
+font-weight:700;
+letter-spacing:2px;
+color:#8a938d;
+}
+
+.vision-title{
+margin-top:8px;
+font-size:19px;
+font-weight:700;
+color:#1f4435;
+}
+
+.vision-title span{
+font-family:Allura,cursive;
+font-size:30px;
+font-weight:400;
+}
+
+.vision-text{
+font-size:10px;
+line-height:1.8;
+color:#657069;
+margin-top:12px;
+}
+
+.signature{
+font-family:Allura,cursive;
+font-size:27px;
+color:#1f4435;
+margin-top:15px;
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+
+.footer{
+text-align:center;
+padding:18px 0 4px;
+font-size:8px;
+letter-spacing:2px;
+color:#9ba19d;
+}
+
+.footer strong{
+display:block;
+font-size:11px;
+color:#1f4435;
+margin-bottom:5px;
+}
+
+.arch-float{
+position:absolute;
+width:170px;
+height:170px;
+border:1px solid rgba(31,68,53,.05);
+border-radius:50%;
+right:-100px;
+top:520px;
+pointer-events:none;
+}
+
+.arch-float2{
+position:absolute;
+width:120px;
+height:120px;
+border:1px solid rgba(31,68,53,.04);
+border-radius:50%;
+left:-80px;
+top:900px;
+pointer-events:none;
+}
+
+@media(max-width:430px){
+
+body{
+padding:0;
+}
+
+.phone{
 box-shadow:none;
 }
 
 }
 
-
-/* =========================================================
-  INTRO / OPENING ANIMATION
-========================================================= */
-
-.intro{
-position:fixed;
-
-inset:0;
-
-z-index:9999;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-background:
-linear-gradient(
-135deg,
-#ffffff 0%,
-#f4f5f3 48%,
-#e9ebea 100%
-);
-
-animation:introExit .8s ease 4.7s forwards;
-
-pointer-events:none;
-}
-
-
-.intro::before{
-
-content:"";
-
-position:absolute;
-
-width:470px;
-height:470px;
-
-border:1px solid rgba(18,49,80,.10);
-
-border-radius:50%;
-
-box-shadow:
-
-0 0 0 35px rgba(18,49,80,.025),
-
-0 0 0 75px rgba(18,49,80,.018),
-
-0 0 0 120px rgba(18,49,80,.012);
-
-animation:
-introCircle 2.5s ease forwards;
-}
-
-
-.intro::after{
-
-content:"";
-
-position:absolute;
-
-width:180%;
-
-height:1px;
-
-left:-40%;
-
-top:50%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(177,145,65,.55),
-rgba(20,52,82,.45),
-transparent
-);
-
-transform:rotate(-18deg) scaleX(0);
-
-animation:introLine 1.8s ease .35s forwards;
-}
-
-
-.intro-logo{
-
-position:relative;
-
-z-index:5;
-
-width:235px;
-
-max-width:70%;
-
-opacity:0;
-
-transform:
-translateY(15px)
-scale(.88);
-
-filter:
-drop-shadow(
-0 8px 16px
-rgba(0,0,0,.10)
-);
-
-animation:
-
-introLogo
-1.25s
-cubic-bezier(.2,.8,.2,1)
-.45s
-forwards;
-}
-
-
-.intro-light{
-
-position:absolute;
-
-z-index:4;
-
-width:180px;
-height:180px;
-
-border-radius:50%;
-
-background:
-radial-gradient(
-circle,
-rgba(163,25,34,.20),
-rgba(163,25,34,.05) 40%,
-transparent 70%
-);
-
-filter:blur(4px);
-
-opacity:0;
-
-animation:introLight 1.5s ease .65s forwards;
-}
-
-
-/* =========================================================
-  INTRO CENGİZ GALİTEKİN
-========================================================= */
-
-.intro-caption{
-
-position:absolute;
-
-z-index:5;
-
-bottom:28%;
-
-width:100%;
-
-text-align:center;
-
-font-family:
-"Allura",
-"URW Chancery L",
-"Apple Chancery",
-cursive;
-
-font-size:43px;
-
-font-weight:400;
-
-letter-spacing:.5px;
-
-color:#17253a;
-
-transform:
-translateY(8px)
-rotate(-2deg);
-
-opacity:0;
-
-text-shadow:
-0 1px 0 rgba(255,255,255,.9);
-
-animation:
-introCaption
-.9s
-ease
-1.35s
-forwards;
-}
-
-
-@keyframes introCircle{
-
-0%{
-transform:scale(.55);
-opacity:0;
-}
-
-45%{
-opacity:.8;
-}
-
-100%{
-transform:scale(1.05);
-opacity:.55;
-}
-
-}
-
-
-@keyframes introLine{
-
-0%{
-transform:rotate(-18deg) scaleX(0);
-opacity:0;
-}
-
-100%{
-transform:rotate(-18deg) scaleX(1);
-opacity:1;
-}
-
-}
-
-
-@keyframes introLogo{
-
-0%{
-opacity:0;
-
-transform:
-translateY(15px)
-scale(.88);
-}
-
-55%{
-opacity:1;
-}
-
-100%{
-opacity:1;
-
-transform:
-translateY(0)
-scale(1);
-}
-
-}
-
-
-@keyframes introLight{
-
-0%{
-opacity:0;
-transform:translateX(-120px);
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-opacity:0;
-transform:translateX(120px);
-}
-
-}
-
-
-@keyframes introCaption{
-
-from{
-opacity:0;
-
-transform:
-translateY(8px)
-rotate(-2deg);
-}
-
-to{
-opacity:1;
-
-transform:
-translateY(0)
-rotate(-2deg);
-}
-
-}
-
-
-@keyframes introExit{
-
-0%{
-opacity:1;
-}
-
-100%{
-opacity:0;
-visibility:hidden;
-}
-
-}
-
-
-/* =========================================================
-  MAIN PAGE
-========================================================= */
-
-.page{
-
-position:relative;
-
-min-height:100vh;
-
-overflow:hidden;
-
-padding:
-24px
-19px
-38px;
-
-background:
-
-linear-gradient(
-135deg,
-#ffffff 0%,
-#f8f8f6 48%,
-#f1f2f0 100%
-);
-}
-
-
-.page::before{
-
-content:"";
-
-position:absolute;
-
-width:520px;
-height:520px;
-
-top:-170px;
-right:-250px;
-
-border:
-1px solid
-rgba(15,43,77,.07);
-
-border-radius:50%;
-
-box-shadow:
-
-0 0 0 35px
-rgba(15,43,77,.018),
-
-0 0 0 70px
-rgba(15,43,77,.012);
-
-animation:
-architectureFloat
-15s
-ease-in-out
-infinite;
-}
-
-
-.page::after{
-
-content:"";
-
-position:absolute;
-
-width:330px;
-height:330px;
-
-bottom:-160px;
-left:-150px;
-
-border:
-1px solid
-rgba(190,155,70,.10);
-
-transform:rotate(25deg);
-
-animation:
-architectureFloat2
-18s
-ease-in-out
-infinite;
-}
-
-
-@keyframes architectureFloat{
-
-0%,100%{
-transform:
-translate(0,0)
-scale(1);
-
-opacity:.65;
-}
-
-50%{
-transform:
-translate(-25px,25px)
-scale(1.06);
-
-opacity:1;
-}
-
-}
-
-
-@keyframes architectureFloat2{
-
-0%,100%{
-transform:
-rotate(25deg)
-translate(0,0);
-}
-
-50%{
-transform:
-rotate(31deg)
-translate(20px,-15px);
-}
-
-}
-
-
-/* =========================================================
-  Z-INDEX
-========================================================= */
-
-.logo-area,
-.person,
-.divider,
-.slideshow,
-.slogan,
-.button,
-.section-title,
-.actions,
-.vision,
-.footer{
-
-position:relative;
-
-z-index:3;
-}
-
-
-/* =========================================================
-  LOGO
-========================================================= */
-
-.logo-area{
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-min-height:82px;
-
-padding:
-3px
-0
-7px;
-}
-
-
-.main-logo{
-
-display:block;
-
-width:205px;
-
-max-width:78%;
-
-height:auto;
-
-filter:
-drop-shadow(
-0 4px 7px
-rgba(0,0,0,.07)
-);
-
-animation:
-logoFloat
-5s
-ease-in-out
-infinite;
-}
-
-
-@keyframes logoFloat{
-
-0%,100%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-3px);
-}
-
-}
-
-
-/* =========================================================
-  CENGİZ GALİTEKİN
-========================================================= */
-
-.person{
-
-text-align:center;
-
-margin-top:3px;
-
-margin-bottom:18px;
-}
-
-
-.person-name{
-
-font-family:
-"Allura",
-"URW Chancery L",
-"Apple Chancery",
-cursive;
-
-font-size:34px;
-
-font-weight:400;
-
-letter-spacing:.4px;
-
-line-height:1.05;
-
-color:#17253a;
-
-transform:rotate(-2deg);
-
-text-shadow:
-0 1px 0
-rgba(255,255,255,.8);
-}
-
-
-.person-role{
-
-margin-top:10px;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:8px;
-
-font-weight:700;
-
-letter-spacing:2px;
-
-color:#69717b;
-
-text-transform:uppercase;
-}
-
-
-/* =========================================================
-  DIVIDER
-========================================================= */
-
-.divider{
-
-width:50px;
-
-height:1px;
-
-margin:
-0
-auto
-18px;
-
-background:#173452;
-
-opacity:.22;
-}
-
-
-/* =========================================================
-  SLIDESHOW
-========================================================= */
-
-.slideshow{
-
-width:100%;
-
-height:235px;
-
-position:relative;
-
-overflow:hidden;
-
-border-radius:8px;
-
-background:#ddd;
-
-box-shadow:
-0 14px 30px
-rgba(0,0,0,.13);
-}
-
-
-.slide{
-
-position:absolute;
-
-inset:0;
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-
-opacity:0;
-
-transform:scale(1.06);
-
-transition:
-
-opacity
-1.6s
-ease-in-out,
-
-transform
-7s
-cubic-bezier(.2,.7,.2,1);
-}
-
-
-.slide.active{
-
-opacity:1;
-
-transform:scale(1);
-}
-
-
-.slideshow::after{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:
-
-linear-gradient(
-180deg,
-rgba(7,25,45,.02),
-rgba(7,25,45,.12)
-);
-
-pointer-events:none;
-}
-
-
-.dots{
-
-position:absolute;
-
-z-index:5;
-
-left:50%;
-
-bottom:11px;
-
-transform:
-translateX(-50%);
-
-display:flex;
-
-gap:6px;
-}
-
-
-.dot{
-
-width:5px;
-
-height:5px;
-
-border-radius:50%;
-
-background:
-rgba(255,255,255,.55);
-
-transition:.4s ease;
-}
-
-
-.dot.active{
-
-width:18px;
-
-border-radius:5px;
-
-background:#fff;
-
-box-shadow:
-0 0 8px
-rgba(255,255,255,.8);
-}
-
-
-/* =========================================================
-  SLOGAN
-========================================================= */
-
-.slogan{
-
-text-align:center;
-
-padding:
-19px
-5px
-17px;
-}
-
-
-.slogan-main{
-
-font-family:
-Georgia,
-"Times New Roman",
-serif;
-
-font-size:18px;
-
-letter-spacing:1px;
-
-color:#173d69;
-
-text-shadow:
-0 1px 0 #fff;
-}
-
-
-.slogan-sub{
-
-margin-top:6px;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:7px;
-
-font-weight:600;
-
-letter-spacing:3px;
-
-color:#92969a;
-}
-
-
-/* =========================================================
-  BUTTON SYSTEM
-========================================================= */
-
-.button{
-
-width:100%;
-
-min-height:60px;
-
-position:relative;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:10px;
-
-overflow:hidden;
-
-border-radius:7px;
-
-text-decoration:none;
-
-margin-bottom:10px;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:14px;
-
-font-weight:600;
-
-letter-spacing:.1px;
-
-cursor:pointer;
-
-border:none;
-
-transition:
-transform .2s ease,
-box-shadow .25s ease;
-}
-
-
-.button::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-75%;
-
-width:45%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-100deg,
-transparent,
-rgba(255,255,255,.48),
-transparent
-);
-
-transform:skewX(-20deg);
-
-animation:
-buttonShine
-5.5s
-ease-in-out
-infinite;
-}
-
-
-@keyframes buttonShine{
-
-0%{
-left:-75%;
-}
-
-35%{
-left:125%;
-}
-
-100%{
-left:125%;
-}
-
-}
-
-
-.button::after{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-border:
-1px solid
-rgba(255,255,255,.35);
-
-border-radius:inherit;
-
-pointer-events:none;
-}
-
-
-.button > *{
-
-position:relative;
-
-z-index:2;
-}
-
-
-.button:active{
-
-transform:scale(.965);
-}
-
-
-/* =========================================================
-  SHOWROOM BUTTON
-========================================================= */
-
-.showroom{
-
-min-height:92px;
-
-flex-direction:column;
-
-gap:6px;
-
-color:#fff;
-
-background:
-
-linear-gradient(
-135deg,
-#236d42,
-#2f8955,
-#246d42
-);
-
-box-shadow:
-0 10px 24px
-rgba(38,119,73,.22);
-}
-
-
-.showroom-small{
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:8px;
-
-font-weight:700;
-
-letter-spacing:3px;
-
-opacity:.82;
-}
-
-
-.showroom-large{
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:15px;
-
-font-weight:800;
-
-letter-spacing:.2px;
-
-text-align:center;
-}
-
-
-/* =========================================================
-  CATALOG
-========================================================= */
-
-.catalog{
-
-min-height:65px;
-
-color:#fff;
-
-background:
-
-linear-gradient(
-135deg,
-#161d27,
-#273445
-);
-
-box-shadow:
-0 9px 21px
-rgba(20,31,45,.18);
-}
-
-
-.catalog-icon{
-
-font-size:19px;
-}
-
-
-/* =========================================================
-  SECTION TITLE
-========================================================= */
-
-.section-title{
-
-display:flex;
-
-align-items:center;
-
-gap:9px;
-
-margin:
-26px
-0
-11px;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:9px;
-
-font-weight:800;
-
-letter-spacing:2.5px;
-
-color:#7d838a;
-}
-
-
-.section-title::before{
-
-content:"";
-
-width:22px;
-
-height:1px;
-
-background:#9ca1a5;
-}
-
-
-/* =========================================================
-  ACTION BUTTONS
-========================================================= */
-
-.actions{
-
-display:grid;
-
-grid-template-columns:
-1fr
-1fr;
-
-gap:9px;
-}
-
-
-.actions .button{
-
-min-height:59px;
-
-margin:0;
-
-color:#1d2630;
-
-background:
-
-linear-gradient(
-135deg,
-rgba(255,255,255,.94),
-rgba(243,245,245,.76)
-);
-
-border:
-1px solid
-rgba(25,50,75,.09);
-
-box-shadow:
-0 6px 16px
-rgba(20,35,50,.055);
-
-backdrop-filter:
-blur(7px);
-
--webkit-backdrop-filter:
-blur(7px);
-
-font-size:13px;
-}
-
-
-.actions .button.full{
-
-grid-column:
-1 / -1;
-}
-
-
-@media(hover:hover){
-
-.button:hover{
-
-transform:
-translateY(-2px);
-
-box-shadow:
-0 10px 24px
-rgba(20,40,60,.13);
-}
-
-}
-
-
-.icon{
-
-min-width:19px;
-
-text-align:center;
-
-font-size:17px;
-
-font-weight:400;
-}
-
-
-/* =========================================================
-  TEKLİF AL
-========================================================= */
-
-.offer-button{
-
-grid-column:1 / -1;
-
-min-height:68px !important;
-
-color:#fff !important;
-
-background:
-
-linear-gradient(
-135deg,
-#8e2028,
-#b32d37,
-#861d25
-) !important;
-
-box-shadow:
-0 10px 24px
-rgba(145,32,42,.22) !important;
-
-}
-
-
-.offer-button .offer-icon{
-
-font-size:20px;
-
-}
-
-
-.offer-button .offer-text{
-
-display:flex;
-
-flex-direction:column;
-
-align-items:flex-start;
-
-gap:2px;
-
-}
-
-
-.offer-button .offer-small{
-
-font-size:8px;
-
-letter-spacing:2.5px;
-
-font-weight:700;
-
-opacity:.78;
-}
-
-
-.offer-button .offer-large{
-
-font-size:14px;
-
-font-weight:800;
-
-}
-
-
-/* =========================================================
-  VISION
-========================================================= */
-
-.vision{
-
-margin-top:29px;
-
-padding:
-26px
-20px
-28px;
-
-position:relative;
-
-overflow:hidden;
-
-border-radius:9px;
-
-color:#fff;
-
-background:
-
-linear-gradient(
-145deg,
-#202c3a,
-#111820
-);
-
-box-shadow:
-0 16px 35px
-rgba(12,23,35,.19);
-}
-
-
-.vision::before{
-
-content:"8";
-
-position:absolute;
-
-right:-8px;
-
-top:-32px;
-
-font-family:
-Georgia,
-serif;
-
-font-size:165px;
-
-line-height:1;
-
-opacity:.035;
-}
-
-
-.vision-label{
-
-position:relative;
-
-z-index:2;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:8px;
-
-font-weight:700;
-
-letter-spacing:3px;
-
-color:#aeb6be;
-
-margin-bottom:11px;
-}
-
-
-.vision-title{
-
-position:relative;
-
-z-index:2;
-
-font-family:
-Georgia,
-"Times New Roman",
-serif;
-
-font-size:20px;
-
-line-height:1.25;
-
-margin-bottom:16px;
-}
-
-
-.vision-title span{
-
-display:block;
-
-color:#aeb6be;
-}
-
-
-.vision-text{
-
-position:relative;
-
-z-index:2;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:12px;
-
-line-height:1.75;
-
-color:#d2d7dc;
-}
-
-
-.vision-sign{
-
-position:relative;
-
-z-index:2;
-
-margin-top:20px;
-
-padding-top:14px;
-
-border-top:
-1px solid
-rgba(255,255,255,.13);
-
-font-family:
-"Allura",
-"URW Chancery L",
-cursive;
-
-font-size:25px;
-
-font-weight:400;
-
-transform:rotate(-2deg);
-}
-
-
-/* =========================================================
-  FOOTER
-========================================================= */
-
-.footer{
-
-text-align:center;
-
-padding:
-28px
-0
-5px;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:8px;
-
-font-weight:600;
-
-letter-spacing:2px;
-
-color:#92969a;
-
-line-height:1.8;
-}
-
-
-/* =========================================================
-  RESPONSIVE
-========================================================= */
-
-@media(max-height:700px){
-
-.page{
-
-padding-top:17px;
-}
-
-.logo-area{
-
-min-height:70px;
-}
-
-.slideshow{
-
-height:205px;
-}
-
-.slogan{
-
-padding-top:14px;
-
-padding-bottom:13px;
-}
-
-.button{
-
-min-height:55px;
-}
-
-.showroom{
-
-min-height:82px;
-}
-
-}
-
-
-@media(max-width:360px){
-
-.page{
-
-padding-left:15px;
-
-padding-right:15px;
-}
-
-.main-logo{
-
-width:180px;
-}
-
-.person-name{
-
-font-size:30px;
-}
-
-.slideshow{
-
-height:195px;
-}
-
-.actions .button{
-
-font-size:12px;
-}
-
-}
-
-
-/* =========================================================
-  INTRO MOBILE
-========================================================= */
-
-@media(max-width:600px){
-
-.intro{
-
-position:fixed;
-}
-
-}
-
-
-/* =========================================================
-  KATALOG YÜKLEME EKRANI
-  SADECE KATALOG BUTONU İÇİN EKLENDİ
-========================================================= */
-
-.catalog-loader{
-
-position:fixed;
-
-inset:0;
-
-z-index:20000;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-padding:24px;
-
-background:
-radial-gradient(
-circle at 15% 15%,
-rgba(35,109,66,.10),
-transparent 28%
-),
-
-radial-gradient(
-circle at 90% 85%,
-rgba(23,61,105,.10),
-transparent 32%
-),
-
-linear-gradient(
-135deg,
-#ffffff,
-#f3f5f3
-);
-
-opacity:0;
-
-visibility:hidden;
-
-pointer-events:none;
-
-transition:
-opacity .35s ease,
-visibility .35s ease;
-}
-
-
-.catalog-loader.active{
-
-opacity:1;
-
-visibility:visible;
-
-pointer-events:auto;
-}
-
-
-/* mimari çizgiler */
-
-.catalog-loader::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background-image:
-
-linear-gradient(
-90deg,
-rgba(23,61,105,.035) 1px,
-transparent 1px
-),
-
-linear-gradient(
-rgba(23,61,105,.035) 1px,
-transparent 1px
-);
-
-background-size:
-42px 42px;
-
-mask-image:
-linear-gradient(
-to bottom,
-rgba(0,0,0,.75),
-transparent 90%
-);
-}
-
-
-/* büyük mimari halka */
-
-.catalog-loader::after{
-
-content:"";
-
-position:absolute;
-
-width:360px;
-
-height:360px;
-
-border:
-1px solid
-rgba(23,61,105,.09);
-
-border-radius:50%;
-
-box-shadow:
-
-0 0 0 28px
-rgba(35,109,66,.025),
-
-0 0 0 58px
-rgba(23,61,105,.018);
-
-animation:
-catalogOrbit
-9s
-linear
-infinite;
-}
-
-
-@keyframes catalogOrbit{
-
-0%{
-transform:rotate(0deg) scale(1);
-}
-
-50%{
-transform:rotate(180deg) scale(1.035);
-}
-
-100%{
-transform:rotate(360deg) scale(1);
-}
-
-}
-
-
-/* cam panel */
-
-.catalog-loader-panel{
-
-position:relative;
-
-z-index:5;
-
-width:min(100%,360px);
-
-padding:
-35px
-27px
-32px;
-
-border:
-1px solid
-rgba(23,61,105,.10);
-
-border-radius:18px;
-
-background:
-rgba(255,255,255,.76);
-
-box-shadow:
-
-0 25px 70px
-rgba(20,40,60,.12);
-
-backdrop-filter:
-blur(18px);
-
--webkit-backdrop-filter:
-blur(18px);
-
-text-align:center;
-}
-
-
-.catalog-loader-logo{
-
-width:145px;
-
-max-width:70%;
-
-height:auto;
-
-margin-bottom:20px;
-
-filter:
-drop-shadow(
-0 5px 9px
-rgba(0,0,0,.08)
-);
-}
-
-
-.catalog-loader-line{
-
-width:80px;
-
-height:2px;
-
-margin:
-0
-auto
-21px;
-
-border-radius:10px;
-
-background:
-linear-gradient(
-90deg,
-#236d42,
-#173d69
-);
-}
-
-
-.catalog-spinner{
-
-width:42px;
-
-height:42px;
-
-margin:
-0
-auto
-18px;
-
-border-radius:50%;
-
-border:
-3px solid
-rgba(23,61,105,.10);
-
-border-top-color:#236d42;
-
-border-right-color:#173d69;
-
-animation:
-catalogSpin
-1s
-linear
-infinite;
-}
-
-
-@keyframes catalogSpin{
-
-to{
-transform:rotate(360deg);
-}
-
-}
-
-
-.catalog-loader-title{
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:13px;
-
-font-weight:800;
-
-letter-spacing:2.2px;
-
-color:#173d69;
-
-margin-bottom:8px;
-}
-
-
-.catalog-loader-text{
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:10px;
-
-font-weight:500;
-
-letter-spacing:.5px;
-
-color:#69717b;
-
-line-height:1.7;
-}
-
-
-.catalog-progress{
-
-height:3px;
-
-width:100%;
-
-margin-top:22px;
-
-overflow:hidden;
-
-border-radius:10px;
-
-background:
-rgba(23,61,105,.08);
-}
-
-
-.catalog-progress span{
-
-display:block;
-
-width:35%;
-
-height:100%;
-
-border-radius:10px;
-
-background:
-linear-gradient(
-90deg,
-#236d42,
-#173d69
-);
-
-animation:
-catalogProgress
-1.5s
-ease-in-out
-infinite;
-}
-
-
-@keyframes catalogProgress{
-
-0%{
-transform:translateX(-130%);
-}
-
-100%{
-transform:translateX(390%);
-}
-
-}
-
-
-.catalog-loader-brand{
-
-margin-top:17px;
-
-font-family:
-"Manrope",
-Arial,
-sans-serif;
-
-font-size:7px;
-
-font-weight:700;
-
-letter-spacing:3px;
-
-color:#92969a;
-}
-
-
 </style>
-
 </head>
-
 
 <body>
 
+<div class="phone">
 
-<!-- =======================================================
-    KATALOG YÜKLEME EKRANI
-======================================================= -->
+<!-- KATALOG YÜKLEME EKRANI -->
 
-<div
-class="catalog-loader"
-id="catalogLoader"
->
+<div class="catalog-loader" id="catalogLoader">
 
 <div class="catalog-loader-panel">
 
@@ -1991,14 +735,13 @@ Lütfen bekleyiniz…
 </div>
 
 
-
-<!-- =======================================================
-    OPENING ANIMATION
-======================================================= -->
+<!-- AÇILIŞ -->
 
 <div class="intro">
 
-<div class="intro-light"></div>
+<div class="intro-content">
+
+<div class="intro-circle"></div>
 
 <img
 src="./assets/8yapi_logo.png"
@@ -2006,143 +749,111 @@ class="intro-logo"
 alt="8 Yapı"
 >
 
-<div class="intro-caption">
+<div class="intro-name">
 Cengiz Galitekin
 </div>
 
+<div class="intro-role">
+(KURUCU / YÖNETİM KURULU BAŞKANI)
+</div>
+
+<div class="intro-line"></div>
+
+</div>
+
 </div>
 
 
+<!-- ANA İÇERİK -->
 
-<!-- =======================================================
-    MAIN
-======================================================= -->
-
-<div class="phone">
-
-<div class="page">
-
-
-<!-- LOGO -->
-
-<div class="logo-area">
+<main class="main">
 
 <img
 src="./assets/8yapi_logo.png"
-class="main-logo"
+class="logo"
+alt="8 Yapı"
+>
+
+<div class="owner">
+
+<div class="owner-name">
+Cengiz Galitekin
+</div>
+
+<div class="owner-role">
+(KURUCU / YÖNETİM KURULU BAŞKANI)
+</div>
+
+</div>
+
+<div class="divider"></div>
+
+
+<!-- SLIDESHOW -->
+
+<div class="slideshow">
+
+<img
+src="./assets/cephe01.png"
+class="slide"
+alt="8 Yapı"
+>
+
+<img
+src="./assets/cephe02.png"
+class="slide"
+alt="8 Yapı"
+>
+
+<img
+src="./assets/cephe03.png"
+class="slide"
+alt="8 Yapı"
+>
+
+<img
+src="./assets/cephe04.png"
+class="slide"
 alt="8 Yapı"
 >
 
 </div>
 
 
-
-<!-- PERSON -->
-
-<div class="person">
-
-<div class="person-name">
-Cengiz Galitekin
-</div>
-
-<div class="person-role">
-(KURUCU / YÖNETİM KURULU BAŞKANI)
-</div>
-
-</div>
-
-
-
-<div class="divider"></div>
-
-
-
-<!-- =======================================================
-    PROJECT SLIDESHOW
-======================================================= -->
-
-<div class="slideshow">
-
-<img
-src="./assets/cephe01.png"
-class="slide active"
-alt="8 Yapı proje görseli"
->
-
-<img
-src="./assets/cephe02.png"
-class="slide"
-alt="8 Yapı proje görseli"
->
-
-<img
-src="./assets/cephe03.png"
-class="slide"
-alt="8 Yapı proje görseli"
->
-
-<img
-src="./assets/cephe04.png"
-class="slide"
-alt="8 Yapı proje görseli"
->
-
-<div class="dots">
-
-<span class="dot active"></span>
-
-<span class="dot"></span>
-
-<span class="dot"></span>
-
-<span class="dot"></span>
-
-</div>
-
-</div>
-
-
-
 <!-- SLOGAN -->
 
-<div class="slogan">
+<div class="brand-area">
 
-<div class="slogan-main">
+<div class="slogan">
 Çevresine Değer Katar
 </div>
 
-<div class="slogan-sub">
+<div class="sub">
 YAPI · TASARIM · UYGULAMA
 </div>
 
 </div>
 
 
-
-<!-- =======================================================
-    DIGITAL SHOWROOM
-======================================================= -->
+<!-- SHOWROOM -->
 
 <a
 href="tanitim.html"
 class="button showroom"
 >
 
-<span class="showroom-small">
+<small>
 DİJİTAL SHOWROOM
-</span>
+</small>
 
-<span class="showroom-large">
+<strong>
 HİZMETLERİMİZ ve FİYATLANDIRMALARIMIZ
-</span>
+</strong>
 
 </a>
 
 
-
-<!-- =======================================================
-    CATALOG
-======================================================= -->
+<!-- KATALOG -->
 
 <a
 href="#"
@@ -2161,271 +872,151 @@ onclick="openCatalog();return false;"
 </a>
 
 
+<!-- HIZLI İLETİŞİM -->
 
-<!-- =======================================================
-    QUICK CONTACT
-======================================================= -->
+<div class="quick-grid">
 
-<div class="section-title">
-HIZLI İLETİŞİM
-</div>
-
-
-
-<div class="actions">
-
-
-<!-- ARA -->
 
 <a
-href="tel:+905054108707"
+href="tel:+905053542264"
 class="button"
 >
 
-<span class="icon">
-☎
-</span>
-
-<span>
-Hemen Ara
-</span>
+<span class="icon">☎</span>
+<span>Hemen Ara</span>
 
 </a>
 
 
+<a
+href="tel:+905053542264"
+class="button"
+>
 
-<!-- KİŞİ KAYDET -->
+<span class="icon">＋</span>
+<span>Telefona Kaydet</span>
+
+</a>
+
+
+<a
+href="https://wa.me/905053542264"
+class="button"
+>
+
+<span class="icon">◉</span>
+<span>WhatsApp</span>
+
+</a>
+
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=36.546513015199764,32.001413146036626"
+target="_blank"
+class="button"
+>
+
+<span class="icon">📍</span>
+<span>Ofis Yol Tarifi</span>
+
+</a>
+
 
 <a
 href="#"
 class="button"
-onclick="saveContact();return false;"
 >
 
-<span class="icon">
-＋
-</span>
-
-<span>
-Telefona Kaydet
-</span>
+<span class="icon">◎</span>
+<span>Instagram</span>
 
 </a>
 
 
-
-<!-- WHATSAPP -->
-
 <a
-href="https://wa.me/905054108707"
-target="_blank"
-rel="noopener"
+href="#"
 class="button"
 >
 
-<span class="icon">
-◉
-</span>
-
-<span>
-WhatsApp
-</span>
+<span class="icon">f</span>
+<span>Facebook</span>
 
 </a>
 
 
-
-<!-- OFİS YOL TARİFİ -->
-
 <a
-href="https://www.google.com/maps/dir/?api=1&destination=36.524374,32.054380"
-target="_blank"
-rel="noopener"
+href="#"
 class="button"
 >
 
-<span class="icon">
-📍
-</span>
-
-<span>
-Ofis Yol Tarifi
-</span>
+<span class="icon">𝕏</span>
+<span>X / Twitter</span>
 
 </a>
 
 
-
-<!-- INSTAGRAM -->
-
 <a
-href="https://www.instagram.com/8yapii/"
-target="_blank"
-rel="noopener"
+href="#"
 class="button"
 >
 
-<span class="icon">
-◎
-</span>
-
-<span>
-Instagram
-</span>
+<span class="icon">▶</span>
+<span>YouTube</span>
 
 </a>
 
 
-
-<!-- FACEBOOK -->
-
 <a
-href="https://www.facebook.com/8yapii"
-target="_blank"
-rel="noopener"
-class="button"
->
-
-<span class="icon">
-f
-</span>
-
-<span>
-Facebook
-</span>
-
-</a>
-
-
-
-<!-- X -->
-
-<a
-href="https://x.com/8yapii"
-target="_blank"
-rel="noopener"
-class="button"
->
-
-<span class="icon">
-𝕏
-</span>
-
-<span>
-X / Twitter
-</span>
-
-</a>
-
-
-
-<!-- YOUTUBE -->
-
-<a
-href="https://www.youtube.com/@8yapii"
-target="_blank"
-rel="noopener"
-class="button"
->
-
-<span class="icon">
-▶
-</span>
-
-<span>
-YouTube
-</span>
-
-</a>
-
-
-
-<!-- İNTERNET SİTESİ -->
-
-<a
-href="https://www.8yapi.tr"
-target="_blank"
-rel="noopener"
+href="#"
 class="button full"
 >
 
-<span class="icon">
-◉
-</span>
-
-<span>
-İnternet Sitesi
-</span>
+<span class="icon">◉</span>
+<span>İnternet Sitesi</span>
 
 </a>
 
-
-
-<!-- GOOGLE -->
 
 <a
-href="https://www.google.com/search?sca_esv=8f55d1c39308862b&sxsrf=APpeQnvqfpxVtffHufKP81CALMsV1jswyg:1789650598745&uds=AJ5uw1_a2D0D09lxm8gpKKOTUn4rD8NCBwdIE873U_ctyfTrNm3SuyN9INY1TMQ9YnLuUCgBYNXSpS3submYQaRIvHkostKlZboeXLGY_4DGfPkxn3GkJi4yoVJWZqaiLJAjwMN3qLsHVhggIE-pstmFEXsWrctayQ&q=8Yap%C4%B1+Yorumlar&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_3xm3BfDiL88669Qnru8LvwTsEy6TWBWZIyDBJUjpK9lfqOo5i3fXezppItQsfWolYI1ffo48DO_7-LulgS5_gp43liG&hl=tr-TR&sa=X&ved=2ahUKEwi16daB2PWWAxU3lP0HHRslDQMQ_4MLegQISRAQ&biw=1920&bih=919&dpr=1"
-target="_blank"
-rel="noopener"
-class="button full"
+href="#"
+class="button full review"
 >
 
-<span class="icon">
-★
-</span>
-
-<span>
-Google Değerlendirme
-</span>
+<span class="icon">★</span>
+<span>Google Değerlendirme</span>
 
 </a>
 
-
-
-<!-- ===================================================
-        TEKLİF AL
-   =================================================== -->
 
 <a
 href="teklif.html"
-class="button offer-button"
+class="button full offer"
 >
 
-<span class="offer-icon">
-✦
-</span>
+<span class="icon">✦</span>
 
 <span class="offer-text">
 
-<span class="offer-small">
+<small>
 PROJENİZ İÇİN
-</span>
+</small>
 
-<span class="offer-large">
+<strong>
 Teklif Al
-</span>
+</strong>
 
 </span>
 
 </a>
 
 
-
-<!-- IBAN -->
-
 <a
 href="#"
 class="button full"
-onclick="copyIBAN();return false;"
 >
 
-<span class="icon">
-₺
-</span>
-
-<span>
-IBAN Numarası
-</span>
+<span class="icon">₺</span>
+<span>IBAN Numarası</span>
 
 </a>
 
@@ -2433,297 +1024,71 @@ IBAN Numarası
 </div>
 
 
-
-<!-- =======================================================
-    VISION
-======================================================= -->
+<!-- VİZYON -->
 
 <section class="vision">
-
 
 <div class="vision-label">
 8 YAPI ARKASINDAKİ VİZYON
 </div>
 
-
 <div class="vision-title">
-
 CENGİZ GALİTEKİN
-
-<span>
-kimdir?
-</span>
-
+<span>kimdir?</span>
 </div>
-
 
 <div class="vision-text">
 
-8 Yapı'nın arkasındaki yaklaşımı,
-yapı sektörüne bakışını ve çalışma
-anlayışını Cengiz Galitekin'in
-hikâyesi üzerinden anlatacağımız
-özel alan.
-
-<br><br>
-
-Burada yalnızca bir özgeçmiş değil;
-8 Yapı'nın nasıl bir anlayışla
-hareket ettiği, yapı ve estetik
-konusundaki yaklaşımı ve
-“Çevresine Değer Katar” anlayışının
-arkasındaki düşünce anlatılacak.
+8 Yapı'nın kuruluş amacı;
+yapı, tasarım ve uygulama süreçlerini
+tek bir anlayış altında birleştirerek
+yaşam alanlarına değer katmaktır.
 
 </div>
 
-
-<div class="vision-sign">
+<div class="signature">
 Cengiz Galitekin
 </div>
-
 
 </section>
 
 
-
-<!-- FOOTER -->
-
 <div class="footer">
 
+<strong>
 8 YAPI
-
-<br>
+</strong>
 
 Çevresine Değer Katar.
 
 </div>
 
+</main>
+
+
+<div class="arch-float"></div>
+<div class="arch-float2"></div>
 
 </div>
-
-</div>
-
 
 
 <script>
-
-/* =========================================================
-  SLIDESHOW
-========================================================= */
-
-const slides =
-document.querySelectorAll(".slide");
-
-const dots =
-document.querySelectorAll(".dot");
-
-let currentSlide = 0;
-
-
-setInterval(function(){
-
-slides[currentSlide]
-.classList
-.remove("active");
-
-dots[currentSlide]
-.classList
-.remove("active");
-
-
-currentSlide++;
-
-
-if(currentSlide >= slides.length){
-
-currentSlide = 0;
-
-}
-
-
-slides[currentSlide]
-.classList
-.add("active");
-
-dots[currentSlide]
-.classList
-.add("active");
-
-
-},5000);
-
-
-
-/* =========================================================
-  CONTACT CARD
-========================================================= */
-
-function saveContact(){
-
-const vcard =
-`BEGIN:VCARD
-VERSION:3.0
-N:Galitekin;Cengiz;;;
-FN:Cengiz Galitekin
-ORG:8 Yapı
-TITLE:Kurucu / Yönetim Kurulu Başkanı
-TEL;TYPE=CELL:+905054108707
-END:VCARD`;
-
-
-const blob =
-new Blob(
-[vcard],
-{
-type:
-"text/vcard;charset=utf-8"
-}
-);
-
-
-const url =
-URL.createObjectURL(blob);
-
-
-const a =
-document.createElement("a");
-
-
-a.href = url;
-
-
-a.download =
-"Cengiz-Galitekin-8-Yapi.vcf";
-
-
-document.body.appendChild(a);
-
-
-a.click();
-
-
-a.remove();
-
-
-setTimeout(function(){
-
-URL.revokeObjectURL(url);
-
-},1000);
-
-}
-
-
-
-/* =========================================================
-  IBAN
-========================================================= */
-
-const IBAN =
-"TR00 0000 0000 0000 0000 0000 00";
-
-
-function copyIBAN(){
-
-if(
-navigator.clipboard &&
-window.isSecureContext
-){
-
-navigator.clipboard
-.writeText(IBAN)
-.then(function(){
-
-alert(
-"IBAN numarası kopyalandı."
-);
-
-})
-
-.catch(function(){
-
-fallbackCopy(IBAN);
-
-});
-
-}
-
-else{
-
-fallbackCopy(IBAN);
-
-}
-
-}
-
-
-
-function fallbackCopy(text){
-
-const input =
-document.createElement("textarea");
-
-
-input.value = text;
-
-
-input.style.position =
-"fixed";
-
-
-input.style.opacity =
-"0";
-
-
-document.body.appendChild(input);
-
-
-input.focus();
-
-input.select();
-
-
-try{
-
-document.execCommand("copy");
-
-alert(
-"IBAN numarası kopyalandı."
-);
-
-}
-
-catch(e){
-
-alert(
-"IBAN: " + text
-);
-
-}
-
-
-input.remove();
-
-}
-
-
-
-/* =========================================================
-   CATALOG
-   SADECE KATALOG AÇILIŞ EKRANI
-========================================================= */
 
 function openCatalog(){
 
 const loader =
 document.getElementById("catalogLoader");
 
-
+if(loader){
 loader.classList.add("active");
-
+}
 
 document.body.style.overflow = "hidden";
 
+sessionStorage.setItem(
+"8yapi_catalog_open",
+"1"
+);
 
 setTimeout(function(){
 
@@ -2734,8 +1099,73 @@ window.location.href =
 
 }
 
-</script>
 
+/*
+KATALOGDAN GERİ DÖNÜŞTE
+YÜKLEME EKRANINI KAPAT
+*/
+
+function closeCatalogLoader(){
+
+const loader =
+document.getElementById("catalogLoader");
+
+if(loader){
+
+loader.classList.remove("active");
+
+}
+
+document.body.style.overflow = "";
+
+sessionStorage.removeItem(
+"8yapi_catalog_open"
+);
+
+}
+
+
+/*
+SAYFA AÇILDIĞINDA
+*/
+
+(function(){
+
+closeCatalogLoader();
+
+})();
+
+
+/*
+TELEFON / TARAYICI GERİ TUŞU
+VE BFCache DÖNÜŞÜ
+*/
+
+window.addEventListener(
+"pageshow",
+function(){
+
+closeCatalogLoader();
+
+}
+);
+
+
+/*
+TARAYICI GEÇMİŞİNDEN GERİ GELİŞ
+*/
+
+window.addEventListener(
+"popstate",
+function(){
+
+closeCatalogLoader();
+
+}
+);
+
+</script>
 
 </body>
 </html>
+```
