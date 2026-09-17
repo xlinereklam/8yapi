@@ -1,1 +1,494 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>8 Yapı | Çevresine Değer Katar</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f5f7;
+    color:#151515;
+}
+
+header{
+    background:#111;
+    color:#fff;
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.slogan{
+    font-size:13px;
+    opacity:.75;
+}
+
+.hero{
+    background:#171717;
+    color:#fff;
+    min-height:380px;
+    display:flex;
+    align-items:center;
+    padding:60px 7%;
+}
+
+.hero-content{
+    max-width:750px;
+}
+
+.hero h1{
+    font-size:55px;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#d8a84e;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.6;
+    color:#ccc;
+    margin-bottom:30px;
+}
+
+.start-btn{
+    display:inline-block;
+    background:#d8a84e;
+    color:#111;
+    padding:16px 28px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    border:none;
+    font-size:16px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:30px 20px;
+    text-align:center;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:.25s;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card.selected{
+    border-color:#d8a84e;
+    background:#fffaf0;
+}
+
+.card-icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#777;
+    font-size:14px;
+    line-height:1.5;
+}
+
+#configurator{
+    display:none;
+}
+
+.step{
+    background:#fff;
+    border-radius:15px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.step h3{
+    margin-bottom:20px;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.option{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:18px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#d8a84e;
+}
+
+.option.selected{
+    border:2px solid #d8a84e;
+    background:#fffaf0;
+}
+
+.option strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.option small{
+    color:#777;
+}
+
+.inputs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.quote{
+    background:#111;
+    color:#fff;
+    border-radius:15px;
+    padding:30px;
+    margin-top:25px;
+}
+
+.quote h3{
+    margin-bottom:15px;
+}
+
+.total{
+    font-size:38px;
+    font-weight:bold;
+    color:#d8a84e;
+    margin:15px 0;
+}
+
+footer{
+    background:#111;
+    color:#aaa;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:40px;
+    }
+
+    .inputs{
+        grid-template-columns:1fr;
+    }
+
+    header{
+        flex-direction:column;
+        gap:8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">8 YAPI</div>
+    <div class="slogan">Çevresine Değer Katar.</div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Yapınız için<br><span>doğru çözümü</span> seçin.</h1>
+
+        <p>
+            İhtiyacınızı adım adım belirleyin.
+            Malzeme, ölçü ve uygulama seçeneklerini seçin.
+            Sistem sizin için tahmini teklif oluştursun.
+        </p>
+
+        <button class="start-btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+            Teklif Oluşturmaya Başla
+        </button>
+    </div>
+</section>
+
+<section id="services" class="container">
+
+    <div class="section-title">
+        <h2>Ne yaptırmak istiyorsunuz?</h2>
+        <p>İhtiyacınıza uygun hizmeti seçerek başlayın.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card" onclick="selectService('Tabela',this)">
+            <div class="card-icon">🏢</div>
+            <h3>Tabela</h3>
+            <p>Işıklı, ışıksız, kutu harf ve özel tabela çözümleri.</p>
+        </div>
+
+        <div class="card" onclick="selectService('Cephe',this)">
+            <div class="card-icon">🏗️</div>
+            <h3>Cephe</h3>
+            <p>Kompozit, cam, cephe kaplama ve uygulama çözümleri.</p>
+        </div>
+
+        <div class="card" onclick="selectService('İç Mekân',this)">
+            <div class="card-icon">🏠</div>
+            <h3>İç Mekân</h3>
+            <p>İç mekân tasarım, kaplama ve dekoratif uygulamalar.</p>
+        </div>
+
+        <div class="card" onclick="selectService('Reklam',this)">
+            <div class="card-icon">📢</div>
+            <h3>Reklam</h3>
+            <p>Markanız için reklam ve tanıtım çözümleri.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="configurator" class="container">
+
+    <div class="section-title">
+        <h2>Teklifinizi Oluşturalım</h2>
+        <p id="selectedServiceText"></p>
+    </div>
+
+    <div class="step">
+
+        <h3>1. Ölçüler</h3>
+
+        <div class="inputs">
+
+            <div>
+                <label>Genişlik (metre)</label>
+                <input type="number" id="width" min="0" step="0.01" value="1" oninput="calculate()">
+            </div>
+
+            <div>
+                <label>Yükseklik (metre)</label>
+                <input type="number" id="height" min="0" step="0.01" value="1" oninput="calculate()">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <h3>2. Malzeme</h3>
+
+        <div class="options">
+
+            <div class="option selected" onclick="selectMaterial('Standart',100,this)">
+                <strong>Standart</strong>
+                <small>Ekonomik çözüm</small>
+            </div>
+
+            <div class="option" onclick="selectMaterial('Orta Segment',175,this)">
+                <strong>Orta Segment</strong>
+                <small>Dengeli çözüm</small>
+            </div>
+
+            <div class="option" onclick="selectMaterial('Premium',275,this)">
+                <strong>Premium</strong>
+                <small>Üst segment malzeme</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <h3>3. Uygulama</h3>
+
+        <div class="options">
+
+            <div class="option selected" onclick="selectApplication('Standart Montaj',1,this)">
+                <strong>Standart Montaj</strong>
+                <small>Normal uygulama</small>
+            </div>
+
+            <div class="option" onclick="selectApplication('Zorlu Montaj',1.25,this)">
+                <strong>Zorlu Montaj</strong>
+                <small>Yükseklik / özel uygulama</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="quote">
+
+        <h3>Tahmini Teklif</h3>
+
+        <div id="summary">
+            Hizmet seçiniz.
+        </div>
+
+        <div class="total" id="total">
+            0 TL
+        </div>
+
+        <button class="start-btn" onclick="createQuote()">
+            Teklifi Oluştur
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+    8 Yapı © 2026 — Çevresine Değer Katar.
+</footer>
+
+<script>
+
+let selectedService = "";
+let materialPrice = 100;
+let applicationMultiplier = 1;
+
+function selectService(service,element){
+
+    selectedService = service;
+
+    document.querySelectorAll("#services .card").forEach(card=>{
+        card.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    document.getElementById("configurator").style.display="block";
+
+    document.getElementById("selectedServiceText").innerHTML =
+        "Seçilen hizmet: <strong>"+service+"</strong>";
+
+    document.getElementById("configurator").scrollIntoView({
+        behavior:"smooth"
+    });
+
+    calculate();
+}
+
+function selectMaterial(name,price,element){
+
+    materialPrice = price;
+
+    document.querySelectorAll(".step:nth-of-type(2) .option")
+        .forEach(option=>option.classList.remove("selected"));
+
+    element.classList.add("selected");
+
+    calculate();
+}
+
+function selectApplication(name,multiplier,element){
+
+    applicationMultiplier = multiplier;
+
+    document.querySelectorAll(".step:nth-of-type(3) .option")
+        .forEach(option=>option.classList.remove("selected"));
+
+    element.classList.add("selected");
+
+    calculate();
+}
+
+function calculate(){
+
+    const width = parseFloat(document.getElementById("width").value) || 0;
+    const height = parseFloat(document.getElementById("height").value) || 0;
+
+    const area = width * height;
+
+    const total = area * materialPrice * applicationMultiplier;
+
+    document.getElementById("summary").innerHTML =
+        selectedService
+        ? selectedService + " • " + area.toFixed(2) + " m²"
+        : "Hizmet seçiniz.";
+
+    document.getElementById("total").innerHTML =
+        total.toLocaleString("tr-TR") + " TL";
+}
+
+function createQuote(){
+
+    if(!selectedService){
+        alert("Lütfen önce bir hizmet seçin.");
+        return;
+    }
+
+    alert(
+        "Teklif oluşturuldu!\n\n" +
+        "Hizmet: " + selectedService + "\n" +
+        "Toplam: " + document.getElementById("total").innerText
+    );
+}
+
+</script>
+
+</body>
+</html>
